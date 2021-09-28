@@ -1,0 +1,4 @@
+ID,Name,Ingredients,Volume,Boxes,Mix
+1,Vitamix,"Melon,Strawberry,Banana,Milk","100,100,100,200","Ice, Cherry",True
+4,Corange,"Coconut,Orange,Milk","100,100,300","Lemon,Orange",False
+3,Sour mix,"Pinneapple,Strawberry,Kiwi","150,150,200","Lemon,Orange,Coconut",True
