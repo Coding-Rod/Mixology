@@ -52,21 +52,32 @@ class Data:
 
     def verify(self, id):
         num = list(self.df.ID).index(id)
-        print(num)
+        # print(num)
         diccsv = { 'Ingredients': str(self.df.Ingredients[num]).split(','),
                     'Volume': str(self.df.Volume[num]).split(','),}
         dicjson = { 'Ingredients': [x[0] for x in list(self.bottles.values())],
                     'Volume': [x[1] for x in list(self.bottles.values())]}
         
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
-            print(i)
-            print(dicjson['Ingredients'])
+            # print(i)
+            # print(dicjson['Ingredients'])
             if i in dicjson['Ingredients']:
                 if int(j) > int(dicjson['Volume'][dicjson['Ingredients'].index(i)]):
                     return 'Falta '+ str(i)
             else:
                 return 'Falta '+ str(i)
 
-        # TODO: Reduce bottles.json
-
         return True
+
+    def autocalibration(self, id):
+        num = list(self.df.ID).index(id)
+        diccsv = { 'Ingredients': str(self.df.Ingredients[num]).split(','),
+                    'Volume': str(self.df.Volume[num]).split(','),}
+        dicjson = { 'Ingredients': [x[0] for x in list(self.bottles.values())],
+                    'Volume': [x[1] for x in list(self.bottles.values())]}
+
+        for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
+            dicjson['Volume'][dicjson['Ingredients'].index(i)] = str(int(dicjson['Volume'][dicjson['Ingredients'].index(i)]) - int(j))
+        
+        jsonFile = open("data/bottles.json", "w")
+        jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
