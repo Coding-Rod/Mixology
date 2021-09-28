@@ -23,13 +23,14 @@ class Data:
             recipe = dict(zip((self.df.Ingredients[num]).split(','), (self.df.Volume[num]).split(',')))
             recipe = {'Ingredients': recipe, 'Boxes': (self.df.Boxes[num]).split(','), 'Mix': self.df.Mix[num]}
             return recipe # Ingredients(name, vol), Boxes, Mix
-        except :
+        except:
             print("ID not found")
-            return None
 
-    def add_recipe(self, name, Ingredients, volume, mix):
-        # TODO: add_recipe
-        pass
+    def add_recipe(self, name, ingredients, volume, boxes, mix):
+        num = self.df.ID[len(self.df.ID)-1]+1
+        dic = {'ID': num, 'Name': name, 'Ingredients': ingredients, 'Volume': volume, 'Boxes': boxes, 'Mix': mix}
+        self.df = self.df.append(dic, ignore_index=True)
+        self.df.to_csv('data/recipes.csv', index = False)
 
     def remove_recipe(self, name):
         try:
@@ -39,13 +40,33 @@ class Data:
             print(e)
 
     def change_bottle(self, num, name, volume):
-        # TODO:change_bottle
-        pass
+        self.bottles[num] = [name, volume]
+        jsonFile = open("data/bottles.json", "w")
+        jsonFile.write(json.dumps(self.bottles, indent=4, sort_keys=True))
+
 
     def change_box(self, num, name):
-        # TODO:change_box
-        pass
+        self.boxes[num] = name
+        jsonFile = open("data/boxes.json", "w")
+        jsonFile.write(json.dumps(self.boxes, indent=4, sort_keys=True))
 
-# dat = Data()
-# act_rec = dat.get_recipe(4)
-# dat.remove_recipe("Corange")
+    def verify(self, id):
+        num = list(self.df.ID).index(id)
+        print(num)
+        diccsv = { 'Ingredients': str(self.df.Ingredients[num]).split(','),
+                    'Volume': str(self.df.Volume[num]).split(','),}
+        dicjson = { 'Ingredients': [x[0] for x in list(self.bottles.values())],
+                    'Volume': [x[1] for x in list(self.bottles.values())]}
+        
+        for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
+            print(i)
+            print(dicjson['Ingredients'])
+            if i in dicjson['Ingredients']:
+                if int(j) > int(dicjson['Volume'][dicjson['Ingredients'].index(i)]):
+                    return 'Falta '+ str(i)
+            else:
+                return 'Falta '+ str(i)
+
+        # TODO: Reduce bottles.json
+
+        return True

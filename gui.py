@@ -1,9 +1,7 @@
-from apis.control import Control
 from apis.data import Data
+from apis.control import Control
 
-class GUI:
-    def __init__(self):
-        dat = Data()
-        
-gui = GUI()
-print(gui.dat)
+dat = Data()
+# dat.add_recipe("Corange","Coconut,Orange,Milk","100,100,300","Lemon,Orange",False)
+dat.change_box("5","Ice")
+print(dat.verify(1))
