@@ -1,20 +1,8 @@
 {
-    "1": [
-        "Ice"
-    ],
-    "2": [
-        "Ice"
-    ],
-    "3": [
-        "Cherry"
-    ],
-    "4": [
-        "Lemon"
-    ],
-    "5": [
-        "Orange"
-    ],
-    "6": [
-        "Coconut"
-    ]
+    "1": "Lemon",
+    "2": "Ice",
+    "3": "Cherry",
+    "4": "Orange",
+    "5": "Ice",
+    "6": "Coconut"
 }
