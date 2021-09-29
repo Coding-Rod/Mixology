@@ -44,7 +44,6 @@ class Data:
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(self.bottles, indent=4, sort_keys=True))
 
-
     def change_box(self, num, name):
         self.boxes[num] = name
         jsonFile = open("data/boxes.json", "w")
@@ -63,11 +62,11 @@ class Data:
             # print(dicjson['Ingredients'])
             if i in dicjson['Ingredients']:
                 if int(j) > int(dicjson['Volume'][dicjson['Ingredients'].index(i)]):
-                    return 'Falta '+ str(i)
+                    return 'Falta '+ str(i), False
             else:
-                return 'Falta '+ str(i)
+                return 'Falta '+ str(i), False
 
-        return True
+        return "Preparando la bebida...", True
 
     def autocalibration(self, id):
         num = list(self.df.ID).index(id)
@@ -79,5 +78,6 @@ class Data:
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             dicjson['Volume'][dicjson['Ingredients'].index(i)] = str(int(dicjson['Volume'][dicjson['Ingredients'].index(i)]) - int(j))
         
+        dicjson = dict(enumerate(zip(dicjson['Ingredients'],[int(x) for x in dicjson['Volume']]),1))
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
