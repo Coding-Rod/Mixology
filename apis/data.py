@@ -57,7 +57,7 @@ class Data:
                     'Volume': str(self.df.Volume[num]).split(','),}
         dicjson = { 'Ingredients': [x[0] for x in list(self.bottles.values())],
                     'Volume': [x[1] for x in list(self.bottles.values())]}
-        
+
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             # print(i)
             # print(dicjson['Ingredients'])
@@ -78,7 +78,7 @@ class Data:
 
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             dicjson['Volume'][dicjson['Ingredients'].index(i)] = str(int(dicjson['Volume'][dicjson['Ingredients'].index(i)]) - int(j))
-        
+
         dicjson = dict(enumerate(zip(dicjson['Ingredients'],[int(x) for x in dicjson['Volume']]),1))
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
