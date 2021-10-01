@@ -7,7 +7,7 @@ class Control:
         self.pumps = [6,7,8,9,10,11]
         self.mixer = 12
 
-    def pump_control(self, selected):
+    def pump_control(self, selected, time):
         # TODO: pump_control
         pass
 

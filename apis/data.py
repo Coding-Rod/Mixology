@@ -21,7 +21,7 @@ class Data:
         try: 
             num = list(self.df.ID).index(id)
             recipe = dict(zip((self.df.Ingredients[num]).split(','), (self.df.Volume[num]).split(',')))
-            recipe = {'Ingredients': recipe, 'Boxes': (self.df.Boxes[num]).split(','), 'Mix': self.df.Mix[num]}
+            recipe = {'Name': self.df.Name[num], 'Ingredients': recipe, 'Boxes': (self.df.Boxes[num]).split(','), 'Mix': self.df.Mix[num]}
             return recipe # Ingredients(name, vol), Boxes, Mix
         except:
             print("ID not found")
@@ -32,9 +32,10 @@ class Data:
         self.df = self.df.append(dic, ignore_index=True)
         self.df.to_csv('data/recipes.csv', index = False)
 
-    def remove_recipe(self, name):
+    def remove_recipe(self, id):
         try:
-            self.df = self.df[self.df.Name != name]
+            self.df = self.df[self.df.ID != id]
+            self.df.ID = list(range(1,self.df.shape[0]+1))
             self.df.to_csv('data/recipes.csv', index = False)
         except Exception as e:
             print(e)
@@ -43,7 +44,6 @@ class Data:
         self.bottles[num] = [name, volume]
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(self.bottles, indent=4, sort_keys=True))
-
 
     def change_box(self, num, name):
         self.boxes[num] = name
