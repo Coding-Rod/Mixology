@@ -41,6 +41,9 @@ class SampleApp(tk.Tk):
 
 
 class StartPage(tk.Frame):
+    #TODO: Organize items
+    #TODO: Change colors
+    #TODO: Add icons
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
@@ -59,6 +62,12 @@ class StartPage(tk.Frame):
 
 
 class PageOne(tk.Frame):
+    #TODO: Make scrollable
+    #TODO: Organize items
+    #TODO: Change colors
+    #TODO: Add icons
+    #TODO: Include data functions
+    #TODO: Include control functions
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -72,6 +81,12 @@ class PageOne(tk.Frame):
         button.pack()
         t_button.pack()
 class PageOne_trash(tk.Frame):
+    #TODO: Make scrollable
+    #TODO: Organize items
+    #TODO: Change colors
+    #TODO: Add icons
+    #TODO: Include data functions
+    #TODO: Include control functions
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -84,6 +99,12 @@ class PageOne_trash(tk.Frame):
 
 
 class PageTwo(tk.Frame):
+    #TODO: Make scrollable
+    #TODO: Organize items
+    #TODO: Change colors
+    #TODO: Add icons
+    #TODO: Include data functions
+    #TODO: Include control functions
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -94,6 +115,12 @@ class PageTwo(tk.Frame):
                            command=lambda: controller.show_frame("StartPage"))
         button.pack()
 class PageThree(tk.Frame):
+    #TODO: Make scrollable
+    #TODO: Organize items
+    #TODO: Change colors
+    #TODO: Add icons
+    #TODO: Include data functions
+    #TODO: Include control functions
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
