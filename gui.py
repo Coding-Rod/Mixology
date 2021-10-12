@@ -1,25 +1,110 @@
 from apis.data import Data
-from apis.control import Control
+import tkinter as tk                # python 3
+from tkinter import font as tkfont  # python 3
+# from apis.control import Control
 
 dat = Data()
-ctr = Control()
+# ctr = Control()
 
-# dat.add_recipe("Corange","Coconut,Orange,Milk","100,100,300","Lemon,Orange",False)
+class SampleApp(tk.Tk):
 
-# rec = dat.get_recipe(1)
-# print(type(rec['Ingredients']))
+    def __init__(self, *args, **kwargs):
+        tk.Tk.__init__(self, *args, **kwargs)
 
-# dat.remove_recipe(1)
+        self.title_font = tkfont.Font(family='Roboto', size=18, weight="bold", slant="italic")
 
-# dat.change_bottle(7,"Lemon",800)
+        # the container is where we'll stack a bunch of frames
+        # on top of each other, then the one we want visible
+        # will be raised above the others
+        container = tk.Frame(self)
+        container.pack(side="top", fill="both", expand=True)
+        container.grid_rowconfigure(0, weight=1)
+        container.grid_columnconfigure(0, weight=1)
 
-# dat.change_box(5,"Gommy bears")
+        self.frames = {}
+        for F in (StartPage, PageOne, PageOne_trash, PageTwo, PageThree):
+            page_name = F.__name__
+            frame = F(parent=container, controller=self)
+            self.frames[page_name] = frame
 
-msg, ok = dat.verify(1)
+            # put all of the pages in the same location;
+            # the one on the top of the stacking order
+            # will be the one that is visible.
+            frame.grid(row=0, column=0, sticky="nsew")
 
-print(msg)
+        self.show_frame("StartPage")
 
-# Process...
+    def show_frame(self, page_name):
+        '''Show a frame for the given page name'''
+        frame = self.frames[page_name]
+        frame.tkraise()
 
-if ok:
-    dat.autocalibration(1)
+
+class StartPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        label = tk.Label(self, text="This is the start page", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+
+        button1 = tk.Button(self, text="Go to Page One",
+                            command=lambda: controller.show_frame("PageOne"))
+        button2 = tk.Button(self, text="Go to Page Two",
+                            command=lambda: controller.show_frame("PageTwo"))
+        button3 = tk.Button(self, text="Go to Page Three",
+                            command=lambda: controller.show_frame("PageThree"))
+        button1.pack()
+        button2.pack()
+        button3.pack()
+
+
+class PageOne(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        label = tk.Label(self, text="This is page 1", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        button = tk.Button(self, text="Go to the start page",
+                           command=lambda: controller.show_frame("StartPage"))
+        t_button = tk.Button(self, text="Trash",
+                           command=lambda: controller.show_frame("PageOne_trash"))
+        button.pack()
+        t_button.pack()
+class PageOne_trash(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        label = tk.Label(self, text="This is page 1 (trash)", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        button = tk.Button(self, text="done",
+                           command=lambda: controller.show_frame("PageOne"))
+        button.pack()
+
+
+class PageTwo(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        label = tk.Label(self, text="This is page 2", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        button = tk.Button(self, text="Go to the start page",
+                           command=lambda: controller.show_frame("StartPage"))
+        button.pack()
+class PageThree(tk.Frame):
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        label = tk.Label(self, text="This is page 3", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        button = tk.Button(self, text="Go to the start page",
+                           command=lambda: controller.show_frame("StartPage"))
+        button.pack()
+
+
+if __name__ == "__main__":
+    app = SampleApp()
+    app.mainloop()
