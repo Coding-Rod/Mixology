@@ -2,6 +2,8 @@ from apis.data import Data
 from apis.control import Control
 
 dat = Data()
+ctr = Control()
+
 # dat.add_recipe("Corange","Coconut,Orange,Milk","100,100,300","Lemon,Orange",False)
 
 # rec = dat.get_recipe(1)
