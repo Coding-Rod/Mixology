@@ -1,9 +1,9 @@
-from apis.data import Data
+#from apis.data import Data
 import tkinter as tk                # python 3
 from tkinter import font as tkfont  # python 3
 # from apis.control import Control
 
-dat = Data()
+#dat = Data()
 # ctr = Control()
 
 class SampleApp(tk.Tk):
