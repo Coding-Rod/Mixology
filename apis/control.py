@@ -6,6 +6,7 @@ class Control:
         self.leds = [0,1,2,3,4,5]
         self.pumps = [6,7,8,9,10,11]
         self.mixer = 12
+        self.vase = 13
 
     def pump_control(self, selected, time):
         # TODO: pump_control
@@ -17,4 +18,8 @@ class Control:
 
     def mixer_control(self):
         # TODO: always ON
+        pass
+
+    def vase_control(self):
+        # TODO: When process is finished: ON
         pass

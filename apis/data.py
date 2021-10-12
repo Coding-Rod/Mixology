@@ -41,11 +41,13 @@ class Data:
             print(e)
 
     def change_bottle(self, num, name, volume):
+        num = str(num)
         self.bottles[num] = [name, volume]
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(self.bottles, indent=4, sort_keys=True))
 
     def change_box(self, num, name):
+        num = str(num)
         self.boxes[num] = name
         jsonFile = open("data/boxes.json", "w")
         jsonFile.write(json.dumps(self.boxes, indent=4, sort_keys=True))
