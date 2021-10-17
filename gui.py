@@ -5,10 +5,10 @@ from tkinter import font as tkfont  # python 3
 
 #dat = Data()
 # ctr = Control()
-
 class SampleApp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
+        global container
         tk.Tk.__init__(self, *args, **kwargs)
 
         self.title_font = tkfont.Font(family='Roboto', size=18, weight="bold", slant="italic")
@@ -45,6 +45,7 @@ class StartPage(tk.Frame):
     #TODO: Change colors
     #TODO: Add icons
     def __init__(self, parent, controller):
+        global canvas
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
