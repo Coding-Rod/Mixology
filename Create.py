@@ -17,9 +17,10 @@ from apis.data import Data
 
 dat = Data()
 
-class Ui_Form(object):
+class Create(object):
     def setupUi(self, Form):
         global dat
+        self.form = Form
         Form.setObjectName("Form")
         Form.resize(800, 380)
         Form.setStyleSheet("background-color: rgb(238, 238, 238);")
@@ -248,9 +249,9 @@ class Ui_Form(object):
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, Form1):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        self.form.setWindowTitle("Mixology")
 
         self.horizontalSlider.setValue(dat.bottles['1'][1])
         self.horizontalSlider_2.setValue(dat.bottles['2'][1])
@@ -285,7 +286,7 @@ class Ui_Form(object):
 
     def update_val(self):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        self.form.setWindowTitle("Mixology")
 
         self.horizontalSlider.setValue(int(self.horizontalSlider.value()/100)*100)
         self.horizontalSlider_2.setValue(int(self.horizontalSlider_2.value()/100)*100)
@@ -314,7 +315,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Form()
+    ui = Create()
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())

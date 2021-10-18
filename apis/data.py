@@ -16,7 +16,7 @@ class Data:
         # ID,Name,Ingredients,Volume,Boxes,Mix
         df = pd.read_csv('data/recipes.csv')
         self.df = df
-        print(self.df.Ingredients[0])
+        # print(self.df.Ingredients[0])
 
     def get_recipe(self, id):
         try: 

@@ -6,10 +6,11 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-#TODO: Data
+# TODO: Data
 # TODO: Images
 # TODO: Index
 # TODO: Scroll
+# TODO: Text Input for Bottles
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 

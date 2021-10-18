@@ -9,9 +9,11 @@
 # TODO: Index
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import Create
 
 class Ui_Form(object):
     def setupUi(self, Form):
+        self.form = Form
         Form.setObjectName("Form")
         Form.resize(800, 380)
         Form.setStyleSheet("background-color: rgb(236, 236, 236);\n"
@@ -31,6 +33,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "border-image: url(/home/osvaldo/Documentos/Mixology/Proxlight_Designer_Export/img2.png)")
         self.pushButton.setText("Create")
+        self.pushButton.clicked.connect(self.create_form)
         self.pushButton.setObjectName("pushButton")
         self.pushButton_4 = QtWidgets.QPushButton(Form)
         self.pushButton_4.setGeometry(QtCore.QRect(720, 20, 41, 31))
@@ -61,6 +64,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "border-image: url(/home/osvaldo/Documentos/Mixology/Proxlight_Designer_Export/img1.png)")
         self.pushButton_5.setText("Calibrate")
+        self.pushButton_5.clicked.connect(self.calibrate_form)
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_6 = QtWidgets.QPushButton(Form)
         self.pushButton_6.setGeometry(QtCore.QRect(500, 180, 150, 60))
@@ -77,6 +81,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "border-image: url(/home/osvaldo/Documentos/Mixology/Proxlight_Designer_Export/img0.png)")
         self.pushButton_6.setText("Select")
+        self.pushButton_6.clicked.connect(self.select_form)
         self.pushButton_6.setObjectName("pushButton_6")
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(0, 0, 800, 74))
@@ -102,8 +107,20 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton_4.setText(_translate("Form", "X"))
+        self.pushButton_4.clicked.connect(lambda: self.form.close())
         self.label.setText(_translate("Form", "    MIXOLOGY"))
 
+    def create_form(self):
+        # TODO: change to Create window
+        print("Create window")
+    
+    def calibrate_form(self):
+        # TODO: change to Calibrate window
+        print("Calibrate window")
+
+    def select_form(self):
+        # TODO: change to Select window
+        print("Select window")
 
 if __name__ == "__main__":
     import sys
