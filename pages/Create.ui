@@ -435,28 +435,6 @@ color: #FFFFFF;</string>
     <string>CheckBox</string>
    </property>
   </widget>
-  <widget class="QScrollBar" name="horizontalScrollBar">
-   <property name="geometry">
-    <rect>
-     <x>600</x>
-     <y>540</y>
-     <width>100</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="maximum">
-    <number>1</number>
-   </property>
-   <property name="pageStep">
-    <number>1</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
@@ -472,6 +450,9 @@ color: #FFFFFF;</string>
    <property name="text">
     <string>MIX</string>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -483,7 +464,7 @@ color: #FFFFFF;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/prefijoNuevo/back.png);
+    <string notr="true">border-image: url(:/back/assets/back.png);
 border-radius:30px
 </string>
    </property>
@@ -501,7 +482,8 @@ border-radius:30px
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/check/check2.png);
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-image: url(:/check/assets/check2.png);
 border-radius:30px
 </string>
    </property>
@@ -509,6 +491,108 @@ border-radius:30px
     <string/>
    </property>
   </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>30</y>
+     <width>170</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius: 10px;
+</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>30</y>
+     <width>100</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #E09825;
+color: #FFFFFF;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Sunken</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Name&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_11">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>540</y>
+     <width>80</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>1</number>
+   </property>
+   <property name="sliderPosition">
+    <number>0</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <zorder>label_2</zorder>
+  <zorder>label</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_7</zorder>
+  <zorder>label_8</zorder>
+  <zorder>label_9</zorder>
+  <zorder>label_10</zorder>
+  <zorder>label_11</zorder>
+  <zorder>horizontalSlider</zorder>
+  <zorder>horizontalSlider_2</zorder>
+  <zorder>horizontalSlider_3</zorder>
+  <zorder>horizontalSlider_4</zorder>
+  <zorder>horizontalSlider_5</zorder>
+  <zorder>horizontalSlider_6</zorder>
+  <zorder>horizontalSlider_7</zorder>
+  <zorder>horizontalSlider_8</zorder>
+  <zorder>horizontalSlider_9</zorder>
+  <zorder>horizontalSlider_10</zorder>
+  <zorder>pushButton_7</zorder>
+  <zorder>checkBox</zorder>
+  <zorder>checkBox_2</zorder>
+  <zorder>checkBox_3</zorder>
+  <zorder>checkBox_4</zorder>
+  <zorder>checkBox_5</zorder>
+  <zorder>checkBox_6</zorder>
+  <zorder>label_12</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>textEdit</zorder>
+  <zorder>lineEdit</zorder>
+  <zorder>horizontalSlider_11</zorder>
  </widget>
  <resources>
   <include location="test.qrc"/>

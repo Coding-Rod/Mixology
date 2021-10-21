@@ -9,7 +9,6 @@
 # TODO: Index
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import Create
 
 class Ui_Form(object):
     def setupUi(self, Form):
