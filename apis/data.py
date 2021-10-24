@@ -18,6 +18,11 @@ class Data:
         self.df = df
         # print(self.df.Ingredients[0])
 
+        with open('data/queue.json', 'r') as j:
+            json_queue = json.load(j)
+        # ID, Name
+        self.queue = json_queue
+
     def get_recipe(self, id):
         try: 
             num = list(self.df.ID).index(id)
@@ -85,3 +90,24 @@ class Data:
         dicjson = dict(enumerate(zip(dicjson['Ingredients'],[int(x) for x in dicjson['Volume']]),1))
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
+    
+    def add_to_queue(self, id):
+        n = str(len(self.queue.keys())+1)
+        self.queue[n] = id
+        jsonFile = open("data/queue.json", "w")
+        jsonFile.write(json.dumps(self.queue, indent=4, sort_keys=True))
+
+    def clean_queue(self):
+        jsonFile = open("data/queue.json", "w")
+        jsonFile.write(json.dumps({}, indent=4, sort_keys=True))
+
+    def pause_queue(self, i):
+        i = int(i)
+        keys = [int(x) for x in self.queue.keys() if int(x) >= i]
+        values = list(self.queue.values())[len(keys)-1:]
+        self.queue = dict(zip([str(x) for x in range(1,len(keys)+1)], values))
+        jsonFile = open("data/queue.json", "w")
+        jsonFile.write(json.dumps(self.queue, indent=4, sort_keys=True))
+
+dat = Data()
+dat.pause_queue(4)

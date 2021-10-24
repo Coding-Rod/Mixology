@@ -6,3 +6,4 @@ ID,Name,Ingredients,Volume,Boxes,Mix
 5,Banana & Strawberry milk,"Banana,Milk,Strawberry","200,300,200",Ice,True
 6,Sour lemonade,"Lemon,Water","800,1000","Ice,Cherry",False
 7,Cocas,"Blueberry,Strawberry,Milk,Acai","300,500,300,300","Ice,Gommy bears,Coconut",True
+8,Sirilo drink,"Blueberry,Banana,Milk,Acai","200,100,200,1000","Lemon,Ice,Cherry",True
