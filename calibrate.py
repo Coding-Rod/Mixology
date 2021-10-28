@@ -70,7 +70,8 @@ class Ui_Form(object):
         self.pushButton_11.setIcon(QIcon('assets/check2.png'))
         self.pushButton_11.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_11.setStyleSheet("border-radius:30px\noverflow:hidden;")
-        
+        self.pushButton_11.clicked.connect(self.save)
+
         #region Scroll 1
         self.scrollArea = QtWidgets.QScrollArea(Form)
         self.scrollArea.setGeometry(QtCore.QRect(30, 80, 550, 200))
@@ -489,6 +490,30 @@ class Ui_Form(object):
         self.horizontalSlider_9.setValue(self.dat.bottles["9"][1])
         self.horizontalSlider_10.setValue(self.dat.bottles["10"][1])
         
+    def save(self):
+        self.dat.change_bottle(1,self.lineEdit_12.text(),self.horizontalSlider.value())
+        self.dat.change_bottle(2,self.lineEdit_15.text(),self.horizontalSlider_2.value())
+        self.dat.change_bottle(3,self.lineEdit_10.text(),self.horizontalSlider_3.value())
+        self.dat.change_bottle(4,self.lineEdit_13.text(),self.horizontalSlider_4.value())
+        self.dat.change_bottle(5,self.lineEdit_11.text(),self.horizontalSlider_5.value())
+        self.dat.change_bottle(6,self.lineEdit_14.text(),self.horizontalSlider_6.value())
+        self.dat.change_bottle(7,self.lineEdit_9.text(),self.horizontalSlider_7.value())
+        self.dat.change_bottle(8,self.lineEdit_7.text(),self.horizontalSlider_8.value())
+        self.dat.change_bottle(9,self.lineEdit_8.text(),self.horizontalSlider_9.value())
+        self.dat.change_bottle(10,self.lineEdit_16.text(),self.horizontalSlider_10.value())
+        self.dat.change_box(1,self.lineEdit.text())
+        self.dat.change_box(2,self.lineEdit_2.text())
+        self.dat.change_box(3,self.lineEdit_3.text())
+        self.dat.change_box(4,self.lineEdit_4.text())
+        self.dat.change_box(5,self.lineEdit_5.text())
+        self.dat.change_box(6,self.lineEdit_6.text())
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Information Updated")
+        # msg.setInformativeText('More information')
+        msg.setWindowTitle("Done")
+        msg.exec_()
+        self.dat.__init__()
 
 if __name__ == "__main__":
     import sys

@@ -66,6 +66,7 @@ class Ui_Form(object):
 "\n"
 "color: #FFFFFF;")
         self.pushButton_9.setObjectName("pushButton_9")
+        self.pushButton_9.clicked.connect(lambda: sys.exit(0))
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(30, 300, 65, 65))
         self.pushButton.setStyleSheet("border-image: url(:/back/assets/back.png);\n"
@@ -299,30 +300,48 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.label_41, 8, 1, 1, 1)
         self.pushButton_3 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_3.clicked.connect(lambda: self.add_to_queue(1))
+
         self.gridLayout.addWidget(self.pushButton_3, 0, 0, 1, 1)
         self.pushButton_4 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_4.clicked.connect(lambda: self.add_to_queue(2))
+
         self.gridLayout.addWidget(self.pushButton_4, 1, 0, 1, 1)
         self.pushButton_5 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton_5.clicked.connect(lambda: self.add_to_queue(3))
+
         self.gridLayout.addWidget(self.pushButton_5, 2, 0, 1, 1)
         self.pushButton_6 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_6.setObjectName("pushButton_6")
+        self.pushButton_6.clicked.connect(lambda: self.add_to_queue(4))
+
         self.gridLayout.addWidget(self.pushButton_6, 3, 0, 1, 1)
         self.pushButton_7 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_7.setObjectName("pushButton_7")
+        self.pushButton_7.clicked.connect(lambda: self.add_to_queue(5))
+
         self.gridLayout.addWidget(self.pushButton_7, 4, 0, 1, 1)
         self.pushButton_10 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_10.setObjectName("pushButton_10")
+        self.pushButton_10.clicked.connect(lambda: self.add_to_queue(6))
+
         self.gridLayout.addWidget(self.pushButton_10, 5, 0, 1, 1)
         self.pushButton_11 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_11.setObjectName("pushButton_11")
+        self.pushButton_11.clicked.connect(lambda: self.add_to_queue(7))
+
         self.gridLayout.addWidget(self.pushButton_11, 6, 0, 1, 1)
         self.pushButton_12 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_12.setObjectName("pushButton_12")
+        self.pushButton_12.clicked.connect(lambda: self.add_to_queue(8))
+
         self.gridLayout.addWidget(self.pushButton_12, 7, 0, 1, 1)
         self.pushButton_13 = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         self.pushButton_13.setObjectName("pushButton_13")
+        self.pushButton_13.clicked.connect(lambda: self.add_to_queue(9))
+
         self.gridLayout.addWidget(self.pushButton_13, 8, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.pushButton_2 = QtWidgets.QPushButton(Form)
@@ -453,10 +472,14 @@ class Ui_Form(object):
             self.pushButton_13.setVisible(False)
 
     def add_to_queue(self, id):
-        # TODO: get queue
-        # TODO: show actual queue as msgDialog
-        # TODO: add to json
-        pass
+        self.dat.add_to_queue(id)
+        self.dat.__init__()
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()])))
+        # msg.setInformativeText('More information')
+        msg.setWindowTitle("Actual queue")
+        ret = msg.exec_()
 
     def clear_queue(self):
         msg = QMessageBox()
@@ -468,6 +491,7 @@ class Ui_Form(object):
         ret = msg.exec_()
         if (ret == QMessageBox.Yes):
             self.dat.clean_queue()
+            self.dat.__init__()
 
     def prepare(self):
         # TODO: Show progress bar
