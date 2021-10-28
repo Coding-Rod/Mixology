@@ -9,6 +9,7 @@
 # TODO: Give functionality
 # TODO: Index
 # TODO: Change labels
+# TODO: Constructor
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from apis.data import Data

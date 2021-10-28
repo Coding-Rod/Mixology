@@ -19,8 +19,9 @@ class Ui_Form(object):
         self.form.resize(800, 380)
         self.form.setStyleSheet("background-color: rgb(236, 236, 236);\n")
         self.state = 0
-        self.state_machine()
+        self.state_machine(0)
 
+    #region home_screen
     def main(self): 
         self.pushButton = QtWidgets.QPushButton(self.form)
         self.pushButton.setGeometry(QtCore.QRect(100, 180, 150, 60))
@@ -37,7 +38,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "border-image: url(/home/osvaldo/Documentos/Mixology/Proxlight_Designer_Export/img2.png)")
         self.pushButton.setText("Create")
-        self.pushButton.clicked.connect(self.create_form)
+        self.pushButton.clicked.connect(lambda: self.state_machine(1))
         self.pushButton.setObjectName("pushButton")
         self.pushButton_4 = QtWidgets.QPushButton(self.form)
         self.pushButton_4.setGeometry(QtCore.QRect(720, 20, 41, 31))
@@ -68,7 +69,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "border-image: url(/home/osvaldo/Documentos/Mixology/Proxlight_Designer_Export/img1.png)")
         self.pushButton_5.setText("Calibrate")
-        self.pushButton_5.clicked.connect(self.calibrate_form)
+        self.pushButton_5.clicked.connect(lambda: self.state_machine(2))
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_6 = QtWidgets.QPushButton(self.form)
         self.pushButton_6.setGeometry(QtCore.QRect(500, 180, 150, 60))
@@ -85,7 +86,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "border-image: url(/home/osvaldo/Documentos/Mixology/Proxlight_Designer_Export/img0.png)")
         self.pushButton_6.setText("Select")
-        self.pushButton_6.clicked.connect(self.select_form)
+        self.pushButton_6.clicked.connect(lambda: self.state_machine(3))
         self.pushButton_6.setObjectName("pushButton_6")
         self.label = QtWidgets.QLabel(self.form)
         self.label.setGeometry(QtCore.QRect(0, 0, 800, 74))
@@ -126,10 +127,38 @@ class Ui_Form(object):
         # TODO: change to Select window
         print("Select window")
 
-    def state_machine(self):
-        # TODO: Create state
+    #endregion home_screen
+    
+    def state_machine(self,state):
+        self.state = state
+        print(self.state)
         if self.state == 0:
             self.main()
+        if self.state == 1:
+            self.create_form()
+        if self.state == 2:
+            self.calibrate_form()
+        if self.state == 3:
+            self.select_form()
+
+        #region visible
+        #region main
+        self.pushButton.setVisible(self.state == 0)
+        self.pushButton_4 .setVisible(self.state == 0)
+        self.pushButton_5.setVisible(self.state == 0)
+        self.pushButton_6.setVisible(self.state == 0)
+        self.label.setVisible(self.state == 0)
+        #endregion main
+        #region create
+
+        #endregion create
+        #region calibrate
+
+        #endregion calibrate
+        #region select
+
+        #endregion select
+        #endregion visible
 
 if __name__ == "__main__":
     import sys
