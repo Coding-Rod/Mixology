@@ -12,6 +12,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QSlider
+from PyQt5.QtWidgets import QMessageBox
+
 from apis.data import Data
 
 class Main(object):
@@ -262,7 +264,8 @@ class Main(object):
         self.pushButton_2.setObjectName("pushButton_2")
 
         # TODO: Save data
-        self.pushButton.clicked.connect(lambda: self.pushButton_2.setVisible(False))
+        self.pushButton.clicked.connect(self.showMessage)
+        # self.pushButton.clicked.connect(lambda: self.pushButton_2.setVisible(False))
         self.pushButton_2.clicked.connect(self.save)
         self.pushButton_7.clicked.connect(lambda: sys.exit(0))
 
@@ -375,6 +378,13 @@ class Main(object):
         self.dat.add_recipe(name,ingredients,volume,boxes,mix)
         print("Saved")
 
+    def showMessage(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Critical)
+        msg.setText("Error")
+        msg.setInformativeText('More information')
+        msg.setWindowTitle("Error")
+        msg.exec_()
 
 if __name__ == "__main__":
     import sys

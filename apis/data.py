@@ -110,4 +110,4 @@ class Data:
         jsonFile.write(json.dumps(self.queue, indent=4, sort_keys=True))
 
 dat = Data()
-dat.pause_queue(4)
+dat.add_to_queue(2)
