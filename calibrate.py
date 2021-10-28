@@ -6,10 +6,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-# TODO: Give functionality
 # TODO: Index
 # TODO: Change labels
-# TODO: Constructor
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from apis.data import Data
@@ -18,12 +16,14 @@ from PyQt5.QtWidgets import QSlider
 from PyQt5.QtWidgets import QMessageBox
 
 class Ui_Form(object):
-    def calibrate(self, Form):
+    def __init__(self,Form):
         self.dat = Data()
         self.form = Form
-        Form.setObjectName("Form")
-        Form.resize(800, 380)
-        self.pushButton_7 = QtWidgets.QPushButton(Form)
+
+    def calibrate(self):
+        self.form.setObjectName("form")
+        self.form.resize(800, 380)
+        self.pushButton_7 = QtWidgets.QPushButton(self.form)
         self.pushButton_7.setGeometry(QtCore.QRect(730, 20, 41, 31))
         self.pushButton_7.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
@@ -38,7 +38,7 @@ class Ui_Form(object):
 "color: #FFFFFF;")
         self.pushButton_7.setObjectName("pushButton_7")
         self.pushButton_7.clicked.connect(lambda: sys.exit(0))
-        self.label_2 = QtWidgets.QLabel(Form)
+        self.label_2 = QtWidgets.QLabel(self.form)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 800, 74))
         self.label_2.setStyleSheet("font-family: Roboto;\n"
 "font-style: normal;\n"
@@ -49,7 +49,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "background-color: #E09825;")
         self.label_2.setObjectName("label_2")
-        self.pushButton_10 = QtWidgets.QPushButton(Form)
+        self.pushButton_10 = QtWidgets.QPushButton(self.form)
         self.pushButton_10.setGeometry(QtCore.QRect(10, 300, 65, 65))
         self.pushButton_10.setStyleSheet("\n"
 "border-image: url(:/back/assets/back.png);\n"
@@ -59,7 +59,7 @@ class Ui_Form(object):
         self.pushButton_10.setIcon(QIcon('assets/back.png'))
         self.pushButton_10.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_10.setStyleSheet("border-radius:30px\noverflow:hidden;")
-        self.pushButton_11 = QtWidgets.QPushButton(Form)
+        self.pushButton_11 = QtWidgets.QPushButton(self.form)
         self.pushButton_11.setGeometry(QtCore.QRect(720, 300, 65, 65))
         self.pushButton_11.setStyleSheet("\n"
 "border-image: url(:/check/assets/check2.png);\n"
@@ -73,7 +73,7 @@ class Ui_Form(object):
         self.pushButton_11.clicked.connect(self.save)
 
         #region Scroll 1
-        self.scrollArea = QtWidgets.QScrollArea(Form)
+        self.scrollArea = QtWidgets.QScrollArea(self.form)
         self.scrollArea.setGeometry(QtCore.QRect(30, 80, 550, 200))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
@@ -362,7 +362,7 @@ class Ui_Form(object):
         #endregion Slider formatter
 
         #region Scroll 2
-        self.scrollArea_2 = QtWidgets.QScrollArea(Form)
+        self.scrollArea_2 = QtWidgets.QScrollArea(self.form)
         self.scrollArea_2.setGeometry(QtCore.QRect(600, 80, 162, 200))
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
@@ -428,8 +428,8 @@ class Ui_Form(object):
         self.scrollArea_2.raise_()
         #endregion Scroll 2
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self.form)
 
     def cal_update_val(self):
         _translate = QtCore.QCoreApplication.translate
@@ -458,17 +458,17 @@ class Ui_Form(object):
         self.label_27.setText(str(self.horizontalSlider_10.value())+" ml")
     
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.pushButton_7.setText(_translate("Form", "X"))
-        self.label_2.setText(_translate("Form", "    CALIBRATE"))
-        self.label_12.setText(_translate("Form", "Box 1"))
-        self.label_13.setText(_translate("Form", "Box 2"))
-        self.label_14.setText(_translate("Form", "Box 3"))
-        self.label_15.setText(_translate("Form", "Box 4"))
-        self.label_16.setText(_translate("Form", "Box 5"))
-        self.label_17.setText(_translate("Form", "Box 6"))
+        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.pushButton_7.setText(_translate("self.form", "X"))
+        self.label_2.setText(_translate("self.form", "    CALIBRATE"))
+        self.label_12.setText(_translate("self.form", "Box 1"))
+        self.label_13.setText(_translate("self.form", "Box 2"))
+        self.label_14.setText(_translate("self.form", "Box 3"))
+        self.label_15.setText(_translate("self.form", "Box 4"))
+        self.label_16.setText(_translate("self.form", "Box 5"))
+        self.label_17.setText(_translate("self.form", "Box 6"))
         self.label_22.setText(str(self.dat.bottles["1"][1])+" ml")
         self.label_26.setText(str(self.dat.bottles["2"][1])+" ml")
         self.label_18.setText(str(self.dat.bottles["3"][1])+" ml")
@@ -519,8 +519,8 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.calibrate(Form)
+    ui = Ui_Form(Form)
+    ui.calibrate()
     Form.show()
     sys.exit(app.exec_())
 
