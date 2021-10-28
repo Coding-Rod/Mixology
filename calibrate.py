@@ -11,7 +11,7 @@ from apis.data import Data
 from PyQt5.QtWidgets import QSlider
 
 class Ui_Form(object):
-    def Calibrate(self, Form):
+    def calibrate(self, Form):
         self.dat = Data()
         self.form = Form
         Form.setObjectName("Form")
@@ -481,7 +481,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
-    ui.Calibrate(Form)
+    ui.calibrate(Form)
     Form.show()
     sys.exit(app.exec_())
 

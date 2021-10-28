@@ -10,7 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from apis.data import Data
 
 class Ui_Form(object):
-    def setupUi(self, Form):
+    def select(self, Form):
         self.form = Form
         self.dat = Data()
         Form.setObjectName("Form")
@@ -436,7 +436,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
-    ui.setupUi(Form)
+    ui.select(Form)
     Form.show()
     sys.exit(app.exec_())
 

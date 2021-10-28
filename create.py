@@ -7,9 +7,12 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from apis.data import Data
 
 class Ui_Form(object):
-    def setupUi(self, Form):
+    def create(self, Form):
+        self.dat = Data()
+        self.form = Form
         Form.setObjectName("Form")
         Form.resize(800, 380)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -33,9 +36,7 @@ class Ui_Form(object):
         self.pushButton_7.setGeometry(QtCore.QRect(730, 20, 41, 31))
         self.pushButton_7.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
-"box-sizing: border-box;\n"
 "border-radius: 10px;\n"
-"transform: matrix(1, 0, 0, 1, 0, 0);\n"
 "\n"
 "font-family: Roboto;\n"
 "font-style: normal;\n"
@@ -98,7 +99,7 @@ class Ui_Form(object):
         self.formLayout.setObjectName("formLayout")
         self.label = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label.setFont(font)
         self.label.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label.setObjectName("label")
@@ -117,7 +118,7 @@ class Ui_Form(object):
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider)
         self.label_3 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_3.setFont(font)
         self.label_3.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_3.setObjectName("label_3")
@@ -133,7 +134,7 @@ class Ui_Form(object):
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider_2)
         self.label_4 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_4.setFont(font)
         self.label_4.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_4.setObjectName("label_4")
@@ -149,7 +150,7 @@ class Ui_Form(object):
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider_4)
         self.label_6 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_6.setFont(font)
         self.label_6.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_6.setObjectName("label_6")
@@ -165,7 +166,7 @@ class Ui_Form(object):
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider_5)
         self.label_7 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_7.setFont(font)
         self.label_7.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_7.setObjectName("label_7")
@@ -181,7 +182,7 @@ class Ui_Form(object):
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider_6)
         self.label_8 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_8.setFont(font)
         self.label_8.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_8.setObjectName("label_8")
@@ -197,7 +198,7 @@ class Ui_Form(object):
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider_3)
         self.label_9 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_9.setFont(font)
         self.label_9.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_9.setObjectName("label_9")
@@ -213,7 +214,7 @@ class Ui_Form(object):
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider_7)
         self.label_11 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_11.setFont(font)
         self.label_11.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_11.setObjectName("label_11")
@@ -229,14 +230,14 @@ class Ui_Form(object):
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider_8)
         self.label_10 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_10.setFont(font)
         self.label_10.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_10.setObjectName("label_10")
         self.formLayout.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.label_10)
         self.label_5 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         font = QtGui.QFont()
-        font.setPointSize(24)
+        font.setPointSize(14)
         self.label_5.setFont(font)
         self.label_5.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_5.setObjectName("label_5")
@@ -313,29 +314,29 @@ class Ui_Form(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Name</span></p></body></html>"))
-        self.label.setText(_translate("Form", "TextLabel"))
-        self.label_3.setText(_translate("Form", "TextLabel"))
-        self.label_4.setText(_translate("Form", "TextLabel"))
-        self.label_6.setText(_translate("Form", "TextLabel"))
-        self.label_7.setText(_translate("Form", "TextLabel"))
-        self.label_8.setText(_translate("Form", "TextLabel"))
-        self.label_9.setText(_translate("Form", "TextLabel"))
-        self.label_11.setText(_translate("Form", "TextLabel"))
-        self.label_10.setText(_translate("Form", "TextLabel"))
-        self.label_5.setText(_translate("Form", "TextLabel"))
-        self.checkBox.setText(_translate("Form", "CheckBox"))
-        self.checkBox_2.setText(_translate("Form", "CheckBox"))
-        self.checkBox_3.setText(_translate("Form", "CheckBox"))
-        self.checkBox_4.setText(_translate("Form", "CheckBox"))
-        self.checkBox_5.setText(_translate("Form", "CheckBox"))
-        self.checkBox_6.setText(_translate("Form", "CheckBox"))
+        self.label.setText(_translate("Form", self.dat.bottles['1'][0]+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")))
+        self.label_3.setText(_translate("Form", self.dat.bottles['2'][0]+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")))
+        self.label_4.setText(_translate("Form", self.dat.bottles['3'][0]+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")))
+        self.label_6.setText(_translate("Form", self.dat.bottles['4'][0]+("\t\t"if len(self.dat.bottles['4'][0])<7 else "\t")))
+        self.label_7.setText(_translate("Form", self.dat.bottles['5'][0]+("\t\t"if len(self.dat.bottles['5'][0])<7 else "\t")))
+        self.label_8.setText(_translate("Form", self.dat.bottles['6'][0]+("\t\t"if len(self.dat.bottles['6'][0])<7 else "\t")))
+        self.label_9.setText(_translate("Form", self.dat.bottles['7'][0]+("\t\t"if len(self.dat.bottles['7'][0])<7 else "\t")))
+        self.label_11.setText(_translate("Form", self.dat.bottles['8'][0]+("\t\t"if len(self.dat.bottles['8'][0])<7 else "\t")))
+        self.label_10.setText(_translate("Form", self.dat.bottles['9'][0]+("\t\t"if len(self.dat.bottles['9'][0])<7 else "\t")))
+        self.label_5.setText(_translate("Form", self.dat.bottles['10'][0]+("\t\t"if len(self.dat.bottles['10'][0])<7 else "\t")))
+        self.checkBox.setText(_translate("Form", self.dat.boxes["1"]))
+        self.checkBox_2.setText(_translate("Form", self.dat.boxes["2"]))
+        self.checkBox_3.setText(_translate("Form", self.dat.boxes["3"]))
+        self.checkBox_4.setText(_translate("Form", self.dat.boxes["4"]))
+        self.checkBox_5.setText(_translate("Form", self.dat.boxes["5"]))
+        self.checkBox_6.setText(_translate("Form", self.dat.boxes["6"]))
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
     ui = Ui_Form()
-    ui.setupUi(Form)
+    ui.create(Form)
     Form.show()
     sys.exit(app.exec_())
 
