@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'First_Page.ui'
+# self.form implementation generated from reading ui file 'First_Page.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
@@ -9,16 +9,20 @@
 # TODO: Index
 # TODO: Create State machine
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Form(object):
-    def main(self, Form):
+    def __init__(self, Form):
         self.form = Form
-        Form.setObjectName("Form")
-        Form.resize(800, 380)
-        Form.setStyleSheet("background-color: rgb(236, 236, 236);\n"
-"")
-        self.pushButton = QtWidgets.QPushButton(Form)
+        self.form.setObjectName("form")
+        self.form.resize(800, 380)
+        self.form.setStyleSheet("background-color: rgb(236, 236, 236);\n")
+        self.state = 0
+        self.state_machine()
+
+    def main(self): 
+        self.pushButton = QtWidgets.QPushButton(self.form)
         self.pushButton.setGeometry(QtCore.QRect(100, 180, 150, 60))
         self.pushButton.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
@@ -35,7 +39,7 @@ class Ui_Form(object):
         self.pushButton.setText("Create")
         self.pushButton.clicked.connect(self.create_form)
         self.pushButton.setObjectName("pushButton")
-        self.pushButton_4 = QtWidgets.QPushButton(Form)
+        self.pushButton_4 = QtWidgets.QPushButton(self.form)
         self.pushButton_4.setGeometry(QtCore.QRect(720, 20, 41, 31))
         self.pushButton_4.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
@@ -49,7 +53,7 @@ class Ui_Form(object):
 "\n"
 "color: #FFFFFF;")
         self.pushButton_4.setObjectName("pushButton_4")
-        self.pushButton_5 = QtWidgets.QPushButton(Form)
+        self.pushButton_5 = QtWidgets.QPushButton(self.form)
         self.pushButton_5.setGeometry(QtCore.QRect(300, 180, 150, 60))
         self.pushButton_5.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
@@ -66,7 +70,7 @@ class Ui_Form(object):
         self.pushButton_5.setText("Calibrate")
         self.pushButton_5.clicked.connect(self.calibrate_form)
         self.pushButton_5.setObjectName("pushButton_5")
-        self.pushButton_6 = QtWidgets.QPushButton(Form)
+        self.pushButton_6 = QtWidgets.QPushButton(self.form)
         self.pushButton_6.setGeometry(QtCore.QRect(500, 180, 150, 60))
         self.pushButton_6.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
@@ -83,7 +87,7 @@ class Ui_Form(object):
         self.pushButton_6.setText("Select")
         self.pushButton_6.clicked.connect(self.select_form)
         self.pushButton_6.setObjectName("pushButton_6")
-        self.label = QtWidgets.QLabel(Form)
+        self.label = QtWidgets.QLabel(self.form)
         self.label.setGeometry(QtCore.QRect(0, 0, 800, 74))
         self.label.setStyleSheet("font-family: Roboto;\n"
 "font-style: normal;\n"
@@ -100,15 +104,15 @@ class Ui_Form(object):
         self.pushButton_5.raise_()
         self.pushButton_6.raise_()
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self.form)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.pushButton_4.setText(_translate("Form", "X"))
+        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.pushButton_4.setText(_translate("self.form", "X"))
         self.pushButton_4.clicked.connect(lambda: self.form.close())
-        self.label.setText(_translate("Form", "    MIXOLOGY"))
+        self.label.setText(_translate("self.form", "    MIXOLOGY"))
 
     def create_form(self):
         # TODO: change to Create window
@@ -122,12 +126,16 @@ class Ui_Form(object):
         # TODO: change to Select window
         print("Select window")
 
+    def state_machine(self):
+        # TODO: Create state
+        if self.state == 0:
+            self.main()
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
+    ui = Ui_Form(Form)
     Form.show()
     sys.exit(app.exec_())
 
