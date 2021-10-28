@@ -108,6 +108,3 @@ class Data:
         self.queue = dict(zip([str(x) for x in range(1,len(keys)+1)], values))
         jsonFile = open("data/queue.json", "w")
         jsonFile.write(json.dumps(self.queue, indent=4, sort_keys=True))
-
-dat = Data()
-dat.add_to_queue(2)

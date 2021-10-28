@@ -336,6 +336,12 @@ class Ui_Form(object):
         self.pushButton_2.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton_2.setObjectName("pushButton_2")
 
+        self.pushButton_14 = QtWidgets.QPushButton(Form)
+        self.pushButton_14.setText("Clear queue")
+        self.pushButton_14.clicked.connect(self.clear_queue)
+        self.pushButton_14.setGeometry(QtCore.QRect(350, 300, 100, 65))
+        self.pushButton_14.setObjectName("pushButton_14")
+
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
@@ -445,6 +451,32 @@ class Ui_Form(object):
             self.label_41.setVisible(False)
             self.label_30.setVisible(False)
             self.pushButton_13.setVisible(False)
+
+    def add_to_queue(self, id):
+        # TODO: get queue
+        # TODO: show actual queue as msgDialog
+        # TODO: add to json
+        pass
+
+    def clear_queue(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Are you sure you want to clean queue?")
+        # msg.setInformativeText('More information')
+        msg.setWindowTitle("Confirm dialog")
+        msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        ret = msg.exec_()
+        if (ret == QMessageBox.Yes):
+            self.dat.clean_queue()
+
+    def prepare(self):
+        # TODO: Show progress bar
+        # TODO: get queue
+        # TODO: verify and validate queue
+        # TODO: control pumps
+        # TODO: control leds
+        pass
+
 
 if __name__ == "__main__":
     import sys
