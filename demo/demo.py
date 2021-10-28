@@ -6,9 +6,6 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-# TODO: Index
-# TODO: Scroll
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QSlider
@@ -262,8 +259,6 @@ class Main(object):
         self.pushButton_2.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton_2.setText("")
         self.pushButton_2.setObjectName("pushButton_2")
-
-        # TODO: Save data
         self.pushButton.clicked.connect(self.showMessage)
         # self.pushButton.clicked.connect(lambda: self.pushButton_2.setVisible(False))
         self.pushButton_2.clicked.connect(self.save)
@@ -327,8 +322,6 @@ class Main(object):
         self.horizontalSlider_8.setValue(int(self.horizontalSlider_8.value()/100)*100)
         self.horizontalSlider_9.setValue(int(self.horizontalSlider_9.value()/100)*100)
         self.horizontalSlider_10.setValue(int(self.horizontalSlider_10.value()/100)*100)
-
-        #TODO: Organize values
         self.label.setText(_translate("Form", self.dat.bottles['1'][0])+"\n"+str(self.horizontalSlider.value()))
         self.label_3.setText(_translate("Form", self.dat.bottles['2'][0])+"\n"+str(self.horizontalSlider_2.value()))
         self.label_4.setText(_translate("Form", self.dat.bottles['3'][0])+"\n"+str(self.horizontalSlider_3.value()))

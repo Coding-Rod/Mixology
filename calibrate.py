@@ -6,9 +6,15 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+# TODO: Give functionality
+# TODO: Index
+# TODO: Change labels
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from apis.data import Data
+from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QSlider
+from PyQt5.QtWidgets import QMessageBox
 
 class Ui_Form(object):
     def calibrate(self, Form):
@@ -48,6 +54,9 @@ class Ui_Form(object):
 "border-radius:30px")
         self.pushButton_10.setText("")
         self.pushButton_10.setObjectName("pushButton_10")
+        self.pushButton_10.setIcon(QIcon('assets/back.png'))
+        self.pushButton_10.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_10.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton_11 = QtWidgets.QPushButton(Form)
         self.pushButton_11.setGeometry(QtCore.QRect(720, 300, 65, 65))
         self.pushButton_11.setStyleSheet("\n"
@@ -56,6 +65,9 @@ class Ui_Form(object):
 "")
         self.pushButton_11.setText("")
         self.pushButton_11.setObjectName("pushButton_11")
+        self.pushButton_11.setIcon(QIcon('assets/check2.png'))
+        self.pushButton_11.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_11.setStyleSheet("border-radius:30px\noverflow:hidden;")
         
         #region Scroll 1
         self.scrollArea = QtWidgets.QScrollArea(Form)

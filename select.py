@@ -6,8 +6,15 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+# TODO: Give functionality
+# TODO: Index
+# TODO: Change labels
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from apis.data import Data
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QSlider
+from PyQt5.QtWidgets import QMessageBox
 
 class Ui_Form(object):
     def select(self, Form):
@@ -63,6 +70,9 @@ class Ui_Form(object):
 "\n"
 "border-radius:30px")
         self.pushButton.setText("")
+        self.pushButton.setIcon(QIcon('assets/back.png'))
+        self.pushButton.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton.setObjectName("pushButton")
         self.scrollArea = QtWidgets.QScrollArea(Form)
         self.scrollArea.setGeometry(QtCore.QRect(70, 80, 651, 200))
@@ -314,11 +324,14 @@ class Ui_Form(object):
         self.gridLayout.addWidget(self.pushButton_13, 8, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.pushButton_2 = QtWidgets.QPushButton(Form)
-        self.pushButton_2.setGeometry(QtCore.QRect(730, 310, 65, 65))
+        self.pushButton_2.setGeometry(QtCore.QRect(720, 300, 65, 65))
         self.pushButton_2.setStyleSheet("border-image: url(:/check/assets/check2.png);\n"
 "\n"
 "border-radius:30px")
         self.pushButton_2.setText("")
+        self.pushButton_2.setIcon(QIcon('assets/play.png'))
+        self.pushButton_2.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_2.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton_2.setObjectName("pushButton_2")
 
         self.retranslateUi(Form)

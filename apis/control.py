@@ -1,5 +1,4 @@
 import pandas as pd
-import json
 import RPi.GPIO as GPIO
 import time
 

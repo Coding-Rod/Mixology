@@ -5,8 +5,14 @@
 # Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
+# TODO: Give functionality
+# TODO: Index
+# TODO: Change labels
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QSlider
+from PyQt5.QtWidgets import QMessageBox
 from apis.data import Data
 
 class Ui_Form(object):
@@ -46,6 +52,7 @@ class Ui_Form(object):
 "\n"
 "color: #FFFFFF;")
         self.pushButton_7.setObjectName("pushButton_7")
+        self.pushButton_7.clicked.connect(lambda: sys.exit(0))
         self.label_12 = QtWidgets.QLabel(Form)
         self.label_12.setGeometry(QtCore.QRect(320, 330, 67, 17))
         self.label_12.setStyleSheet("background-color: rgb(136, 138, 133);")
@@ -58,6 +65,9 @@ class Ui_Form(object):
 "")
         self.pushButton.setText("")
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.setIcon(QIcon('assets/back.png'))
+        self.pushButton.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton_2 = QtWidgets.QPushButton(Form)
         self.pushButton_2.setGeometry(QtCore.QRect(720, 310, 65, 65))
         self.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
@@ -66,6 +76,9 @@ class Ui_Form(object):
 "")
         self.pushButton_2.setText("")
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.setIcon(QIcon('assets/check2.png'))
+        self.pushButton_2.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_2.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.lineEdit = QtWidgets.QLineEdit(Form)
         self.lineEdit.setGeometry(QtCore.QRect(360, 30, 170, 25))
         self.lineEdit.setStyleSheet("border-radius: 10px;\n"
