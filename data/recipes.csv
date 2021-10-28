@@ -2,9 +2,9 @@ ID,Name,Ingredients,Volume,Boxes,Mix
 1,Corange,"Coconut,Orange,Milk","100,100,300","Lemon,Orange",False
 2,Sour mix,"Pinneapple,Strawberry,Kiwi","150,150,200","Lemon,Orange,Coconut",True
 3,Multivit,"Orange,Banana,Melon,Blueberry","100,150,200,200","Ice,Lemon,Coconut",True
-4,Corange,"Coconut,Orange,Milk","100,100,300","Lemon,Orange",False
-5,Banana & Strawberry milk,"Banana,Milk,Strawberry","200,300,200",Ice,True
-6,Sour lemonade,"Lemon,Water","800,1000","Ice,Cherry",False
-7,Cocas,"Blueberry,Strawberry,Milk,Acai","300,500,300,300","Ice,Gommy bears,Coconut",True
-8,Sirilo drink,"Blueberry,Banana,Milk,Acai","200,100,200,1000","Lemon,Ice,Cherry",True
-9,Choco soda,"Chocolate,Milk,Orange","300,700,200","Ice,Cherry,Lemon,Good herb",True
+4,Banana & Strawberry milk,"Banana,Milk,Strawberry","200,300,200",Ice,True
+5,Sour lemonade,"Lemon,Water","800,1000","Ice,Cherry",False
+6,Cocas,"Blueberry,Strawberry,Milk,Acai","300,500,300,300","Ice,Gommy bears,Coconut",True
+7,Sirilo drink,"Blueberry,Banana,Milk,Acai","200,100,200,1000","Lemon,Ice,Cherry",True
+8,Choco soda,"Chocolate,Milk,Orange","300,700,200","Ice,Cherry,Lemon,Good herb",True
+9,Joce,"Chocolate,Apple,Orange","420,609,406","Cherry,Orange",True

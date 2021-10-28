@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'uis/Select.ui'
+# self.form implementation generated from reading ui file 'uis/Select.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
@@ -9,26 +9,26 @@
 # TODO: Give functionality
 # TODO: Index
 # TODO: Change labels
-# TODO: Change colors
-# TODO: Constructor
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from apis.data import Data
 # from apis.control import Control
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QSlider
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 class Ui_Form(object):
-    def select(self, Form):
+    def __init__(self, Form):
         self.form = Form
         self.dat = Data()
-        Form.setObjectName("Form")
-        Form.resize(800, 380)
+        self.trash = False
+
+    def select(self):
+        self.form.setObjectName("Form")
+        self.form.resize(800, 380)
         font = QtGui.QFont()
         font.setPointSize(12)
-        Form.setFont(font)
-        self.pushButton_8 = QtWidgets.QPushButton(Form)
+        self.form.setFont(font)
+        self.pushButton_8 = QtWidgets.QPushButton(self.form)
         self.pushButton_8.setGeometry(QtCore.QRect(730, 30, 41, 31))
         self.pushButton_8.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
@@ -42,7 +42,7 @@ class Ui_Form(object):
 "\n"
 "color: #FFFFFF;")
         self.pushButton_8.setObjectName("pushButton_8")
-        self.label_18 = QtWidgets.QLabel(Form)
+        self.label_18 = QtWidgets.QLabel(self.form)
         self.label_18.setGeometry(QtCore.QRect(0, 0, 800, 74))
         self.label_18.setStyleSheet("font-family: Roboto;\n"
 "font-style: normal;\n"
@@ -53,7 +53,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "background-color: #E09825;")
         self.label_18.setObjectName("label_18")
-        self.pushButton_9 = QtWidgets.QPushButton(Form)
+        self.pushButton_9 = QtWidgets.QPushButton(self.form)
         self.pushButton_9.setGeometry(QtCore.QRect(730, 20, 41, 31))
         self.pushButton_9.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
@@ -68,7 +68,7 @@ class Ui_Form(object):
 "color: #FFFFFF;")
         self.pushButton_9.setObjectName("pushButton_9")
         self.pushButton_9.clicked.connect(lambda: sys.exit(0))
-        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton = QtWidgets.QPushButton(self.form)
         self.pushButton.setGeometry(QtCore.QRect(30, 300, 65, 65))
         self.pushButton.setStyleSheet("border-image: url(:/back/assets/back.png);\n"
 "\n"
@@ -78,7 +78,7 @@ class Ui_Form(object):
         self.pushButton.setIconSize(QtCore.QSize(50, 50))
         self.pushButton.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton.setObjectName("pushButton")
-        self.scrollArea = QtWidgets.QScrollArea(Form)
+        self.scrollArea = QtWidgets.QScrollArea(self.form)
         self.scrollArea.setGeometry(QtCore.QRect(70, 80, 651, 200))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
@@ -209,8 +209,8 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_24.setFont(font)
-        self.label_24.setStyleSheet("background-color: rgb(136, 138, 133);\n"
-"color: #FFFFFF;\n"
+        self.label_24.setStyleSheet("background-color: rgb(186, 189, 182);\n"
+"color: #000000;\n"
 "\n"
 "\n"
 "")
@@ -222,8 +222,8 @@ class Ui_Form(object):
         font.setPointSize(12)
         self.label_19.setFont(font)
         self.label_19.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_19.setStyleSheet("background-color: rgb(186, 189, 182);\n"
-"color: #000000;")
+        self.label_19.setStyleSheet("background-color: rgb(136, 138, 133);\n"
+"color: #FFFFFF;")
         self.label_19.setAlignment(QtCore.Qt.AlignCenter)
         self.label_19.setObjectName("label_19")
         self.gridLayout.addWidget(self.label_19, 5, 3, 1, 1)
@@ -232,8 +232,8 @@ class Ui_Form(object):
         font.setPointSize(12)
         self.label_38.setFont(font)
         self.label_38.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_38.setStyleSheet("background-color: rgb(136, 138, 133);\n"
-"color: #FFFFFF;")
+        self.label_38.setStyleSheet("background-color: rgb(186, 189, 182);\n"
+"color: #000000;")
         self.label_38.setAlignment(QtCore.Qt.AlignCenter)
         self.label_38.setObjectName("label_38")
         self.gridLayout.addWidget(self.label_38, 6, 3, 1, 1)
@@ -242,8 +242,8 @@ class Ui_Form(object):
         font.setPointSize(12)
         self.label_37.setFont(font)
         self.label_37.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_37.setStyleSheet("background-color: rgb(186, 189, 182);\n"
-"color: #000000;")
+        self.label_37.setStyleSheet("background-color: rgb(136, 138, 133);\n"
+"color: #FFFFFF;\n")
         self.label_37.setAlignment(QtCore.Qt.AlignCenter)
         self.label_37.setObjectName("label_37")
         self.gridLayout.addWidget(self.label_37, 7, 3, 1, 1)
@@ -252,8 +252,8 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_20.setFont(font)
-        self.label_20.setStyleSheet("background-color: rgb(186, 189, 182);\n"
-"color: #000000;\n"
+        self.label_20.setStyleSheet("background-color: rgb(136, 138, 133);\n"
+"color: #FFFFFF;\n"
 "\n"
 "\n"
 "")
@@ -265,8 +265,8 @@ class Ui_Form(object):
         font.setPointSize(12)
         self.label_30.setFont(font)
         self.label_30.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_30.setStyleSheet("background-color: rgb(136, 138, 133);\n"
-"color: #FFFFFF;")
+        self.label_30.setStyleSheet("background-color: rgb(186, 189, 182);\n"
+"color: #000000;")
         self.label_30.setAlignment(QtCore.Qt.AlignCenter)
         self.label_30.setObjectName("label_30")
         self.gridLayout.addWidget(self.label_30, 8, 3, 1, 1)
@@ -291,8 +291,8 @@ class Ui_Form(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_41.setFont(font)
-        self.label_41.setStyleSheet("background-color: rgb(186, 189, 182);\n"
-"color: #000000;\n"
+        self.label_41.setStyleSheet("background-color: rgb(136, 138, 133);\n"
+"color: #FFFFFF;\n"
 "\n"
 "\n"
 "")
@@ -345,7 +345,7 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.pushButton_13, 8, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.pushButton_2 = QtWidgets.QPushButton(Form)
+        self.pushButton_2 = QtWidgets.QPushButton(self.form)
         self.pushButton_2.setGeometry(QtCore.QRect(720, 300, 65, 65))
         self.pushButton_2.setStyleSheet("border-image: url(:/check/assets/check2.png);\n"
 "\n"
@@ -355,14 +355,15 @@ class Ui_Form(object):
         self.pushButton_2.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_2.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.clicked.connect(self.prepare)
 
-        self.pushButton_14 = QtWidgets.QPushButton(Form)
+        self.pushButton_14 = QtWidgets.QPushButton(self.form)
         self.pushButton_14.setText("Clean queue")
         self.pushButton_14.clicked.connect(self.clear_queue)
         self.pushButton_14.setGeometry(QtCore.QRect(350, 300, 100, 65))
         self.pushButton_14.setObjectName("pushButton_14")
 
-        self.pushButton_15 = QtWidgets.QPushButton(Form)
+        self.pushButton_15 = QtWidgets.QPushButton(self.form)
         self.pushButton_15.setGeometry(QtCore.QRect(650, 300, 65, 65))
         self.pushButton_15.setStyleSheet("border-image: url(:/check/assets/check2.png);\n"
 "\n"
@@ -372,134 +373,172 @@ class Ui_Form(object):
         self.pushButton_15.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_15.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton_15.setObjectName("pushButton_15")
-
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.pushButton_15.clicked.connect(self.toggleTrashcan)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self.form)
 
     def toggleTrashcan(self):
-        # TODO: toggleTrashcan
-        pass
+        self.trash = not self.trash
+        self.label_7.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
+        self.label_32.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
+        self.label_33.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
+        self.label_40.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
+        self.label_28.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
+        self.label_24.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
+        self.label_38.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
+        self.label_30.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
+        self.label_25.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
 
-    def deleteRecipe(self,id):
-        # TODO: deleteRecipe
-        pass
+        self.label_16.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
+        self.label_36.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
+        self.label_22.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
+        self.label_23.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
+        self.label_31.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
+        self.label_19.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
+        self.label_37.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
+        self.label_20.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
+        self.label_41.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
 
-    def retranslateUi(self, Form):
+        self.pushButton_3.setText("Remove" if self.trash else "Add queue")
+        self.pushButton_4.setText("Remove" if self.trash else "Add queue")
+        self.pushButton_5.setText("Remove" if self.trash else "Add queue")
+        self.pushButton_6.setText("Remove" if self.trash else "Add queue")
+        self.pushButton_7.setText("Remove" if self.trash else "Add queue")
+        self.pushButton_10.setText("Remove" if self.trash else "Add queue")
+        self.pushButton_11.setText("Remove" if self.trash else "Add queue")
+        self.pushButton_12.setText("Remove" if self.trash else "Add queue")
+        self.pushButton_13.setText("Remove" if self.trash else "Add queue")
+
+        self.pushButton_15.setIcon(QIcon('assets/list.png' if self.trash else 'assets/trash2.png'))
+
+
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.pushButton_8.setText(_translate("Form", "X"))
-        self.label_18.setText(_translate("Form", "    SELECT"))
-        self.pushButton_9.setText(_translate("Form", "X"))
+        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.pushButton_8.setText(_translate("self.form", "X"))
+        self.label_18.setText(_translate("self.form", "    SELECT"))
+        self.pushButton_9.setText(_translate("self.form", "X"))
         
         try:
             self.label_36.setVisible(True)
-            self.label_36.setText(_translate("Form", self.dat.df.Name[0]))
+            self.label_36.setText(_translate("self.form", self.dat.df.Name[0]))
             self.label_7.setVisible(True)
-            self.label_7.setText(_translate("Form", self.dat.df.Ingredients[0]+","+self.dat.df.Boxes[0]))
+            self.label_7.setText(_translate("self.form", self.dat.df.Ingredients[0]+","+self.dat.df.Boxes[0]))
             self.pushButton_3.setVisible(True)
-            self.pushButton_3.setText(_translate("Form", "add queue"))
+            self.pushButton_3.setText(_translate("self.form", "add queue"))
         except:
             self.label_36.setVisible(False)
             self.label_7.setVisible(False)
             self.pushButton_3.setVisible(False)
         try:
             self.label_32.setVisible(True)
-            self.label_32.setText(_translate("Form", self.dat.df.Name[1]))
+            self.label_32.setText(_translate("self.form", self.dat.df.Name[1]))
             self.label_16.setVisible(True)
-            self.label_16.setText(_translate("Form", self.dat.df.Ingredients[1]+","+self.dat.df.Boxes[1]))
+            self.label_16.setText(_translate("self.form", self.dat.df.Ingredients[1]+","+self.dat.df.Boxes[1]))
             self.pushButton_4.setVisible(True)
-            self.pushButton_4.setText(_translate("Form", "add queue"))
+            self.pushButton_4.setText(_translate("self.form", "add queue"))
         except:
             self.label_32.setVisible(False)
             self.label_16.setVisible(False)
             self.pushButton_4.setVisible(False)
         try:
             self.label_22.setVisible(True)
-            self.label_22.setText(_translate("Form", self.dat.df.Name[2]))
+            self.label_22.setText(_translate("self.form", self.dat.df.Name[2]))
             self.label_33.setVisible(True)
-            self.label_33.setText(_translate("Form", self.dat.df.Ingredients[2]+","+self.dat.df.Boxes[2]))
+            self.label_33.setText(_translate("self.form", self.dat.df.Ingredients[2]+","+self.dat.df.Boxes[2]))
             self.pushButton_5.setVisible(True)
-            self.pushButton_5.setText(_translate("Form", "add queue"))
+            self.pushButton_5.setText(_translate("self.form", "add queue"))
         except:
             self.label_22.setVisible(False)
             self.label_33.setVisible(False)
             self.pushButton_5.setVisible(False)
         try:
             self.label_40.setVisible(True)
-            self.label_40.setText(_translate("Form", self.dat.df.Name[3]))
+            self.label_40.setText(_translate("self.form", self.dat.df.Name[3]))
             self.label_23.setVisible(True)
-            self.label_23.setText(_translate("Form", self.dat.df.Ingredients[3]+","+self.dat.df.Boxes[3]))
+            self.label_23.setText(_translate("self.form", self.dat.df.Ingredients[3]+","+self.dat.df.Boxes[3]))
             self.pushButton_6.setVisible(True)
-            self.pushButton_6.setText(_translate("Form", "add queue"))
+            self.pushButton_6.setText(_translate("self.form", "add queue"))
         except:
             self.label_40.setVisible(False)
             self.label_23.setVisible(False)
             self.pushButton_6.setVisible(False)
         try:
             self.label_31.setVisible(True)
-            self.label_31.setText(_translate("Form", self.dat.df.Name[4]))
+            self.label_31.setText(_translate("self.form", self.dat.df.Name[4]))
             self.label_28.setVisible(True)
-            self.label_28.setText(_translate("Form", self.dat.df.Ingredients[4]+","+self.dat.df.Boxes[4]))
+            self.label_28.setText(_translate("self.form", self.dat.df.Ingredients[4]+","+self.dat.df.Boxes[4]))
             self.pushButton_7.setVisible(True)
-            self.pushButton_7.setText(_translate("Form", "add queue"))
+            self.pushButton_7.setText(_translate("self.form", "add queue"))
         except:
             self.label_31.setVisible(False)
             self.label_28.setVisible(False)
             self.pushButton_7.setVisible(False)
         try:
             self.label_24.setVisible(True)
-            self.label_24.setText(_translate("Form", self.dat.df.Name[5]))
+            self.label_24.setText(_translate("self.form", self.dat.df.Name[5]))
             self.label_19.setVisible(True)
-            self.label_19.setText(_translate("Form", self.dat.df.Ingredients[5]+","+self.dat.df.Boxes[5]))
+            self.label_19.setText(_translate("self.form", self.dat.df.Ingredients[5]+","+self.dat.df.Boxes[5]))
             self.pushButton_10.setVisible(True)
-            self.pushButton_10.setText(_translate("Form", "add queue"))
+            self.pushButton_10.setText(_translate("self.form", "add queue"))
         except:
             self.label_24.setVisible(False)
             self.label_19.setVisible(False)
             self.pushButton_10.setVisible(False)
         try:
             self.label_20.setVisible(True)
-            self.label_20.setText(_translate("Form", self.dat.df.Name[6]))
+            self.label_20.setText(_translate("self.form", self.dat.df.Name[6]))
             self.label_38.setVisible(True)
-            self.label_38.setText(_translate("Form", self.dat.df.Ingredients[6]+","+self.dat.df.Boxes[6]))
+            self.label_38.setText(_translate("self.form", self.dat.df.Ingredients[6]+","+self.dat.df.Boxes[6]))
             self.pushButton_11.setVisible(True)
-            self.pushButton_11.setText(_translate("Form", "add queue"))
+            self.pushButton_11.setText(_translate("self.form", "add queue"))
         except:
             self.label_20.setVisible(False)
             self.label_38.setVisible(False)
             self.pushButton_11.setVisible(False)
         try:
             self.label_25.setVisible(True)
-            self.label_25.setText(_translate("Form", self.dat.df.Name[7]))
+            self.label_25.setText(_translate("self.form", self.dat.df.Name[7]))
             self.label_37.setVisible(True)
-            self.label_37.setText(_translate("Form", self.dat.df.Ingredients[7]+","+self.dat.df.Boxes[7]))
+            self.label_37.setText(_translate("self.form", self.dat.df.Ingredients[7]+","+self.dat.df.Boxes[7]))
             self.pushButton_12.setVisible(True)
-            self.pushButton_12.setText(_translate("Form", "add queue"))
+            self.pushButton_12.setText(_translate("self.form", "add queue"))
         except:
             self.label_25.setVisible(False)
             self.label_37.setVisible(False)
             self.pushButton_12.setVisible(False)
         try:
             self.label_41.setVisible(True)
-            self.label_41.setText(_translate("Form", self.dat.df.Name[8]))
+            self.label_41.setText(_translate("self.form", self.dat.df.Name[8]))
             self.label_30.setVisible(True)
-            self.label_30.setText(_translate("Form", self.dat.df.Ingredients[8]+","+self.dat.df.Boxes[8]))
+            self.label_30.setText(_translate("self.form", self.dat.df.Ingredients[8]+","+self.dat.df.Boxes[8]))
             self.pushButton_13.setVisible(True)
-            self.pushButton_13.setText(_translate("Form", "add queue"))
+            self.pushButton_13.setText(_translate("self.form", "add queue"))
         except:
             self.label_41.setVisible(False)
             self.label_30.setVisible(False)
             self.pushButton_13.setVisible(False)
 
     def add_to_queue(self, id):
-        self.dat.add_to_queue(id)
-        self.dat.__init__()
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()])))
-        # msg.setInformativeText('More information')
-        msg.setWindowTitle("Actual queue")
-        ret = msg.exec_()
+        if self.trash:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Critical)
+            msg.setText("Are you sure you want to delete this recipe?")
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("Confirm dialog")
+            msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            ret = msg.exec_()
+            if (ret == QMessageBox.Yes):
+                self.dat.remove_recipe(id)
+        else:
+            self.dat.add_to_queue(id)
+            self.dat.__init__()
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()])))
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("Actual queue")
+            ret = msg.exec_()
 
     def clear_queue(self):
         msg = QMessageBox()
@@ -514,6 +553,22 @@ class Ui_Form(object):
             self.dat.__init__()
 
     def prepare(self):
+        msg = QMessageBox()
+        # create Label
+        msg.setIconPixmap(QPixmap('assets/wait.gif').scaledToWidth(100))
+        icon_label = msg.findChild(QLabel, "qt_msgboxex_icon_label")
+        movie = QMovie('assets/wait.gif')
+        # avoid garbage collector
+        setattr(msg, 'icon_label', movie)
+        icon_label.setMovie(movie)
+        movie.start()
+
+        msg.setText("Preparing your beverage...")
+        msg.setWindowTitle(" ")
+        msg.setModal(False)
+        # msg.setStandardButtons(QMessageBox.Ok)
+        msg.show()
+
         # TODO: Show progress bar
         # TODO: get queue
         # TODO: verify and validate queue
@@ -526,8 +581,8 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.select(Form)
+    ui = Ui_Form(Form)
+    ui.select()
     Form.show()
     sys.exit(app.exec_())
 

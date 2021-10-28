@@ -423,7 +423,7 @@ class Ui_Form(object):
     
     def update_val(self):
         _translate = QtCore.QCoreApplication.translate
-        self.self.form.setWindowTitle("Mixology")                
+        self.form.setWindowTitle("Mixology")                
         self.horizontalSlider.setValue(int(self.horizontalSlider.value()/100)*100)
         self.horizontalSlider_2.setValue(int(self.horizontalSlider_2.value()/100)*100)
         self.horizontalSlider_3.setValue(int(self.horizontalSlider_3.value()/100)*100)
