@@ -9,6 +9,7 @@
 # TODO: Give functionality
 # TODO: Index
 # TODO: Change labels
+# TODO: Change colors
 # TODO: Constructor
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -356,13 +357,32 @@ class Ui_Form(object):
         self.pushButton_2.setObjectName("pushButton_2")
 
         self.pushButton_14 = QtWidgets.QPushButton(Form)
-        self.pushButton_14.setText("Clear queue")
+        self.pushButton_14.setText("Clean queue")
         self.pushButton_14.clicked.connect(self.clear_queue)
         self.pushButton_14.setGeometry(QtCore.QRect(350, 300, 100, 65))
         self.pushButton_14.setObjectName("pushButton_14")
 
+        self.pushButton_15 = QtWidgets.QPushButton(Form)
+        self.pushButton_15.setGeometry(QtCore.QRect(650, 300, 65, 65))
+        self.pushButton_15.setStyleSheet("border-image: url(:/check/assets/check2.png);\n"
+"\n"
+"border-radius:30px")
+        self.pushButton_15.setText("")
+        self.pushButton_15.setIcon(QIcon('assets/trash2.png'))
+        self.pushButton_15.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_15.setStyleSheet("border-radius:30px\noverflow:hidden;")
+        self.pushButton_15.setObjectName("pushButton_15")
+
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def toggleTrashcan(self):
+        # TODO: toggleTrashcan
+        pass
+
+    def deleteRecipe(self,id):
+        # TODO: deleteRecipe
+        pass
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

@@ -7,7 +7,6 @@
 # WARNING! All changes made in this file will be lost!
 
 # TODO: Index
-# TODO: Create State machine
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets

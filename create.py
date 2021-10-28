@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'uis/scroll_test.ui'
+# self.form implementation generated from reading ui file 'uis/scroll_test.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
-# TODO: Give functionality
 # TODO: Index
 # TODO: Change labels
-# TODO: Constructor
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
@@ -17,18 +15,19 @@ from PyQt5.QtWidgets import QMessageBox
 from apis.data import Data
 
 class Ui_Form(object):
-    def create(self, Form):
+    def __init__(self, Form):
         self.dat = Data()
         self.form = Form
-        Form.setObjectName("Form")
-        Form.resize(800, 380)
+    def create(self):
+        self.form.setObjectName("Form")
+        self.form.resize(800, 380)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
-        Form.setSizePolicy(sizePolicy)
-        Form.setStyleSheet("background-color: rgb(238, 238, 238);")
-        self.label_2 = QtWidgets.QLabel(Form)
+        sizePolicy.setHeightForWidth(self.form.sizePolicy().hasHeightForWidth())
+        self.form.setSizePolicy(sizePolicy)
+        self.form.setStyleSheet("background-color: rgb(238, 238, 238);")
+        self.label_2 = QtWidgets.QLabel(self.form)
         self.label_2.setGeometry(QtCore.QRect(0, 0, 800, 74))
         self.label_2.setStyleSheet("font-family: Roboto;\n"
 "font-style: normal;\n"
@@ -39,7 +38,7 @@ class Ui_Form(object):
 "color: #FFFFFF;\n"
 "background-color: #E09825;")
         self.label_2.setObjectName("label_2")
-        self.pushButton_7 = QtWidgets.QPushButton(Form)
+        self.pushButton_7 = QtWidgets.QPushButton(self.form)
         self.pushButton_7.setGeometry(QtCore.QRect(730, 20, 41, 31))
         self.pushButton_7.setStyleSheet("background: #AA0000;\n"
 "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
@@ -54,12 +53,12 @@ class Ui_Form(object):
 "color: #FFFFFF;")
         self.pushButton_7.setObjectName("pushButton_7")
         self.pushButton_7.clicked.connect(lambda: sys.exit(0))
-        self.label_12 = QtWidgets.QLabel(Form)
+        self.label_12 = QtWidgets.QLabel(self.form)
         self.label_12.setGeometry(QtCore.QRect(320, 330, 67, 17))
         self.label_12.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
-        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton = QtWidgets.QPushButton(self.form)
         self.pushButton.setGeometry(QtCore.QRect(10, 310, 65, 65))
         self.pushButton.setStyleSheet("border-image: url(:/back/assets/back.png);\n"
 "border-radius:30px\n"
@@ -69,7 +68,7 @@ class Ui_Form(object):
         self.pushButton.setIcon(QIcon('assets/back.png'))
         self.pushButton.setIconSize(QtCore.QSize(50, 50))
         self.pushButton.setStyleSheet("border-radius:30px\noverflow:hidden;")
-        self.pushButton_2 = QtWidgets.QPushButton(Form)
+        self.pushButton_2 = QtWidgets.QPushButton(self.form)
         self.pushButton_2.setGeometry(QtCore.QRect(720, 310, 65, 65))
         self.pushButton_2.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-image: url(:/check/assets/check2.png);\n"
@@ -81,12 +80,12 @@ class Ui_Form(object):
         self.pushButton_2.setIconSize(QtCore.QSize(50, 50))
         self.pushButton_2.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.pushButton_2.clicked.connect(self.save)
-        self.lineEdit = QtWidgets.QLineEdit(Form)
+        self.lineEdit = QtWidgets.QLineEdit(self.form)
         self.lineEdit.setGeometry(QtCore.QRect(360, 30, 170, 25))
         self.lineEdit.setStyleSheet("border-radius: 10px;\n"
 "")
         self.lineEdit.setObjectName("lineEdit")
-        self.textEdit = QtWidgets.QTextEdit(Form)
+        self.textEdit = QtWidgets.QTextEdit(self.form)
         self.textEdit.setGeometry(QtCore.QRect(300, 30, 100, 31))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -97,13 +96,13 @@ class Ui_Form(object):
         self.textEdit.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.textEdit.setLineWidth(1)
         self.textEdit.setObjectName("textEdit")
-        self.horizontalSlider_11 = QtWidgets.QSlider(Form)
+        self.horizontalSlider_11 = QtWidgets.QSlider(self.form)
         self.horizontalSlider_11.setGeometry(QtCore.QRect(400, 330, 80, 16))
         self.horizontalSlider_11.setMaximum(1)
         self.horizontalSlider_11.setSliderPosition(0)
         self.horizontalSlider_11.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider_11.setObjectName("horizontalSlider_11")
-        self.scrollArea = QtWidgets.QScrollArea(Form)
+        self.scrollArea = QtWidgets.QScrollArea(self.form)
         self.scrollArea.setGeometry(QtCore.QRect(30, 110, 350, 200))
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
@@ -352,7 +351,7 @@ class Ui_Form(object):
 
         self.formLayout.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.horizontalSlider_9)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.scrollArea_2 = QtWidgets.QScrollArea(Form)
+        self.scrollArea_2 = QtWidgets.QScrollArea(self.form)
         self.scrollArea_2.setGeometry(QtCore.QRect(390, 110, 350, 200))
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
@@ -391,40 +390,40 @@ class Ui_Form(object):
         self.lineEdit.raise_()
         self.horizontalSlider_11.raise_()
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self.form)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.label_2.setText(_translate("Form", "    CREATE"))
-        self.pushButton_7.setText(_translate("Form", "X"))
-        self.label_12.setText(_translate("Form", "MIX"))
-        self.textEdit.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.label_2.setText(_translate("self.form", "    CREATE"))
+        self.pushButton_7.setText(_translate("self.form", "X"))
+        self.label_12.setText(_translate("self.form", "MIX"))
+        self.textEdit.setHtml(_translate("self.form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Name</span></p></body></html>"))
-        self.label.setText(_translate("Form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+str(self.horizontalSlider.value())+" ml")
-        self.label_3.setText(_translate("Form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_2.value())+" ml")
-        self.label_4.setText(_translate("Form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_3.value())+" ml")
-        self.label_5.setText(_translate("Form", self.dat.bottles['4'][0])+("\t\t"if len(self.dat.bottles['4'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_4.value())+" ml")
-        self.label_6.setText(_translate("Form", self.dat.bottles['5'][0])+("\t\t"if len(self.dat.bottles['5'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_5.value())+" ml")
-        self.label_7.setText(_translate("Form", self.dat.bottles['6'][0])+("\t\t"if len(self.dat.bottles['6'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_6.value())+" ml")
-        self.label_8.setText(_translate("Form", self.dat.bottles['7'][0])+("\t\t"if len(self.dat.bottles['7'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_7.value())+" ml")
-        self.label_9.setText(_translate("Form", self.dat.bottles['8'][0])+("\t\t"if len(self.dat.bottles['8'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_8.value())+" ml")
-        self.label_10.setText(_translate("Form", self.dat.bottles['9'][0])+("\t\t"if len(self.dat.bottles['9'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_9.value())+" ml")
-        self.label_11.setText(_translate("Form", self.dat.bottles['10'][0])+("\t\t"if len(self.dat.bottles['10'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_10.value())+" ml")
-        self.checkBox.setText(_translate("Form", self.dat.boxes["1"]))
-        self.checkBox_2.setText(_translate("Form", self.dat.boxes["2"]))
-        self.checkBox_3.setText(_translate("Form", self.dat.boxes["3"]))
-        self.checkBox_4.setText(_translate("Form", self.dat.boxes["4"]))
-        self.checkBox_5.setText(_translate("Form", self.dat.boxes["5"]))
-        self.checkBox_6.setText(_translate("Form", self.dat.boxes["6"]))
+        self.label.setText(_translate("self.form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+str(self.horizontalSlider.value())+" ml")
+        self.label_3.setText(_translate("self.form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_2.value())+" ml")
+        self.label_4.setText(_translate("self.form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_3.value())+" ml")
+        self.label_5.setText(_translate("self.form", self.dat.bottles['4'][0])+("\t\t"if len(self.dat.bottles['4'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_4.value())+" ml")
+        self.label_6.setText(_translate("self.form", self.dat.bottles['5'][0])+("\t\t"if len(self.dat.bottles['5'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_5.value())+" ml")
+        self.label_7.setText(_translate("self.form", self.dat.bottles['6'][0])+("\t\t"if len(self.dat.bottles['6'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_6.value())+" ml")
+        self.label_8.setText(_translate("self.form", self.dat.bottles['7'][0])+("\t\t"if len(self.dat.bottles['7'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_7.value())+" ml")
+        self.label_9.setText(_translate("self.form", self.dat.bottles['8'][0])+("\t\t"if len(self.dat.bottles['8'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_8.value())+" ml")
+        self.label_10.setText(_translate("self.form", self.dat.bottles['9'][0])+("\t\t"if len(self.dat.bottles['9'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_9.value())+" ml")
+        self.label_11.setText(_translate("self.form", self.dat.bottles['10'][0])+("\t\t"if len(self.dat.bottles['10'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_10.value())+" ml")
+        self.checkBox.setText(_translate("self.form", self.dat.boxes["1"]))
+        self.checkBox_2.setText(_translate("self.form", self.dat.boxes["2"]))
+        self.checkBox_3.setText(_translate("self.form", self.dat.boxes["3"]))
+        self.checkBox_4.setText(_translate("self.form", self.dat.boxes["4"]))
+        self.checkBox_5.setText(_translate("self.form", self.dat.boxes["5"]))
+        self.checkBox_6.setText(_translate("self.form", self.dat.boxes["6"]))
     
     def update_val(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle("Mixology")                
+        self.self.form.setWindowTitle("Mixology")                
         self.horizontalSlider.setValue(int(self.horizontalSlider.value()/100)*100)
         self.horizontalSlider_2.setValue(int(self.horizontalSlider_2.value()/100)*100)
         self.horizontalSlider_3.setValue(int(self.horizontalSlider_3.value()/100)*100)
@@ -436,16 +435,16 @@ class Ui_Form(object):
         self.horizontalSlider_9.setValue(int(self.horizontalSlider_9.value()/100)*100)
         self.horizontalSlider_10.setValue(int(self.horizontalSlider_10.value()/100)*100)
         self.lineEdit.setText("")
-        self.label.setText(_translate("Form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+str(self.horizontalSlider.value())+" ml")
-        self.label_3.setText(_translate("Form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_2.value())+" ml")
-        self.label_4.setText(_translate("Form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_3.value())+" ml")
-        self.label_5.setText(_translate("Form", self.dat.bottles['4'][0])+("\t\t"if len(self.dat.bottles['4'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_4.value())+" ml")
-        self.label_6.setText(_translate("Form", self.dat.bottles['5'][0])+("\t\t"if len(self.dat.bottles['5'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_5.value())+" ml")
-        self.label_7.setText(_translate("Form", self.dat.bottles['6'][0])+("\t\t"if len(self.dat.bottles['6'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_6.value())+" ml")
-        self.label_8.setText(_translate("Form", self.dat.bottles['7'][0])+("\t\t"if len(self.dat.bottles['7'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_7.value())+" ml")
-        self.label_9.setText(_translate("Form", self.dat.bottles['8'][0])+("\t\t"if len(self.dat.bottles['8'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_8.value())+" ml")
-        self.label_10.setText(_translate("Form", self.dat.bottles['9'][0])+("\t\t"if len(self.dat.bottles['9'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_9.value())+" ml")
-        self.label_11.setText(_translate("Form", self.dat.bottles['10'][0])+("\t\t"if len(self.dat.bottles['10'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_10.value())+" ml")
+        self.label.setText(_translate("self.form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+str(self.horizontalSlider.value())+" ml")
+        self.label_3.setText(_translate("self.form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_2.value())+" ml")
+        self.label_4.setText(_translate("self.form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_3.value())+" ml")
+        self.label_5.setText(_translate("self.form", self.dat.bottles['4'][0])+("\t\t"if len(self.dat.bottles['4'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_4.value())+" ml")
+        self.label_6.setText(_translate("self.form", self.dat.bottles['5'][0])+("\t\t"if len(self.dat.bottles['5'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_5.value())+" ml")
+        self.label_7.setText(_translate("self.form", self.dat.bottles['6'][0])+("\t\t"if len(self.dat.bottles['6'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_6.value())+" ml")
+        self.label_8.setText(_translate("self.form", self.dat.bottles['7'][0])+("\t\t"if len(self.dat.bottles['7'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_7.value())+" ml")
+        self.label_9.setText(_translate("self.form", self.dat.bottles['8'][0])+("\t\t"if len(self.dat.bottles['8'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_8.value())+" ml")
+        self.label_10.setText(_translate("self.form", self.dat.bottles['9'][0])+("\t\t"if len(self.dat.bottles['9'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_9.value())+" ml")
+        self.label_11.setText(_translate("self.form", self.dat.bottles['10'][0])+("\t\t"if len(self.dat.bottles['10'][0])<7 else "\t")+"\n"+str(self.horizontalSlider_10.value())+" ml")
 
 
     def save(self):
@@ -521,8 +520,8 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.create(Form)
+    ui = Ui_Form(Form)
+    ui.create()
     Form.show()
     sys.exit(app.exec_())
 
