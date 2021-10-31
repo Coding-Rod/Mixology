@@ -6,7 +6,6 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-# TODO: Give functionality
 # TODO: Index
 # TODO: Change labels
 
