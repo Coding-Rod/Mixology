@@ -1,11 +1,9 @@
 ID,Name,Ingredients,Volume,Boxes,Mix
-1,Corange,"Coconut,Orange,Milk","100,100,300","Lemon,Orange",False
-2,Multivit,"Orange,Banana,Melon,Blueberry","100,150,200,200","Ice,Lemon,Coconut",True
-3,Sour lemonade,"Lemon,Water","800,1000","Ice,Cherry",False
-4,Cocas,"Blueberry,Strawberry,Milk,Acai","300,500,300,300","Ice,Gommy bears,Coconut",True
-5,Sirilo drink,"Blueberry,Banana,Milk,Acai","200,100,200,1000","Lemon,Ice,Cherry",True
-6,Choco soda,"Chocolate,Milk,Orange","300,700,200","Ice,Cherry,Lemon,Good herb",True
-7,Joce,"Chocolate,Apple,Orange","420,609,406","Cherry,Orange",True
-8,Sirilox,"Apple,Melon,Water,Acai","300,600,500,200","Cherry,Orange,Lemon",True
-9,Dani,"Chocolate,Apple,Milk,Orange","600,600,600,600",,True
-10,xxxxx,"Chocolate,Apple","800,700","Mint,Cherry",True
+1,Sour lemonade,"Lemon,Water","800,1000","Ice,Cherry",False
+2,Sirilo drink,"Blueberry,Banana,Milk,Acai","200,100,200,1000","Lemon,Ice,Cherry",True
+3,Choco soda,"Chocolate,Milk,Orange","300,700,200","Ice,Cherry,Lemon,Good herb",True
+4,Joce,"Chocolate,Apple,Orange","420,609,406","Cherry,Orange",True
+5,Sirilox,"Apple,Melon,Water,Acai","300,600,500,200","Cherry,Orange,Lemon",True
+6,Dani,"Chocolate,Apple,Milk,Orange","600,600,600,600", ,True
+7,xxxxx,"Chocolate,Apple","800,700","Mint,Cherry",True
+8,Chocolike,"Chocolate,Milk","600,500", ,True
