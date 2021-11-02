@@ -111,7 +111,7 @@ class Ui_Form(object):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.pushButton_4.setText(_translate("self.form", "X"))
         self.pushButton_4.clicked.connect(lambda: self.form.close())
         self.label.setText(_translate("self.form", "    MIXOLOGY"))
@@ -497,7 +497,7 @@ class Ui_Form(object):
 
     def crt_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.crt_label_2.setText(_translate("self.form", "    CREATE"))
         self.crt_pushButton_7.setText(_translate("self.form", "X"))
         self.crt_label_12.setText(_translate("self.form", "MIX"))
@@ -1090,7 +1090,7 @@ class Ui_Form(object):
 
     def cal_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.cal_pushButton_7.setText(_translate("self.form", "X"))
         self.cal_label_2.setText(_translate("self.form", "    CALIBRATE"))
         self.cal_label_12.setText(_translate("self.form", "Box 1"))
@@ -1557,7 +1557,7 @@ class Ui_Form(object):
 
     def sel_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.sel_pushButton_8.setText(_translate("self.form", "X"))
         self.sel_label_18.setText(_translate("self.form", "    SELECT"))
         self.sel_pushButton_9.setText(_translate("self.form", "X"))
