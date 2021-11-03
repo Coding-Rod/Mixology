@@ -4,8 +4,8 @@ import time
 
 class Control:
     def __init__(self):
-        self.leds = [14,15,18,23,24,25,11] # Boxes and mixer
         self.pumps = [2,3,4,17,27,22,10,9] # Bottles
+        self.leds = [14,15,18,23,24,25,11] # Boxes and mixer
         self.vase = 26
 
         GPIO.setmode(GPIO.BCM)
