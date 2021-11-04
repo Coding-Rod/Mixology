@@ -1,10 +1,10 @@
 ID,Name,Ingredients,Volume,Boxes,Mix
-1,Sour lemonade,"Lemon,Water","200,400","Ice,Cherry",False
-2,Sirilo drink,"Blueberry,Banana,Milk,Acai","200,100,200,100","Lemon,Ice,Cherry",True
-3,Choco soda,"Chocolate,Milk,Orange","300,100,200","Ice,Cherry,Lemon,Good herb",True
-4,Sirilox,"Apple,Melon,Water,Acai","300,600,500,200","Cherry,Orange,Lemon",True
-5,Dani,"Chocolate,Apple,Milk,Orange","600,600,600,600", ,True
-6,Chocolike,"Chocolate,Milk","600,500", ,True
-7,cocalemon,"Coca cola,Lemon","500,100",Ice,True
-8,Apple,Apple,300, ,False
-9,Coca Cola,Coca Cola,600,Ice,False
+1,Sour lemonade,"Lemon,Water","2,4","Ice,Cherry",False
+2,Sirilo drink,"Blueberry,Banana,Milk,Acai","2,1,2,1","Lemon,Ice,Cherry",True
+3,Choco soda,"Chocolate,Milk,Orange","3,1,2","Ice,Cherry,Lemon,Good herb",True
+4,Sirilox,"Apple,Melon,Water,Acai","3,6,5,2","Cherry,Orange,Lemon",True
+5,Dani,"Chocolate,Apple,Milk,Orange","6,6,6,6", ,True
+6,Chocolike,"Chocolate,Milk","6,5", ,True
+7,cocalemon,"Coca cola,Lemon","5,1",Ice,True
+8,Apple,Apple,3, ,False
+9,Coca Cola,Coca Cola,6,Ice,False

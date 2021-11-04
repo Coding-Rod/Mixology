@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from apis.data import Data
+from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -13,6 +14,7 @@ class Ui_Form(object):
         self.state = 0
         self.state_machine(0)
         self.dat = Data()
+        self.ctr = Control()
         self.trash = False
 
     #region home_screen
@@ -1679,7 +1681,6 @@ class Ui_Form(object):
             self.dat.__init__()
             self.sel_show_queue()
             
-
     def sel_show_queue(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
@@ -1748,16 +1749,25 @@ class Ui_Form(object):
         self.dat.__init__()
 
     def prepare_drink(self,id):
-        # TODO: control pumps
-        # TODO: control leds
-        print(self.dat.df.Ingredients[id])
-        print(self.dat.df.Volume[id])
-        print(self.dat.df.Boxes[id])
-        print(self.dat.df.Mix[id])
+        selected = [[x[0] for x in self.dat.bottles.values()].index(i) for i in self.dat.df.Ingredients[id].split(',')]
+        seconds = self.dat.df.Volume[id].split(',')
+        self.ctr.pump_control(selected, seconds)
+        self.ctr.led_control([list(self.dat.boxes.values()).index(i) for i in self.dat.df.Boxes[id].split(',')])
+        if self.dat.df.Mix[id]:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Place your glass on the mixer")
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("Mix your beverage")
+            ret = msg.exec_()
+            self.ctr.mixer_on()
+            time.sleep(5)
+            self.ctr.mixer_off()
 
     #endregion select    
     
     def state_machine(self,state):
+        
         self.state = state
         if self.state == 0:
             self.trash = False
