@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# self.form implementation generated from reading ui file 'First_Page.ui'
-#
-# Created by: PyQt5 UI code generator 5.10.1
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -141,7 +133,7 @@ class Ui_Form(object):
         "background-color: #E09825;")
         self.crt_label_2.setObjectName("crt_label_2")
         self.crt_pushButton_7 = QtWidgets.QPushButton(self.form)
-        self.crt_pushButton_7.setGeometry(QtCore.QRect(730, 20, 41, 31))
+        self.crt_pushButton_7.setGeometry(QtCore.QRect(720, 20, 41, 31))
         self.crt_pushButton_7.setStyleSheet("background: #AA0000;\n"
         "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
         "border-radius: 10px;\n"
@@ -655,7 +647,7 @@ class Ui_Form(object):
         self.form.setObjectName("cal_form")
         self.form.resize(800, 380)
         self.cal_pushButton_7 = QtWidgets.QPushButton(self.form)
-        self.cal_pushButton_7.setGeometry(QtCore.QRect(730, 20, 41, 31))
+        self.cal_pushButton_7.setGeometry(QtCore.QRect(720, 20, 41, 31))
         self.cal_pushButton_7.setStyleSheet("background: #AA0000;\n"
         "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
         "border-radius: 10px;\n"
@@ -1198,7 +1190,7 @@ class Ui_Form(object):
         "background-color: #E09825;")
         self.sel_label_18.setObjectName("label_18")
         self.sel_pushButton_9 = QtWidgets.QPushButton(self.form)
-        self.sel_pushButton_9.setGeometry(QtCore.QRect(730, 20, 41, 31))
+        self.sel_pushButton_9.setGeometry(QtCore.QRect(720, 20, 41, 31))
         self.sel_pushButton_9.setStyleSheet("background: #AA0000;\n"
         "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
         "border-radius: 10px;\n"
@@ -1732,6 +1724,7 @@ class Ui_Form(object):
                     msg.close()
 
                     self.dat.autocalibration(j)
+                    self.dat.__init__()
                     
                     msg = QMessageBox()
                     msg.setIcon(QMessageBox.Information)
@@ -1760,8 +1753,10 @@ class Ui_Form(object):
         print(self.dat.df.Ingredients[id])
         print(self.dat.df.Volume[id])
         print(self.dat.df.Boxes[id])
+        print(self.dat.df.Mix[id])
 
     #endregion select    
+    
     def state_machine(self,state):
         self.state = state
         if self.state == 0:
