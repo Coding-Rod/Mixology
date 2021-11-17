@@ -9,14 +9,14 @@ class Control:
         self.mixer = 8
 
         GPIO.setmode(GPIO.BCM)
-        for i in (self.leds+self.pumps+[self.mixer]): 
-            GPIO.setup(i,GPIO.OUT)
+        [GPIO.setup(i,GPIO.OUT) for i in (self.leds+self.pumps+[self.mixer])]
+        [GPIO.output(x, GPIO.HIGH) for x in self.pumps]
             
-    def pump_control(self, selected, seconds, calibrate): #bottles
-        for i,j,k in zip(selected,seconds, calibrate):
-            GPIO.output(self.pumps.index(i-1), GPIO.HIGH)
-            time.sleep(int(float(j)*float(k)))
-            GPIO.output(self.pumps.index(i-1), GPIO.LOW)
+    def pump_control(self, selected, seconds): #bottles
+        for i,j in zip(selected,seconds):
+            GPIO.output(self.pumps[i], GPIO.LOW)
+            time.sleep(int(j))
+            GPIO.output(self.pumps[i], GPIO.HIGH)
 
     def led_control(self, selected): #boxes
         for i in selected:

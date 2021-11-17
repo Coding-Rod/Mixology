@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from apis.data import Data
-from apis.control import Control
+# from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -14,7 +14,7 @@ class Ui_Form(object):
         self.state = 0
         self.state_machine(0)
         self.dat = Data()
-        self.ctr = Control()
+        # self.ctr = Control()
         self.trash = False
 
     #region home_screen
