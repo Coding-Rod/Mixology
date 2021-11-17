@@ -1,15 +1,9 @@
-# -*- coding: utf-8 -*-
-
-# self.form implementation generated from reading ui file 'First_Page.ui'
-#
-# Created by: PyQt5 UI code generator 5.10.1
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from apis.data import Data
+from apis.control import Control
+import time
 
 class Ui_Form(object):
     def __init__(self, Form):
@@ -20,6 +14,7 @@ class Ui_Form(object):
         self.state = 0
         self.state_machine(0)
         self.dat = Data()
+        self.ctr = Control()
         self.trash = False
 
     #region home_screen
@@ -111,7 +106,7 @@ class Ui_Form(object):
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.pushButton_4.setText(_translate("self.form", "X"))
         self.pushButton_4.clicked.connect(lambda: self.form.close())
         self.label.setText(_translate("self.form", "    MIXOLOGY"))
@@ -140,7 +135,7 @@ class Ui_Form(object):
         "background-color: #E09825;")
         self.crt_label_2.setObjectName("crt_label_2")
         self.crt_pushButton_7 = QtWidgets.QPushButton(self.form)
-        self.crt_pushButton_7.setGeometry(QtCore.QRect(730, 20, 41, 31))
+        self.crt_pushButton_7.setGeometry(QtCore.QRect(720, 20, 41, 31))
         self.crt_pushButton_7.setStyleSheet("background: #AA0000;\n"
         "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
         "border-radius: 10px;\n"
@@ -381,74 +376,74 @@ class Ui_Form(object):
 
         #region Slider formatter
 
-        self.crt_horizontalSlider.setMaximum(1000)
+        self.crt_horizontalSlider.setMaximum(600)
         self.crt_horizontalSlider.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider.setTickInterval(100)
+        self.crt_horizontalSlider.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_2.setMaximum(1000)
+        self.crt_horizontalSlider_2.setMaximum(600)
         self.crt_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_2.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_2.setTickInterval(100)
+        self.crt_horizontalSlider_2.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_3.setMaximum(1000)
+        self.crt_horizontalSlider_3.setMaximum(600)
         self.crt_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_3.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_3.setTickInterval(100)
+        self.crt_horizontalSlider_3.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_4.setMaximum(1000)
+        self.crt_horizontalSlider_4.setMaximum(600)
         self.crt_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_4.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_4.setTickInterval(100)
+        self.crt_horizontalSlider_4.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_5.setMaximum(1000)
+        self.crt_horizontalSlider_5.setMaximum(600)
         self.crt_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_5.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_5.setTickInterval(100)
+        self.crt_horizontalSlider_5.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_6.setMaximum(1000)
+        self.crt_horizontalSlider_6.setMaximum(600)
         self.crt_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_6.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_6.setTickInterval(100)
+        self.crt_horizontalSlider_6.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_7.setMaximum(1000)
+        self.crt_horizontalSlider_7.setMaximum(600)
         self.crt_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_7.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_7.setTickInterval(100)
+        self.crt_horizontalSlider_7.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_8.setMaximum(1000)
+        self.crt_horizontalSlider_8.setMaximum(600)
         self.crt_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_8.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_8.setTickInterval(100)
+        self.crt_horizontalSlider_8.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_9.setMaximum(1000)
+        self.crt_horizontalSlider_9.setMaximum(600)
         self.crt_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_9.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_9.setTickInterval(100)
+        self.crt_horizontalSlider_9.setTickInterval(50)
 
 
-        self.crt_horizontalSlider_10.setMaximum(1000)
+        self.crt_horizontalSlider_10.setMaximum(600)
         self.crt_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_10.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
-        self.crt_horizontalSlider_10.setTickInterval(100)
+        self.crt_horizontalSlider_10.setTickInterval(50)
         #endregion Slider formatter
 
         self.crt_formLayout.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.crt_horizontalSlider_9)
@@ -497,7 +492,7 @@ class Ui_Form(object):
 
     def crt_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.crt_label_2.setText(_translate("self.form", "    CREATE"))
         self.crt_pushButton_7.setText(_translate("self.form", "X"))
         self.crt_label_12.setText(_translate("self.form", "MIX"))
@@ -526,16 +521,16 @@ class Ui_Form(object):
     def crt_update_val(self):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle("Mixology")                
-        self.crt_horizontalSlider.setValue(int(self.crt_horizontalSlider.value()/100)*100)
-        self.crt_horizontalSlider_2.setValue(int(self.crt_horizontalSlider_2.value()/100)*100)
-        self.crt_horizontalSlider_3.setValue(int(self.crt_horizontalSlider_3.value()/100)*100)
-        self.crt_horizontalSlider_4.setValue(int(self.crt_horizontalSlider_4.value()/100)*100)
-        self.crt_horizontalSlider_5.setValue(int(self.crt_horizontalSlider_5.value()/100)*100)
-        self.crt_horizontalSlider_6.setValue(int(self.crt_horizontalSlider_6.value()/100)*100)
-        self.crt_horizontalSlider_7.setValue(int(self.crt_horizontalSlider_7.value()/100)*100)
-        self.crt_horizontalSlider_8.setValue(int(self.crt_horizontalSlider_8.value()/100)*100)
-        self.crt_horizontalSlider_9.setValue(int(self.crt_horizontalSlider_9.value()/100)*100)
-        self.crt_horizontalSlider_10.setValue(int(self.crt_horizontalSlider_10.value()/100)*100)
+        self.crt_horizontalSlider.setValue(int(self.crt_horizontalSlider.value()/50)*50)
+        self.crt_horizontalSlider_2.setValue(int(self.crt_horizontalSlider_2.value()/50)*50)
+        self.crt_horizontalSlider_3.setValue(int(self.crt_horizontalSlider_3.value()/50)*50)
+        self.crt_horizontalSlider_4.setValue(int(self.crt_horizontalSlider_4.value()/50)*50)
+        self.crt_horizontalSlider_5.setValue(int(self.crt_horizontalSlider_5.value()/50)*50)
+        self.crt_horizontalSlider_6.setValue(int(self.crt_horizontalSlider_6.value()/50)*50)
+        self.crt_horizontalSlider_7.setValue(int(self.crt_horizontalSlider_7.value()/50)*50)
+        self.crt_horizontalSlider_8.setValue(int(self.crt_horizontalSlider_8.value()/50)*50)
+        self.crt_horizontalSlider_9.setValue(int(self.crt_horizontalSlider_9.value()/50)*50)
+        self.crt_horizontalSlider_10.setValue(int(self.crt_horizontalSlider_10.value()/50)*50)
         self.crt_label.setText(_translate("self.form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider.value())+" ml")
         self.crt_label_3.setText(_translate("self.form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_2.value())+" ml")
         self.crt_label_4.setText(_translate("self.form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_3.value())+" ml")
@@ -654,7 +649,7 @@ class Ui_Form(object):
         self.form.setObjectName("cal_form")
         self.form.resize(800, 380)
         self.cal_pushButton_7 = QtWidgets.QPushButton(self.form)
-        self.cal_pushButton_7.setGeometry(QtCore.QRect(730, 20, 41, 31))
+        self.cal_pushButton_7.setGeometry(QtCore.QRect(720, 20, 41, 31))
         self.cal_pushButton_7.setStyleSheet("background: #AA0000;\n"
         "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
         "border-radius: 10px;\n"
@@ -1066,16 +1061,16 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle("Mixology")
 
-        self.cal_horizontalSlider.setValue(int(self.cal_horizontalSlider.value()/100)*100)
-        self.cal_horizontalSlider_2.setValue(int(self.cal_horizontalSlider_2.value()/100)*100)
-        self.cal_horizontalSlider_3.setValue(int(self.cal_horizontalSlider_3.value()/100)*100)
-        self.cal_horizontalSlider_4.setValue(int(self.cal_horizontalSlider_4.value()/100)*100)
-        self.cal_horizontalSlider_5.setValue(int(self.cal_horizontalSlider_5.value()/100)*100)
-        self.cal_horizontalSlider_6.setValue(int(self.cal_horizontalSlider_6.value()/100)*100)
-        self.cal_horizontalSlider_7.setValue(int(self.cal_horizontalSlider_7.value()/100)*100)
-        self.cal_horizontalSlider_8.setValue(int(self.cal_horizontalSlider_8.value()/100)*100)
-        self.cal_horizontalSlider_9.setValue(int(self.cal_horizontalSlider_9.value()/100)*100)
-        self.cal_horizontalSlider_10.setValue(int(self.cal_horizontalSlider_10.value()/100)*100)
+        self.cal_horizontalSlider.setValue(int(self.cal_horizontalSlider.value()/50)*50)
+        self.cal_horizontalSlider_2.setValue(int(self.cal_horizontalSlider_2.value()/50)*50)
+        self.cal_horizontalSlider_3.setValue(int(self.cal_horizontalSlider_3.value()/50)*50)
+        self.cal_horizontalSlider_4.setValue(int(self.cal_horizontalSlider_4.value()/50)*50)
+        self.cal_horizontalSlider_5.setValue(int(self.cal_horizontalSlider_5.value()/50)*50)
+        self.cal_horizontalSlider_6.setValue(int(self.cal_horizontalSlider_6.value()/50)*50)
+        self.cal_horizontalSlider_7.setValue(int(self.cal_horizontalSlider_7.value()/50)*50)
+        self.cal_horizontalSlider_8.setValue(int(self.cal_horizontalSlider_8.value()/50)*50)
+        self.cal_horizontalSlider_9.setValue(int(self.cal_horizontalSlider_9.value()/50)*50)
+        self.cal_horizontalSlider_10.setValue(int(self.cal_horizontalSlider_10.value()/50)*50)
 
         self.cal_label_22.setText(str(self.cal_horizontalSlider.value())+" ml")
         self.cal_label_26.setText(str(self.cal_horizontalSlider_2.value())+" ml")
@@ -1090,7 +1085,7 @@ class Ui_Form(object):
 
     def cal_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.cal_pushButton_7.setText(_translate("self.form", "X"))
         self.cal_label_2.setText(_translate("self.form", "    CALIBRATE"))
         self.cal_label_12.setText(_translate("self.form", "Box 1"))
@@ -1197,7 +1192,7 @@ class Ui_Form(object):
         "background-color: #E09825;")
         self.sel_label_18.setObjectName("label_18")
         self.sel_pushButton_9 = QtWidgets.QPushButton(self.form)
-        self.sel_pushButton_9.setGeometry(QtCore.QRect(730, 20, 41, 31))
+        self.sel_pushButton_9.setGeometry(QtCore.QRect(720, 20, 41, 31))
         self.sel_pushButton_9.setStyleSheet("background: #AA0000;\n"
         "border: 0.5px solid rgba(255, 255, 255, 0.48);\n"
         "border-radius: 10px;\n"
@@ -1504,7 +1499,7 @@ class Ui_Form(object):
         self.sel_pushButton_14 = QtWidgets.QPushButton(self.form)
         self.sel_pushButton_14.setText("Clean queue")
         self.sel_pushButton_14.clicked.connect(self.sel_clear_queue)
-        self.sel_pushButton_14.setGeometry(QtCore.QRect(350, 300, 100, 65))
+        self.sel_pushButton_14.setGeometry(QtCore.QRect(300, 300, 100, 65))
         self.sel_pushButton_14.setObjectName("pushButton_14")
 
         self.sel_pushButton_15 = QtWidgets.QPushButton(self.form)
@@ -1518,6 +1513,13 @@ class Ui_Form(object):
         self.sel_pushButton_15.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.sel_pushButton_15.setObjectName("pushButton_15")
         self.sel_pushButton_15.clicked.connect(self.sel_toggleTrashcan)
+        
+        self.sel_pushButton_16 = QtWidgets.QPushButton(self.form)
+        self.sel_pushButton_16.setText("Show queue")
+        self.sel_pushButton_16.clicked.connect(self.sel_show_queue)
+        self.sel_pushButton_16.setGeometry(QtCore.QRect(410, 300, 100, 65))
+        self.sel_pushButton_16.setObjectName("pushButton_16")
+        
         self.sel_retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self.form)
 
@@ -1557,7 +1559,7 @@ class Ui_Form(object):
 
     def sel_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        self.form.setWindowTitle(_translate("self.form", "self.form"))
+        self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.sel_pushButton_8.setText(_translate("self.form", "X"))
         self.sel_label_18.setText(_translate("self.form", "    SELECT"))
         self.sel_pushButton_9.setText(_translate("self.form", "X"))
@@ -1665,7 +1667,7 @@ class Ui_Form(object):
     def sel_add_to_queue(self, id, functions):
         if self.trash:
             msg = QMessageBox()
-            msg.setIcon(QMessageBox.Critical)
+            msg.setIcon(QMessageBox.Question)
             msg.setText("Are you sure you want to delete this recipe?")
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Confirm dialog")
@@ -1677,16 +1679,19 @@ class Ui_Form(object):
         else:
             self.dat.add_to_queue(id)
             self.dat.__init__()
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
-            msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()])))
-            # msg.setInformativeText('More information')
-            msg.setWindowTitle("Actual queue")
-            ret = msg.exec_()
+            self.sel_show_queue()
+            
+    def sel_show_queue(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()])))
+        # msg.setInformativeText('More information')
+        msg.setWindowTitle("Actual queue")
+        ret = msg.exec_()
 
     def sel_clear_queue(self):
         msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
+        msg.setIcon(QMessageBox.Question)
         msg.setText("Are you sure you want to clean queue?")
         # msg.setInformativeText('More information')
         msg.setWindowTitle("Confirm dialog")
@@ -1697,31 +1702,72 @@ class Ui_Form(object):
             self.dat.__init__()
 
     def sel_prepare(self):
-        msg = QMessageBox()
-        # create Label
-        msg.setIconPixmap(QPixmap('assets/wait.gif').scaledToWidth(100))
-        icon_label = msg.findChild(QLabel, "qt_msgboxex_icon_label")
-        movie = QMovie('assets/wait.gif')
-        # avoid garbage collector
-        setattr(msg, 'icon_label', movie)
-        icon_label.setMovie(movie)
-        movie.start()
+        for i,j in enumerate(self.dat.queue.values(),1):
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Question)
+            msg.setText("Are you sure there is\na glass on the vase?")
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("Getting ready")
+            msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            ret = msg.exec_()
+            if (ret == QMessageBox.Yes):
+                message, verification = self.dat.verify(j)
+                if(verification):
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setText(message)
+                    msg.setStyleSheet("background-color: #FFFFFF;")
+                    # msg.setInformativeText('More information')
+                    msg.setWindowTitle("In progres...")
+                    msg.show()
+                    time.sleep(2)
+                    self.prepare_drink(j-1)
+                    msg.close()
 
-        msg.setText("Preparing your beverage...")
-        msg.setWindowTitle(" ")
-        msg.setModal(False)
-        # msg.setStandardButtons(QMessageBox.Ok)
-        msg.show()
+                    self.dat.autocalibration(j)
+                    self.dat.__init__()
+                    
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Information)
+                    msg.setText("Your "+self.dat.df.Name[j-1]+" is ready!!!")
+                    # msg.setInformativeText('More information')
+                    msg.setWindowTitle("Done")
+                    msg.exec_()
+                else:
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Critical)
+                    msg.setText(message)
+                    # msg.setInformativeText('More information')
+                    msg.setWindowTitle("Done")
+                    msg.exec_()
+                    self.dat.pause_queue(i)
+                    break
+            else:
+                print(i)
+                self.dat.pause_queue(i)
+                break
+        self.dat.__init__()
 
-        # TODO: Show progress bar
-        # TODO: get queue
-        # TODO: verify and validate queue
-        # TODO: control pumps
-        # TODO: control leds
-        pass
+    def prepare_drink(self,id):
+        selected = [[x[0] for x in self.dat.bottles.values()].index(i) for i in self.dat.df.Ingredients[id].split(',')]
+        seconds = self.dat.df.Volume[id].split(',')
+        self.ctr.pump_control(selected, seconds)
+        self.ctr.led_control([list(self.dat.boxes.values()).index(i) for i in self.dat.df.Boxes[id].split(',')])
+        if self.dat.df.Mix[id]:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Place your glass on the mixer")
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("Mix your beverage")
+            ret = msg.exec_()
+            self.ctr.mixer_on()
+            time.sleep(5)
+            self.ctr.mixer_off()
 
     #endregion select    
+    
     def state_machine(self,state):
+        
         self.state = state
         if self.state == 0:
             self.trash = False
@@ -1879,6 +1925,7 @@ class Ui_Form(object):
             self.sel_pushButton_2.setVisible(self.state == 3)
             self.sel_pushButton_14.setVisible(self.state == 3)
             self.sel_pushButton_15.setVisible(self.state == 3)
+            self.sel_pushButton_16.setVisible(self.state == 3)
         except:
             pass
         #endregion select

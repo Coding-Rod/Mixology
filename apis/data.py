@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+from operator import itemgetter
 
 class Data:
     def __init__(self):
@@ -71,11 +72,11 @@ class Data:
             # print(dicjson['Ingredients'])
             if i in dicjson['Ingredients']:
                 if int(j) > int(dicjson['Volume'][dicjson['Ingredients'].index(i)]):
-                    return 'Falta '+ str(i), False
+                    return 'There is not enough '+ str(i), False
             else:
-                return 'Falta '+ str(i), False
+                return 'There is not enough '+ str(i), False
 
-        return "Preparando la bebida...", True
+        return "Preparing "+self.df.Name[num]+"...", True
 
     def autocalibration(self, id):
         num = list(self.df.ID).index(id)
@@ -102,9 +103,8 @@ class Data:
         jsonFile.write(json.dumps({}, indent=4, sort_keys=True))
 
     def pause_queue(self, i):
-        i = int(i)
         keys = [int(x) for x in self.queue.keys() if int(x) >= i]
-        values = list(self.queue.values())[len(keys)-1:]
+        values = [self.queue[key] for key in [str(x) for x in keys]]
         self.queue = dict(zip([str(x) for x in range(1,len(keys)+1)], values))
         jsonFile = open("data/queue.json", "w")
         jsonFile.write(json.dumps(self.queue, indent=4, sort_keys=True))
