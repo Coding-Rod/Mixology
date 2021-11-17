@@ -1,10 +1,10 @@
 ID,Name,Ingredients,Volume,Boxes,Mix
-1,Sour lemonade,"Lemon,Water","800,1000","Ice,Cherry",False
-2,Sirilo drink,"Blueberry,Banana,Milk,Acai","200,100,200,1000","Lemon,Ice,Cherry",True
-3,Choco soda,"Chocolate,Milk,Orange","300,700,200","Ice,Cherry,Lemon,Good herb",True
-4,Sirilox,"Apple,Melon,Water,Acai","300,600,500,200","Cherry,Orange,Lemon",True
-5,Dani,"Chocolate,Apple,Milk,Orange","600,600,600,600", ,True
-6,Chocolike,"Chocolate,Milk","600,500", ,True
-7,cocalemon,"Coca cola,Lemon","500,100",Ice,True
-8,Apple,Apple,300, ,False
-9,Coca Cola,Coca Cola,600,Ice,False
+1,Apple,Apple,100, ,False
+2,Acai,Acai,100, ,False
+3,Coca Cola,Coca Cola,100, ,False
+4,Wine,Wine,100, ,False
+5,Fanta,Fanta,100, ,False
+6,Milk,Milk,100, ,False
+7,Water,Water,100, ,False
+8,Sprite,Sprite,100, ,False
+9,Orange,Orange,100, ,False

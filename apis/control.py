@@ -12,10 +12,10 @@ class Control:
         for i in (self.leds+self.pumps+[self.vase]): 
             GPIO.setup(i,GPIO.OUT)
             
-    def pump_control(self, selected, seconds): #bottles
-        for i,j in selected,seconds:
+    def pump_control(self, selected, seconds, calibrate): #bottles
+        for i,j,k in zip(selected,seconds, calibrate):
             GPIO.output(self.pumps.index(i-1), GPIO.HIGH)
-            time.sleep(seconds)
+            time.sleep(int(float(j)*float(k)))
             GPIO.output(self.pumps.index(i-1), GPIO.LOW)
 
     def led_control(self, selected): #boxes
