@@ -1750,10 +1750,11 @@ class Ui_Form(object):
 
     def prepare_drink(self,id):
         selected = [[x[0] for x in self.dat.bottles.values()].index(i) for i in self.dat.df.Ingredients[id].split(',')]
-        seconds = self.dat.df.Volume[id].split(',')
-        calibration = [int(w[0]) for w in [[y[2] for y in [dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in dat.df.Ingredients[id].split(',')]]
-        self.ctr.pump_control(selected, seconds, calibration)
-        self.ctr.led_control([list(self.dat.boxes.values()).index(i) for i in self.dat.df.Boxes[id].split(',')])
+        seconds = str(self.dat.df.Volume[id]).split(',')
+        calibration = [int(w[0]) for w in [[y[2] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
+        print(calibration)
+        # self.ctr.pump_control(selected, seconds, calibration)
+        # self.ctr.led_control([list(self.dat.boxes.values()).index(i) for i in self.dat.df.Boxes[id].split(',')])
         if self.dat.df.Mix[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -1761,9 +1762,9 @@ class Ui_Form(object):
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Mix your beverage")
             ret = msg.exec_()
-            self.ctr.mixer_on()
+            # self.ctr.mixer_on()
             time.sleep(5)
-            self.ctr.mixer_off()
+            # self.ctr.mixer_off()
 
     #endregion select    
     
