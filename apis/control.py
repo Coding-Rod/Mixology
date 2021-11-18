@@ -32,7 +32,7 @@ class Control:
         GPIO.output(self.mixer, GPIO.LOW)
     
 # ctr = Control()
-# while(1):
+# while(00):
 #     ctr.mixer_on()
 #     time.sleep(1)
 #     ctr.mixer_off()
