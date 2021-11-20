@@ -88,7 +88,7 @@ class Data:
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             dicjson['Volume'][dicjson['Ingredients'].index(i)] = str(int(dicjson['Volume'][dicjson['Ingredients'].index(i)]) - int(j))
 
-        dicjson = dict(enumerate(zip(dicjson['Ingredients'],[int(x) for x in dicjson['Volume']], [x[2] for x in self.dat.bottles.values()]),1))
+        dicjson = dict(enumerate(zip(dicjson['Ingredients'],[int(x) for x in dicjson['Volume']], [x[2] for x in self.bottles.values()]),1))
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
     
