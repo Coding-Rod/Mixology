@@ -16,7 +16,7 @@ class Control:
     def pump_control(self, selected, seconds, calibration): #bottles
         for i,j,k in zip(selected,seconds, calibration):
             GPIO.output(self.pumps[i], GPIO.LOW if self.pumps[i] != 9 else GPIO.HIGH)
-            time.sleep(int(j)*int(k)/100)
+            time.sleep(float(j)*float(k)/100)
             GPIO.output(self.pumps[i], GPIO.HIGH if self.pumps[i] != 9 else GPIO.LOW)
 
     def led_control(self, selected): #boxes
