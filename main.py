@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from apis.data import Data
-# from apis.control import Control
+from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -1753,8 +1753,15 @@ class Ui_Form(object):
         selected = [[x[0] for x in self.dat.bottles.values()].index(i) for i in self.dat.df.Ingredients[id].split(',')]
         seconds = str(self.dat.df.Volume[id]).split(',')
         calibration = [int(w[0]) for w in [[y[2] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
-        # self.ctr.pump_control(selected, seconds, calibration)
-        # self.ctr.led_control([list(self.dat.boxes.values()).index(i) for i in self.dat.df.Boxes[id].split(',')])
+        self.ctr.pump_control(selected, seconds, calibration)
+        if self.dat.df.Boxes[id]:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Add to your drink:\n-"+'-'.join(self.dat.df.Boxes[id].split(',')))
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("Boxes suggested")
+            ret = msg.exec_()
+        
         if self.dat.df.Mix[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -1762,9 +1769,9 @@ class Ui_Form(object):
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Mix your beverage")
             ret = msg.exec_()
-            # self.ctr.mixer_on()
+            self.ctr.mixer_on()
             # time.sleep(5)
-            # self.ctr.mixer_off()
+            self.ctr.mixer_off()
 
     #endregion select    
     
