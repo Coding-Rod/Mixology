@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from apis.data import Data
-from apis.control import Control
+# from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -14,7 +14,7 @@ class Ui_Form(object):
         self.state = 0
         self.state_machine(0)
         self.dat = Data()
-        # self.ctr = Control()
+        self.ctr = Control()
         self.trash = False
 
     #region home_screen
@@ -1134,12 +1134,25 @@ class Ui_Form(object):
                 validator = False
                 break
         if validator:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
-            msg.setText("Information Updated")
-            # msg.setInformativeText('More information')
-            msg.setWindowTitle("Done")
-            msg.exec_()
+            changes = not((self.cal_lineEdit_12.text() == self.dat.bottles["1"][0])and(self.cal_lineEdit_15.text() == self.dat.bottles["2"][0])and(self.cal_lineEdit_10.text() == self.dat.bottles["3"][0])and(self.cal_lineEdit_13.text() == self.dat.bottles["4"][0])and(self.cal_lineEdit_11.text() == self.dat.bottles["5"][0])and(self.cal_lineEdit_14.text() == self.dat.bottles["6"][0])and(self.cal_lineEdit_9.text() == self.dat.bottles["7"][0])and(self.cal_lineEdit_7.text() == self.dat.bottles["8"][0])and(self.cal_lineEdit_8.text() == self.dat.bottles["9"][0])and(self.cal_lineEdit_16.text() == self.dat.bottles["10"][0]))
+            bot = []
+            bot.append(0 if self.cal_lineEdit_12.text() != self.dat.bottles["1"][0] else "NONE")
+            bot.append(1 if self.cal_lineEdit_15.text() != self.dat.bottles["2"][0] else "NONE")
+            bot.append(2 if self.cal_lineEdit_10.text() != self.dat.bottles["3"][0] else "NONE")
+            bot.append(3 if self.cal_lineEdit_13.text() != self.dat.bottles["4"][0] else "NONE")
+            bot.append(4 if self.cal_lineEdit_11.text() != self.dat.bottles["5"][0] else "NONE")
+            bot.append(5 if self.cal_lineEdit_14.text() != self.dat.bottles["6"][0] else "NONE")
+            bot.append(6 if self.cal_lineEdit_9.text() != self.dat.bottles["7"][0] else "NONE")
+            bot.append(7 if self.cal_lineEdit_7.text() != self.dat.bottles["8"][0] else "NONE")
+            bot.append(8 if self.cal_lineEdit_8.text() != self.dat.bottles["9"][0] else "NONE")
+            bot.append(9 if self.cal_lineEdit_16.text() != self.dat.bottles["10"][0] else "NONE")
+            
+            try:
+                while True:
+                    bot.remove("NONE")
+            except ValueError:
+                pass
+            
             self.dat.__init__()
             self.dat.change_bottle(1,self.cal_lineEdit_12.text().title(),self.cal_horizontalSlider.value())
             self.dat.change_bottle(2,self.cal_lineEdit_15.text().title(),self.cal_horizontalSlider_2.value())
@@ -1157,7 +1170,22 @@ class Ui_Form(object):
             self.dat.change_box(4,self.cal_lineEdit_4.text().title())
             self.dat.change_box(5,self.cal_lineEdit_5.text().title())
             self.dat.change_box(6,self.cal_lineEdit_6.text().title())
-
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Information Updated")
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("Done")
+            msg.exec_()
+            
+            if changes:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Information)
+                msg.setText("Part of the new bottle(s) will be served\nPlease place a recipient on the vase position to calibrate it")
+                # msg.setInformativeText('More information')
+                msg.setWindowTitle("Bottle changed")
+                msg.exec_()
+                self.ctr.pump_control(bot, [int(100*x/x) for x in bot], [0.035*x/x for x in bot])
+                
     #endregion calibrate
 
     #region select    
@@ -1769,10 +1797,6 @@ class Ui_Form(object):
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Mix your beverage")
             ret = msg.exec_()
-            self.ctr.mixer_on()
-            # time.sleep(5)
-            self.ctr.mixer_off()
-
     #endregion select    
     
     def state_machine(self,state):
