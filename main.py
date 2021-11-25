@@ -13,8 +13,10 @@ class Ui_Form(object):
         self.form.setStyleSheet("background-color: rgb(236, 236, 236);\n")
         self.state = 0
         self.dat = Data()
+        self.dat.clean_queue()
         # self.ctr = Control()
         self.trash = False
+        self.init= [0,0,0,0]
         self.state_machine(0)
 
     #region home_screen
@@ -1708,8 +1710,9 @@ class Ui_Form(object):
                 self.dat.clean_queue()
                 self.dat.remove_recipe(id)
                 [x.setVisible(False) for x in functions]
-                self.trash = False
-                self.state_machine(3)
+                self.dat.__init__()
+                self.sel_retranslateUi()
+                self.sel_toggleTrashcan()
         else:
             try:
                 self.dat.add_to_queue(id)
@@ -1815,15 +1818,18 @@ class Ui_Form(object):
     def state_machine(self,state):
         self.dat.__init__()
         self.state = state
-        if self.state == 0:
+        if self.state == 0 and self.init[0] == 0:
             self.main()
-            self.trash = False
-        if self.state == 1:
+            self.init[0] = 1
+        if self.state == 1 and self.init[1] == 0:
             self.create_form()
-        if self.state == 2:
+            self.init[1] = 1
+        if self.state == 2 and self.init[2] == 0:
             self.calibrate_form()
-        if self.state == 3:
+            self.init[2] = 1
+        if self.state == 3 and self.init[3] == 0:
             self.select_form()
+            self.init[3] = 1
 
         #region visible
         #region main
