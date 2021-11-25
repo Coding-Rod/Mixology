@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from apis.data import Data
-# from apis.control import Control
+from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -14,7 +14,7 @@ class Ui_Form(object):
         self.state = 0
         self.dat = Data()
         self.dat.clean_queue()
-        # self.ctr = Control()
+        self.ctr = Control()
         self.trash = False
         self.init= [0,0,0,0]
         self.state_machine(0)
@@ -1188,7 +1188,7 @@ class Ui_Form(object):
                 # msg.setInformativeText('More information')
                 msg.setWindowTitle("Bottle changed")
                 msg.exec_()
-                # self.ctr.pump_control(bot, [int(100*x/x) for x in bot], [0.035*x/x for x in bot])
+                self.ctr.pump_control(bot, [int(100*x/x) for x in bot], [0.035*x/x for x in bot])
                 
     #endregion calibrate
 
@@ -1747,6 +1747,7 @@ class Ui_Form(object):
             self.dat.__init__()
 
     def sel_prepare(self):
+        pause = False
         for i,j in enumerate(self.dat.queue.values(),1):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
@@ -1757,6 +1758,7 @@ class Ui_Form(object):
             ret = msg.exec_()
             if (ret == QMessageBox.Yes):
                 message, verification = self.dat.verify(j)
+                self.dat.__init__()
                 if(verification):
                     msg = QMessageBox()
                     msg.setIcon(QMessageBox.Information)
@@ -1785,19 +1787,22 @@ class Ui_Form(object):
                     # msg.setInformativeText('More information')
                     msg.setWindowTitle("Done")
                     msg.exec_()
+                    pause = True
                     self.dat.pause_queue(i)
                     break
             else:
-                print(i)
+                pause = True
                 self.dat.pause_queue(i)
                 break
+        if not pause:
+            self.dat.clean_queue()
         self.dat.__init__()
 
     def prepare_drink(self,id):
-        selected = [[x[0] for x in self.dat.bottles.values()].index(i) for i in self.dat.df.Ingredients[id].split(',')]
+        selected = [w[0] for w in [[y[0] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
         seconds = str(self.dat.df.Volume[id]).split(',')
         calibration = [int(w[0]) for w in [[y[2] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
-        # self.ctr.pump_control(selected, seconds, calibration)
+        self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -1827,9 +1832,13 @@ class Ui_Form(object):
         if self.state == 2 and self.init[2] == 0:
             self.calibrate_form()
             self.init[2] = 1
+        elif self.state == 2:
+            self.cal_retranslateUi()
         if self.state == 3 and self.init[3] == 0:
             self.select_form()
             self.init[3] = 1
+        elif self.state == 3:
+            self.sel_retranslateUi()
 
         #region visible
         #region main

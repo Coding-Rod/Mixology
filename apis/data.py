@@ -64,12 +64,16 @@ class Data:
 
     def verify(self, id):
         num = list(self.df.ID).index(id)
-        # print(num)
         diccsv = { 'Ingredients': str(self.df.Ingredients[num]).split(','),
                     'Volume': str(self.df.Volume[num]).split(','),}
         dicjson = { 'Ingredients': [x[0] for x in list(self.bottles.values())],
                     'Volume': [x[1] for x in list(self.bottles.values())]}
 
+        for i in range(len(dicjson['Ingredients'])):
+            for j in range(len(dicjson['Ingredients'])):
+                if dicjson['Ingredients'][i] == dicjson['Ingredients'][j]:
+                    dicjson['Ingredients'][i],dicjson['Ingredients'][j] = dicjson['Ingredients'][i] if (dicjson['Volume'][i] >= dicjson['Volume'][j]) else dicjson['Ingredients'][i]+'####', dicjson['Ingredients'][j] if (dicjson['Volume'][j] >= dicjson['Volume'][i]) else dicjson['Ingredients'][j]+'####'
+        
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             # print(i)
             # print(dicjson['Ingredients'])
@@ -79,6 +83,13 @@ class Data:
             else:
                 return 'There is not enough '+ str(i), False
 
+        dicjson['Calibrate'] = [0.035*x/x for x in list(range(1,11))]
+        
+        dicjson = {str(w):[x,y,z] for w,x,y,z in zip(range(1,11),dicjson['Ingredients'], dicjson['Volume'], dicjson['Calibrate'])}
+        
+        jsonFile = open("data/bottles.json", "w")
+        jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
+        
         return "Preparing "+self.df.Name[num]+"...", True
 
     def autocalibration(self, id):
@@ -91,7 +102,10 @@ class Data:
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             dicjson['Volume'][dicjson['Ingredients'].index(i)] = str(int(dicjson['Volume'][dicjson['Ingredients'].index(i)]) - int(j))
 
+        dicjson['Ingredients'] = [x.replace('####','') for x in dicjson['Ingredients']]
+        
         dicjson = dict(enumerate(zip(dicjson['Ingredients'],[int(x) for x in dicjson['Volume']], [x[2] for x in self.bottles.values()]),1))
+        
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
     
