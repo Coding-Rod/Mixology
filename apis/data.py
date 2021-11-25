@@ -34,7 +34,10 @@ class Data:
             print("ID not found")
 
     def add_recipe(self, name, ingredients, volume, boxes, mix):
-        num = self.df.ID[len(self.df.ID)-1]+1
+        try:
+            num = self.df.ID[len(self.df.ID)-1]+1
+        except:
+            num = 1
         dic = {'ID': num, 'Name': name, 'Ingredients': ingredients, 'Volume': volume, 'Boxes': boxes, 'Mix': mix}
         self.df = self.df.append(dic, ignore_index=True)
         self.df.to_csv('data/recipes.csv', index = False)

@@ -11,7 +11,6 @@ class Control:
         GPIO.setmode(GPIO.BCM)
         [GPIO.setup(i,GPIO.OUT) for i in (self.leds+self.pumps+[self.mixer])]
         [GPIO.output(x, GPIO.HIGH) for x in self.pumps]
-        GPIO.output(9, GPIO.LOW)
             
     def pump_control(self, selected, seconds, calibration): #bottles
         for i,j,k in zip(selected,seconds, calibration):

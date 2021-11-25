@@ -12,10 +12,10 @@ class Ui_Form(object):
         self.form.resize(800, 380)
         self.form.setStyleSheet("background-color: rgb(236, 236, 236);\n")
         self.state = 0
-        self.state_machine(0)
         self.dat = Data()
-        self.ctr = Control()
+        # self.ctr = Control()
         self.trash = False
+        self.state_machine(0)
 
     #region home_screen
     def main(self): 
@@ -610,6 +610,7 @@ class Ui_Form(object):
             msg.exec_()
         else:
             self.dat.add_recipe(name,ingredients,volume,boxes,mix)
+            self.dat.__init__()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setText("Your recipe is saved")
@@ -1178,13 +1179,14 @@ class Ui_Form(object):
             msg.exec_()
             
             if changes:
+                self.dat.__init__()
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Information)
                 msg.setText("Part of the new bottle(s) will be served\nPlease place a recipient on the vase position to calibrate it")
                 # msg.setInformativeText('More information')
                 msg.setWindowTitle("Bottle changed")
                 msg.exec_()
-                self.ctr.pump_control(bot, [int(100*x/x) for x in bot], [0.035*x/x for x in bot])
+                # self.ctr.pump_control(bot, [int(100*x/x) for x in bot], [0.035*x/x for x in bot])
                 
     #endregion calibrate
 
@@ -1697,18 +1699,29 @@ class Ui_Form(object):
         if self.trash:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
-            msg.setText("Are you sure you want to delete this recipe?")
+            msg.setText("Are you sure you want to delete this recipe?\nQueue will be cleaned")
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Confirm dialog")
             msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             ret = msg.exec_()
             if (ret == QMessageBox.Yes):
+                self.dat.clean_queue()
                 self.dat.remove_recipe(id)
                 [x.setVisible(False) for x in functions]
+                self.trash = False
+                self.state_machine(3)
         else:
-            self.dat.add_to_queue(id)
-            self.dat.__init__()
-            self.sel_show_queue()
+            try:
+                self.dat.add_to_queue(id)
+                self.dat.__init__()
+                self.sel_show_queue()
+            except:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Critical)
+                msg.setText("There is no recipe there\nWhat are you doing?")
+                # msg.setInformativeText('More information')
+                msg.setWindowTitle("Dude...")
+                msg.exec_()
             
     def sel_show_queue(self):
         msg = QMessageBox()
@@ -1781,7 +1794,7 @@ class Ui_Form(object):
         selected = [[x[0] for x in self.dat.bottles.values()].index(i) for i in self.dat.df.Ingredients[id].split(',')]
         seconds = str(self.dat.df.Volume[id]).split(',')
         calibration = [int(w[0]) for w in [[y[2] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
-        self.ctr.pump_control(selected, seconds, calibration)
+        # self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -1800,11 +1813,11 @@ class Ui_Form(object):
     #endregion select    
     
     def state_machine(self,state):
-        
+        self.dat.__init__()
         self.state = state
         if self.state == 0:
-            self.trash = False
             self.main()
+            self.trash = False
         if self.state == 1:
             self.create_form()
         if self.state == 2:
