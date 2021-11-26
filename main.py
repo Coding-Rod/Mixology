@@ -1188,7 +1188,7 @@ class Ui_Form(object):
                 # msg.setInformativeText('More information')
                 msg.setWindowTitle("Bottle changed")
                 msg.exec_()
-                self.ctr.pump_control(bot, [int(100*(x+1)/(x+1)) for x in bot], [0.035*x/x for x in bot])
+                self.ctr.pump_control(bot, [int(100*(x+1)/(x+1)) for x in bot], [0.035*(x+1)/(x+1) for x in bot])
                 
     #endregion calibrate
 
