@@ -78,7 +78,7 @@ class Data:
             # print(i)
             # print(dicjson['Ingredients'])
             if i in dicjson['Ingredients']:
-                if int(j) > int(dicjson['Volume'][dicjson['Ingredients'].index(i)]):
+                if int(j)+50 > int(dicjson['Volume'][dicjson['Ingredients'].index(i)]):
                     return 'There is not enough '+ str(i), False
             else:
                 return 'There is not enough '+ str(i), False
