@@ -1876,7 +1876,7 @@ class Ui_Form(object):
         self.dat.__init__()
 
     def prepare_drink(self,id):
-        selected = [self.ctr.pumps[int(y)-1] for y in [x for x in self.dat.bottles.keys() if self.dat.bottles[x][0] in self.dat.df.Ingredients[id].split(',')]]
+        selected = [int(y)-1 for y in [x for x in self.dat.bottles.keys() if self.dat.bottles[x][0] in self.dat.df.Ingredients[id].split(',')]]
         seconds = str(self.dat.df.Volume[id]).split(',')
         calibration = [int(w[0]) for w in [[y[2] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
         self.ctr.pump_control(selected, seconds, calibration)
