@@ -1879,8 +1879,14 @@ class Ui_Form(object):
 
     def prepare_drink(self,id):
         indexes, ingredients = list(self.dat.bottles.keys()),[w[0] for w in self.dat.bottles.values()]
-        selected = [int(y) for y in [indexes[ingredients.index(x)] for x in self.dat.df.Ingredients[id].split(',')]]
-        seconds = [int(x) for x in self.dat.df.Volume[id].split(',')]
+        try:
+            selected = [int(y) for y in [indexes[ingredients.index(x)] for x in self.dat.df.Ingredients[id].split(',')]]
+        except:
+            selected = indexes[ingredients.index(self.dat.df[id])]
+        try:
+            seconds = [int(x) for x in self.dat.df.Volume[id].split(',')]
+        except:
+            seconds = int(self.dat.df.Volume[id])
         calibration = [0.035 for _ in selected]
         self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id]:
