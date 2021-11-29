@@ -83,7 +83,7 @@ class Data:
             else:
                 return 'There is not enough '+ str(i), False
 
-        dicjson['Calibrate'] = [0.035*x/x for x in list(range(1,11))]
+        dicjson['Calibrate'] = [0.035 for _ in list(range(1,11))]
         
         dicjson = {str(w):[x,y,z] for w,x,y,z in zip(range(1,11),dicjson['Ingredients'], dicjson['Volume'], dicjson['Calibrate'])}
         
