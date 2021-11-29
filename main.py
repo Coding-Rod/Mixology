@@ -1912,16 +1912,19 @@ class Ui_Form(object):
         if self.state == 0 and self.init[0] == 0:
             self.main()
             self.init[0] = 1
+        
         if self.state == 1 and self.init[1] == 0:
             self.create_form()
             self.init[1] = 1
         elif self.state == 1:
             self.crt_retranslateUi()
+        
         if self.state == 2 and self.init[2] == 0:
             self.calibrate_form()
             self.init[2] = 1
         elif self.state == 2:
             self.cal_retranslateUi()
+        
         if self.state == 3 and self.init[3] == 0:
             self.select_form()
             self.init[3] = 1
