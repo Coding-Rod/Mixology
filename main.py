@@ -1889,7 +1889,7 @@ class Ui_Form(object):
             seconds = int(self.dat.df.Volume[id])
         calibration = [0.035 for _ in selected]
         self.ctr.pump_control(selected, seconds, calibration)
-        if self.dat.df.Boxes[id]:
+        if bool(self.dat.df.Boxes[id]):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             if ',' in str(self.dat.df.Boxes[id]):
