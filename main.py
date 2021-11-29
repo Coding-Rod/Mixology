@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from apis.data import Data
-from apis.control import Control
+# from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -15,7 +15,7 @@ class Ui_Form(object):
         self.state = 0
         self.dat = Data()
         self.dat.clean_queue()
-        self.ctr = Control()
+        # self.ctr = Control()
         self.trash = False
         self.init= [0,0,0,0] #All screen aren't called
         self.state_machine(0)
@@ -1002,70 +1002,70 @@ class Ui_Form(object):
         self.cal_horizontalSlider.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider.setTickInterval(250)
+        self.cal_horizontalSlider.setTickInterval(100)
 
 
         self.cal_horizontalSlider_2.setMaximum(3000)
         self.cal_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_2.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_2.setTickInterval(250)
+        self.cal_horizontalSlider_2.setTickInterval(100)
 
 
         self.cal_horizontalSlider_3.setMaximum(3000)
         self.cal_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_3.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_3.setTickInterval(250)
+        self.cal_horizontalSlider_3.setTickInterval(100)
 
 
         self.cal_horizontalSlider_4.setMaximum(3000)
         self.cal_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_4.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_4.setTickInterval(250)
+        self.cal_horizontalSlider_4.setTickInterval(100)
 
 
         self.cal_horizontalSlider_5.setMaximum(3000)
         self.cal_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_5.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_5.setTickInterval(250)
+        self.cal_horizontalSlider_5.setTickInterval(100)
 
 
         self.cal_horizontalSlider_6.setMaximum(3000)
         self.cal_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_6.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_6.setTickInterval(250)
+        self.cal_horizontalSlider_6.setTickInterval(100)
 
 
         self.cal_horizontalSlider_7.setMaximum(3000)
         self.cal_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_7.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_7.setTickInterval(250)
+        self.cal_horizontalSlider_7.setTickInterval(100)
 
 
         self.cal_horizontalSlider_8.setMaximum(3000)
         self.cal_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_8.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_8.setTickInterval(250)
+        self.cal_horizontalSlider_8.setTickInterval(100)
 
 
         self.cal_horizontalSlider_9.setMaximum(3000)
         self.cal_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_9.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_9.setTickInterval(250)
+        self.cal_horizontalSlider_9.setTickInterval(100)
 
 
         self.cal_horizontalSlider_10.setMaximum(3000)
         self.cal_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_10.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_10.setTickInterval(250)
+        self.cal_horizontalSlider_10.setTickInterval(100)
         #endregion Slider formatter
 
         #region Scroll 2
@@ -1142,16 +1142,16 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle("Mixology")
 
-        self.cal_horizontalSlider.setValue(int(self.cal_horizontalSlider.value()/250)*250)
-        self.cal_horizontalSlider_2.setValue(int(self.cal_horizontalSlider_2.value()/250)*250)
-        self.cal_horizontalSlider_3.setValue(int(self.cal_horizontalSlider_3.value()/250)*250)
-        self.cal_horizontalSlider_4.setValue(int(self.cal_horizontalSlider_4.value()/250)*250)
-        self.cal_horizontalSlider_5.setValue(int(self.cal_horizontalSlider_5.value()/250)*250)
-        self.cal_horizontalSlider_6.setValue(int(self.cal_horizontalSlider_6.value()/250)*250)
-        self.cal_horizontalSlider_7.setValue(int(self.cal_horizontalSlider_7.value()/250)*250)
-        self.cal_horizontalSlider_8.setValue(int(self.cal_horizontalSlider_8.value()/250)*250)
-        self.cal_horizontalSlider_9.setValue(int(self.cal_horizontalSlider_9.value()/250)*250)
-        self.cal_horizontalSlider_10.setValue(int(self.cal_horizontalSlider_10.value()/250)*250)
+        self.cal_horizontalSlider.setValue(int(self.cal_horizontalSlider.value()/100)*100)
+        self.cal_horizontalSlider_2.setValue(int(self.cal_horizontalSlider_2.value()/100)*100)
+        self.cal_horizontalSlider_3.setValue(int(self.cal_horizontalSlider_3.value()/100)*100)
+        self.cal_horizontalSlider_4.setValue(int(self.cal_horizontalSlider_4.value()/100)*100)
+        self.cal_horizontalSlider_5.setValue(int(self.cal_horizontalSlider_5.value()/100)*100)
+        self.cal_horizontalSlider_6.setValue(int(self.cal_horizontalSlider_6.value()/100)*100)
+        self.cal_horizontalSlider_7.setValue(int(self.cal_horizontalSlider_7.value()/100)*100)
+        self.cal_horizontalSlider_8.setValue(int(self.cal_horizontalSlider_8.value()/100)*100)
+        self.cal_horizontalSlider_9.setValue(int(self.cal_horizontalSlider_9.value()/100)*100)
+        self.cal_horizontalSlider_10.setValue(int(self.cal_horizontalSlider_10.value()/100)*100)
 
         self.cal_label_22.setText(str(self.cal_horizontalSlider.value())+" ml")
         self.cal_label_26.setText(str(self.cal_horizontalSlider_2.value())+" ml")
@@ -1265,7 +1265,9 @@ class Ui_Form(object):
                 # msg.setInformativeText('More information')
                 msg.setWindowTitle("Bottle changed")
                 msg.exec_()
-                self.ctr.pump_control(bot, [int(100*(x+1)/(x+1)) for x in bot], [0.035*(x+1)/(x+1) for x in bot])
+                print(bot)
+                [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
+                # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
     #endregion calibrate
 
@@ -1880,7 +1882,7 @@ class Ui_Form(object):
         selected = [int(y) for y in [indexes[ingredients.index(x)] for x in self.dat.df.Ingredients[id].split(',')]]
         seconds = [int(x) for x in self.dat.df.Volume[id].split(',')]
         calibration = [0.035 for _ in selected]
-        self.ctr.pump_control(selected, seconds, calibration)
+        # self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
