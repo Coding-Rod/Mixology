@@ -1,8 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 from apis.data import Data
-from apis.control import Control
+# from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -14,10 +15,102 @@ class Ui_Form(object):
         self.state = 0
         self.dat = Data()
         self.dat.clean_queue()
-        self.ctr = Control()
+        # self.ctr = Control()
         self.trash = False
-        self.init= [0,0,0,0]
+        self.init= [0,0,0,0] #All screen aren't called
         self.state_machine(0)
+    def slider_formatters(self):
+        return """
+        QSlider::groove:horizontal {
+        border: 1px solid #bbb;
+        background: white;
+        height: 20px;
+        border-radius: 4px;
+        }
+
+        QSlider::sub-page:horizontal {
+        background: #E09825;
+        border: 1px solid #777;
+        height: 20px;
+        border-radius: 4px;
+        }
+
+        QSlider::add-page:horizontal {
+        background: #fff;
+        border: 1px solid #777;
+        height: 20px;
+        border-radius: 4px;
+        }
+
+        QSlider::handle:horizontal {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+            stop:0 #eee, stop:1 #ccc);
+        border: 1px solid #777;
+        width: 13px;
+        margin-top: -2px;
+        margin-bottom: -2px;
+        border-radius: 4px;
+        }
+
+        QSlider::handle:horizontal:hover {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+            stop:0 #fff, stop:1 #ddd);
+        border: 1px solid #444;
+        border-radius: 4px;
+        }
+
+        QSlider::sub-page:horizontal:disabled {
+        background: #bbb;
+        border-color: #999;
+        }
+
+        QSlider::add-page:horizontal:disabled {
+        background: #eee;
+        border-color: #999;
+        }
+
+        QSlider::handle:horizontal:disabled {
+        background: #eee;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        }"""
+        # return """
+        # QSlider::groove:horizontal {
+        #     border: 1px solid #888a85;
+        #     height: 5px;
+        #     margin: 0px;
+        #     border-radius: 2px;
+        # }
+        # QSlider::handle:horizontal {
+        #     background-color: white;
+        #     border: 1px solid;
+        #     height: 20px;
+        #     width: 20px;
+        #     margin: -7px 10px;
+        # }
+        # QSlider::TicksBelow:horizontal {
+        #     color: #000;
+        #     background-color: red;
+        # }
+        # """
+        # return """
+        #     QSlider::groove:horizontal {
+        #         background-color: #eee;
+        #         height: 60px;
+        #     }
+        #     QSlider::handle:horizontali {
+        #         background: #fff;
+        #         border: 1px solid #000;
+        #         width: 30px;
+        #         border-radius: 5px;
+        #     }
+        # """
+        # style = ""
+        # adjust_style = style.format(
+        #     handle_size = 16,
+        #     handle_color = "#000000"
+        # )
+        # self.setStyleSheet(adjust_style)
 
     #region home_screen
     def main(self): 
@@ -379,74 +472,84 @@ class Ui_Form(object):
 
         #region Slider formatter
 
-        self.crt_horizontalSlider.setMaximum(600)
+        self.crt_horizontalSlider.setMaximum(500)
         self.crt_horizontalSlider.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider.setTickInterval(50)
+        self.crt_horizontalSlider.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_2.setMaximum(600)
+        self.crt_horizontalSlider_2.setMaximum(500)
         self.crt_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_2.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_2.setTickInterval(50)
+        self.crt_horizontalSlider_2.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_3.setMaximum(600)
+        self.crt_horizontalSlider_3.setMaximum(500)
         self.crt_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_3.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_3.setTickInterval(50)
+        self.crt_horizontalSlider_3.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_4.setMaximum(600)
+        self.crt_horizontalSlider_4.setMaximum(500)
         self.crt_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_4.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_4.setTickInterval(50)
+        self.crt_horizontalSlider_4.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_5.setMaximum(600)
+        self.crt_horizontalSlider_5.setMaximum(500)
         self.crt_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_5.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_5.setTickInterval(50)
+        self.crt_horizontalSlider_5.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_6.setMaximum(600)
+        self.crt_horizontalSlider_6.setMaximum(500)
         self.crt_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_6.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_6.setTickInterval(50)
+        self.crt_horizontalSlider_6.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_7.setMaximum(600)
+        self.crt_horizontalSlider_7.setMaximum(500)
         self.crt_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_7.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_7.setTickInterval(50)
+        self.crt_horizontalSlider_7.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_8.setMaximum(600)
+        self.crt_horizontalSlider_8.setMaximum(500)
         self.crt_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_8.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_8.setTickInterval(50)
+        self.crt_horizontalSlider_8.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_9.setMaximum(600)
+        self.crt_horizontalSlider_9.setMaximum(500)
         self.crt_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_9.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_9.setTickInterval(50)
+        self.crt_horizontalSlider_9.setStyleSheet(self.slider_formatters())
 
 
-        self.crt_horizontalSlider_10.setMaximum(600)
+        self.crt_horizontalSlider_10.setMaximum(500)
         self.crt_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_10.valueChanged.connect(self.crt_update_val)
         self.crt_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_10.setTickInterval(50)
+        self.crt_horizontalSlider_10.setStyleSheet(self.slider_formatters())
         #endregion Slider formatter
 
         self.crt_formLayout.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.crt_horizontalSlider_9)
@@ -582,10 +685,10 @@ class Ui_Form(object):
         boxes = boxes if len(boxes) > 0 else " "
         mix = ((False, True)[self.crt_horizontalSlider_11.value()])
 
-        if sum((self.crt_horizontalSlider.value(), self.crt_horizontalSlider_2.value(), self.crt_horizontalSlider_3.value(), self.crt_horizontalSlider_4.value(), self.crt_horizontalSlider_5.value(), self.crt_horizontalSlider_6.value(), self.crt_horizontalSlider_7.value(), self.crt_horizontalSlider_8.value(), self.crt_horizontalSlider_9.value(), self.crt_horizontalSlider_10.value())) > 600:
+        if sum((self.crt_horizontalSlider.value(), self.crt_horizontalSlider_2.value(), self.crt_horizontalSlider_3.value(), self.crt_horizontalSlider_4.value(), self.crt_horizontalSlider_5.value(), self.crt_horizontalSlider_6.value(), self.crt_horizontalSlider_7.value(), self.crt_horizontalSlider_8.value(), self.crt_horizontalSlider_9.value(), self.crt_horizontalSlider_10.value())) > 500:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
-            msg.setText("Serve a glass, not a jar!\nMaximum: 600 ml")
+            msg.setText("Serve a glass, not a jar!\nMaximum: 500 ml")
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Error")
             msg.exec_()
@@ -729,6 +832,7 @@ class Ui_Form(object):
         self.cal_horizontalSlider = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider.setObjectName("cal_horizontalSlider")
+        self.cal_horizontalSlider.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider, 0, 3, 1, 1)
 
         self.cal_lineEdit_10 = QtWidgets.QLineEdit(self.cal_scrollAreaWidgetContents)
@@ -746,16 +850,19 @@ class Ui_Form(object):
         self.cal_horizontalSlider_2.setSizePolicy(sizePolicy)
         self.cal_horizontalSlider_2.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_2.setObjectName("cal_horizontalSlider_2")
+        self.cal_horizontalSlider_2.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_2, 1, 3, 1, 1)
 
         self.cal_horizontalSlider_3 = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider_3.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_3.setObjectName("cal_horizontalSlider_3")
+        self.cal_horizontalSlider_3.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_3, 2, 3, 1, 1)
 
         self.cal_horizontalSlider_4 = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider_4.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_4.setObjectName("cal_horizontalSlider_4")
+        self.cal_horizontalSlider_4.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_4, 3, 3, 1, 1)
 
         self.cal_label_22 = QtWidgets.QLabel(self.cal_scrollAreaWidgetContents)
@@ -768,6 +875,7 @@ class Ui_Form(object):
         self.cal_horizontalSlider_5 = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider_5.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_5.setObjectName("cal_horizontalSlider_5")
+        self.cal_horizontalSlider_5.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_5, 4, 3, 1, 1)
 
         self.cal_lineEdit_13 = QtWidgets.QLineEdit(self.cal_scrollAreaWidgetContents)
@@ -786,6 +894,7 @@ class Ui_Form(object):
         self.cal_horizontalSlider_6 = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider_6.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_6.setObjectName("cal_horizontalSlider_6")
+        self.cal_horizontalSlider_6.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_6, 5, 3, 1, 1)
 
         self.cal_label_18 = QtWidgets.QLabel(self.cal_scrollAreaWidgetContents)
@@ -824,16 +933,19 @@ class Ui_Form(object):
         self.cal_horizontalSlider_7 = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider_7.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_7.setObjectName("cal_horizontalSlider_7")
+        self.cal_horizontalSlider_7.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_7, 6, 3, 1, 1)
 
         self.cal_horizontalSlider_8 = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider_8.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_8.setObjectName("cal_horizontalSlider_8")
+        self.cal_horizontalSlider_8.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_8, 7, 3, 1, 1)
 
         self.cal_horizontalSlider_9 = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider_9.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_9.setObjectName("cal_horizontalSlider_9")
+        self.cal_horizontalSlider_9.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_9, 8, 3, 1, 1)
 
         self.cal_label_21 = QtWidgets.QLabel(self.cal_scrollAreaWidgetContents)
@@ -907,6 +1019,7 @@ class Ui_Form(object):
         self.cal_horizontalSlider_10 = QtWidgets.QSlider(self.cal_scrollAreaWidgetContents)
         self.cal_horizontalSlider_10.setOrientation(QtCore.Qt.Horizontal)
         self.cal_horizontalSlider_10.setObjectName("cal_horizontalSlider_10")
+        self.cal_horizontalSlider_10.setStyleSheet(self.slider_formatters())
         self.cal_gridLayout.addWidget(self.cal_horizontalSlider_10, 9, 3, 1, 1)
 
         self.cal_label_27 = QtWidgets.QLabel(self.cal_scrollAreaWidgetContents)
@@ -925,70 +1038,70 @@ class Ui_Form(object):
         self.cal_horizontalSlider.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider.setTickInterval(100)
+        self.cal_horizontalSlider.setTickInterval(250)
 
 
         self.cal_horizontalSlider_2.setMaximum(3000)
         self.cal_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_2.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_2.setTickInterval(100)
+        self.cal_horizontalSlider_2.setTickInterval(250)
 
 
         self.cal_horizontalSlider_3.setMaximum(3000)
         self.cal_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_3.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_3.setTickInterval(100)
+        self.cal_horizontalSlider_3.setTickInterval(250)
 
 
         self.cal_horizontalSlider_4.setMaximum(3000)
         self.cal_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_4.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_4.setTickInterval(100)
+        self.cal_horizontalSlider_4.setTickInterval(250)
 
 
         self.cal_horizontalSlider_5.setMaximum(3000)
         self.cal_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_5.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_5.setTickInterval(100)
+        self.cal_horizontalSlider_5.setTickInterval(250)
 
 
         self.cal_horizontalSlider_6.setMaximum(3000)
         self.cal_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_6.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_6.setTickInterval(100)
+        self.cal_horizontalSlider_6.setTickInterval(250)
 
 
         self.cal_horizontalSlider_7.setMaximum(3000)
         self.cal_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_7.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_7.setTickInterval(100)
+        self.cal_horizontalSlider_7.setTickInterval(250)
 
 
         self.cal_horizontalSlider_8.setMaximum(3000)
         self.cal_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_8.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_8.setTickInterval(100)
+        self.cal_horizontalSlider_8.setTickInterval(250)
 
 
         self.cal_horizontalSlider_9.setMaximum(3000)
         self.cal_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_9.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_9.setTickInterval(100)
+        self.cal_horizontalSlider_9.setTickInterval(250)
 
 
         self.cal_horizontalSlider_10.setMaximum(3000)
         self.cal_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
         self.cal_horizontalSlider_10.valueChanged.connect(self.cal_update_val)
         self.cal_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
-        self.cal_horizontalSlider_10.setTickInterval(100)
+        self.cal_horizontalSlider_10.setTickInterval(250)
         #endregion Slider formatter
 
         #region Scroll 2
@@ -1065,16 +1178,16 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle("Mixology")
 
-        self.cal_horizontalSlider.setValue(int(self.cal_horizontalSlider.value()/50)*50)
-        self.cal_horizontalSlider_2.setValue(int(self.cal_horizontalSlider_2.value()/50)*50)
-        self.cal_horizontalSlider_3.setValue(int(self.cal_horizontalSlider_3.value()/50)*50)
-        self.cal_horizontalSlider_4.setValue(int(self.cal_horizontalSlider_4.value()/50)*50)
-        self.cal_horizontalSlider_5.setValue(int(self.cal_horizontalSlider_5.value()/50)*50)
-        self.cal_horizontalSlider_6.setValue(int(self.cal_horizontalSlider_6.value()/50)*50)
-        self.cal_horizontalSlider_7.setValue(int(self.cal_horizontalSlider_7.value()/50)*50)
-        self.cal_horizontalSlider_8.setValue(int(self.cal_horizontalSlider_8.value()/50)*50)
-        self.cal_horizontalSlider_9.setValue(int(self.cal_horizontalSlider_9.value()/50)*50)
-        self.cal_horizontalSlider_10.setValue(int(self.cal_horizontalSlider_10.value()/50)*50)
+        self.cal_horizontalSlider.setValue(int(self.cal_horizontalSlider.value()/250)*250)
+        self.cal_horizontalSlider_2.setValue(int(self.cal_horizontalSlider_2.value()/250)*250)
+        self.cal_horizontalSlider_3.setValue(int(self.cal_horizontalSlider_3.value()/250)*250)
+        self.cal_horizontalSlider_4.setValue(int(self.cal_horizontalSlider_4.value()/250)*250)
+        self.cal_horizontalSlider_5.setValue(int(self.cal_horizontalSlider_5.value()/250)*250)
+        self.cal_horizontalSlider_6.setValue(int(self.cal_horizontalSlider_6.value()/250)*250)
+        self.cal_horizontalSlider_7.setValue(int(self.cal_horizontalSlider_7.value()/250)*250)
+        self.cal_horizontalSlider_8.setValue(int(self.cal_horizontalSlider_8.value()/250)*250)
+        self.cal_horizontalSlider_9.setValue(int(self.cal_horizontalSlider_9.value()/250)*250)
+        self.cal_horizontalSlider_10.setValue(int(self.cal_horizontalSlider_10.value()/250)*250)
 
         self.cal_label_22.setText(str(self.cal_horizontalSlider.value())+" ml")
         self.cal_label_26.setText(str(self.cal_horizontalSlider_2.value())+" ml")
@@ -1802,7 +1915,7 @@ class Ui_Form(object):
         selected = [w[0] for w in [[y[0] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
         seconds = str(self.dat.df.Volume[id]).split(',')
         calibration = [int(w[0]) for w in [[y[2] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
-        self.ctr.pump_control(selected, seconds, calibration)
+        # self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -1829,6 +1942,8 @@ class Ui_Form(object):
         if self.state == 1 and self.init[1] == 0:
             self.create_form()
             self.init[1] = 1
+        elif self.state == 1:
+            self.crt_retranslateUi()
         if self.state == 2 and self.init[2] == 0:
             self.calibrate_form()
             self.init[2] = 1

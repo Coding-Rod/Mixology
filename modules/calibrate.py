@@ -486,7 +486,7 @@ class Ui_Form(object):
         self.cal_horizontalSlider_8.setValue(self.dat.bottles["8"][1])
         self.cal_horizontalSlider_9.setValue(self.dat.bottles["9"][1])
         self.cal_horizontalSlider_10.setValue(self.dat.bottles["10"][1])
-        
+
     def cal_save(self):
         self.dat.change_bottle(1,self.cal_lineEdit_12.text(),self.cal_horizontalSlider.value())
         self.dat.change_bottle(2,self.cal_lineEdit_15.text(),self.cal_horizontalSlider_2.value())
