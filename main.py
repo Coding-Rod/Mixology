@@ -1876,9 +1876,10 @@ class Ui_Form(object):
         self.dat.__init__()
 
     def prepare_drink(self,id):
-        selected = [int(y)-1 for y in [x for x in self.dat.bottles.keys() if self.dat.bottles[x][0] in self.dat.df.Ingredients[id].split(',')]]
-        seconds = str(self.dat.df.Volume[id]).split(',')
-        calibration = [int(w[0]) for w in [[y[2] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
+        indexes, ingredients = list(self.dat.bottles.keys()),[w[0] for w in self.dat.bottles.values()]
+        selected = [int(y) for y in [indexes[ingredients.index(x)] for x in dat.df.Ingredients[id].split(',')]]
+        seconds = [int(x) for x in self.dat.df.Ingredients[id].split(',')]
+        calibration = [0.35 for _ in selected]
         self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
