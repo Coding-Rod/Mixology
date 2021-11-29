@@ -69,14 +69,14 @@ class Data:
         dicjson = { 'Ingredients': [x[0] for x in list(self.bottles.values())],
                     'Volume': [x[1] for x in list(self.bottles.values())]}
 
+        # For equal bottles
         for i in range(len(dicjson['Ingredients'])):
             for j in range(len(dicjson['Ingredients'])):
                 if dicjson['Ingredients'][i] == dicjson['Ingredients'][j]:
                     dicjson['Ingredients'][i],dicjson['Ingredients'][j] = dicjson['Ingredients'][i] if (dicjson['Volume'][i] >= dicjson['Volume'][j]) else dicjson['Ingredients'][i]+'####', dicjson['Ingredients'][j] if (dicjson['Volume'][j] >= dicjson['Volume'][i]) else dicjson['Ingredients'][j]+'####'
         
+        # Is there enough?
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
-            # print(i)
-            # print(dicjson['Ingredients'])
             if i in dicjson['Ingredients']:
                 if int(j)+50 > int(dicjson['Volume'][dicjson['Ingredients'].index(i)]):
                     return 'There is not enough '+ str(i), False

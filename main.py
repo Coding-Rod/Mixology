@@ -1895,7 +1895,7 @@ class Ui_Form(object):
             if ',' in str(self.dat.df.Boxes[id]):
                 msg.setText("Add to your drink:\n-"+'-'.join(self.dat.df.Boxes[id].split(',')))
             else:
-                msg.setText("Add to your drink:\n-"+'-'.join(self.dat.df.Boxes[id]))
+                msg.setText("Add to your drink:\n-"+self.dat.df.Boxes[id])
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Boxes suggested")
             ret = msg.exec_()
