@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from apis.data import Data
-# from apis.control import Control
+from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -15,7 +15,7 @@ class Ui_Form(object):
         self.state = 0
         self.dat = Data()
         self.dat.clean_queue()
-        # self.ctr = Control()
+        self.ctr = Control()
         self.trash = False
         self.init= [0,0,0,0] #All screen aren't called
         self.state_machine(0)
@@ -1267,7 +1267,7 @@ class Ui_Form(object):
                 msg.exec_()
                 print(bot)
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
-                # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
+                self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
     #endregion calibrate
 
@@ -1882,7 +1882,7 @@ class Ui_Form(object):
         selected = [int(y) for y in [indexes[ingredients.index(x)] for x in self.dat.df.Ingredients[id].split(',')]]
         seconds = [int(x) for x in self.dat.df.Volume[id].split(',')]
         calibration = [0.035 for _ in selected]
-        # self.ctr.pump_control(selected, seconds, calibration)
+        self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
