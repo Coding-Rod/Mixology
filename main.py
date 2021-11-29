@@ -1892,7 +1892,10 @@ class Ui_Form(object):
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
-            msg.setText("Add to your drink:\n-"+'-'.join(self.dat.df.Boxes[id].split(',')))
+            if ',' in self.dat.df.Boxes[id]:
+                msg.setText("Add to your drink:\n-"+'-'.join(self.dat.df.Boxes[id].split(',')))
+            else:
+                msg.setText("Add to your drink:\n-"+'-'.join(self.dat.df.Boxes[id]))
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Boxes suggested")
             ret = msg.exec_()

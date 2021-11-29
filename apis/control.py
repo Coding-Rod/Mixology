@@ -1,4 +1,3 @@
-import pandas as pd
 import RPi.GPIO as GPIO
 import time
 
