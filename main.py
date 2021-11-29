@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from apis.data import Data
-# from apis.control import Control
+from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -15,10 +15,11 @@ class Ui_Form(object):
         self.state = 0
         self.dat = Data()
         self.dat.clean_queue()
-        # self.ctr = Control()
+        self.ctr = Control()
         self.trash = False
         self.init= [0,0,0,0] #All screen aren't called
         self.state_machine(0)
+    
     def slider_formatters(self):
         return """
         QSlider::groove:horizontal {
@@ -74,43 +75,6 @@ class Ui_Form(object):
         border: 1px solid #aaa;
         border-radius: 4px;
         }"""
-        # return """
-        # QSlider::groove:horizontal {
-        #     border: 1px solid #888a85;
-        #     height: 5px;
-        #     margin: 0px;
-        #     border-radius: 2px;
-        # }
-        # QSlider::handle:horizontal {
-        #     background-color: white;
-        #     border: 1px solid;
-        #     height: 20px;
-        #     width: 20px;
-        #     margin: -7px 10px;
-        # }
-        # QSlider::TicksBelow:horizontal {
-        #     color: #000;
-        #     background-color: red;
-        # }
-        # """
-        # return """
-        #     QSlider::groove:horizontal {
-        #         background-color: #eee;
-        #         height: 60px;
-        #     }
-        #     QSlider::handle:horizontali {
-        #         background: #fff;
-        #         border: 1px solid #000;
-        #         width: 30px;
-        #         border-radius: 5px;
-        #     }
-        # """
-        # style = ""
-        # adjust_style = style.format(
-        #     handle_size = 16,
-        #     handle_color = "#000000"
-        # )
-        # self.setStyleSheet(adjust_style)
 
     #region home_screen
     def main(self): 
@@ -1915,7 +1879,7 @@ class Ui_Form(object):
         selected = [w[0] for w in [[y[0] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
         seconds = str(self.dat.df.Volume[id]).split(',')
         calibration = [int(w[0]) for w in [[y[2] for y in [self.dat.bottles[str(x)] for x in range(1,11)] if z in y] for z in self.dat.df.Ingredients[id].split(',')]]
-        # self.ctr.pump_control(selected, seconds, calibration)
+        self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
