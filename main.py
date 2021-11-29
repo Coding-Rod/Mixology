@@ -1892,7 +1892,7 @@ class Ui_Form(object):
         if self.dat.df.Boxes[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
-            if ',' in self.dat.df.Boxes[id]:
+            if ',' in str(self.dat.df.Boxes[id]):
                 msg.setText("Add to your drink:\n-"+'-'.join(self.dat.df.Boxes[id].split(',')))
             else:
                 msg.setText("Add to your drink:\n-"+'-'.join(self.dat.df.Boxes[id]))
