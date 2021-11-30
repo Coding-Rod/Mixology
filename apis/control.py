@@ -20,6 +20,10 @@ class Control:
                 time.sleep(float(j)*float(k))
                 GPIO.output(self.pumps[i], GPIO.HIGH)
         except:
+            print(selected[0])
+            print(seconds)
+            print(calibration[0])
+            print(self.pumps[selected[0]])
             GPIO.output(self.pumps[selected[0]], GPIO.LOW)
             time.sleep(float(seconds)*float(calibration[0]))
             GPIO.output(self.pumps[selected[0]], GPIO.HIGH)
