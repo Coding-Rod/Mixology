@@ -1785,18 +1785,9 @@ class Ui_Form(object):
                 self.sel_toggleTrashcan()
         else:
             try:
-                message, verification =  self.dat.verify(id)
-                if verification:
-                    self.dat.add_to_queue(id)
-                    self.dat.__init__()
-                    self.sel_show_queue()
-                else:
-                    msg = QMessageBox()
-                    msg.setIcon(QMessageBox.Critical)
-                    msg.setText(message)
-                    # msg.setInformativeText('More information')
-                    msg.setWindowTitle("Error")
-                    msg.exec_()
+                self.dat.add_to_queue(id)
+                self.dat.__init__()
+                self.sel_show_queue()
             except:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Critical)
