@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from apis.data import Data
-# from apis.control import Control
+from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -15,7 +15,7 @@ class Ui_Form(object):
         self.state = 0 #0: home_screen, 1: create, 2: calibrate, 3: select
         self.dat = Data()
         self.dat.clean_queue()
-        # self.ctr = Control()
+        self.ctr = Control()
         self.trash = False
         self.init= [0,0,0,0] #All screen aren't called
         self.state_machine(0)
@@ -1258,7 +1258,7 @@ class Ui_Form(object):
                 msg.exec_()
                 print(bot)
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
-                # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
+                self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
     #endregion calibrate
 
@@ -1785,9 +1785,18 @@ class Ui_Form(object):
                 self.sel_toggleTrashcan()
         else:
             try:
-                self.dat.add_to_queue(id)
-                self.dat.__init__()
-                self.sel_show_queue()
+                message, verification =  self.dat.verify(id)
+                if verification:
+                    self.dat.add_to_queue(id)
+                    self.dat.__init__()
+                    self.sel_show_queue()
+                else:
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Critical)
+                    msg.setText(message)
+                    # msg.setInformativeText('More information')
+                    msg.setWindowTitle("Error")
+                    msg.exec_()
             except:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Critical)
@@ -1880,7 +1889,7 @@ class Ui_Form(object):
         except:
             seconds = int(self.dat.df.Volume[id])
         calibration = [0.035 for _ in selected]
-        # self.ctr.pump_control(selected, seconds, calibration)
+        self.ctr.pump_control(selected, seconds, calibration)
         # print(bool(self.dat.df.Boxes[id]))
         if self.dat.df.Boxes[id] != " ":
             msg = QMessageBox()
