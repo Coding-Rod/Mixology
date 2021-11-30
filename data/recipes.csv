@@ -1,10 +1,9 @@
 ID,Name,Ingredients,Volume,Boxes,Mix
 1,Apple,Apple,100, ,False
-2,Acai,Acai,100, ,False
-3,Coca Cola,Coca Cola,100, ,False
-4,Wine,Wine,100, ,False
-5,Fanta,Fanta,100, ,False
-6,Milk,Milk,100, ,False
-7,Water,Water,100, ,False
-8,Sprite,Sprite,100, ,False
-9,Orange,Orange,100, ,False
+2,Coca Cola,Coca Cola,100, ,False
+3,Wine,Wine,100, ,False
+4,Fanta,Fanta,100, ,False
+5,Milk,Milk,100, ,False
+6,Water,Water,100, ,False
+7,Sprite,Sprite,100, ,False
+8,Orange,Orange,100, ,False

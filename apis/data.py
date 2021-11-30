@@ -17,7 +17,6 @@ class Data:
         # ID,Name,Ingredients,Volume,Boxes,Mix
         df = pd.read_csv('data/recipes.csv')
         self.df = df
-        # print(self.df.Ingredients[0])
 
         with open('data/queue.json', 'r') as j:
             json_queue = json.load(j)
@@ -64,17 +63,22 @@ class Data:
 
     def verify(self, id):
         num = list(self.df.ID).index(id)
+        l = list(range(1,10))
+        l.insert(1,10)
         diccsv = { 'Ingredients': str(self.df.Ingredients[num]).split(','),
                     'Volume': str(self.df.Volume[num]).split(','),}
         dicjson = { 'Ingredients': [x[0] for x in list(self.bottles.values())],
                     'Volume': [x[1] for x in list(self.bottles.values())]}
+        dicjson['Calibrate'] = [0.035 for _ in list(range(1,11))]
 
         # For equal bottles
         for i in range(len(dicjson['Ingredients'])):
             for j in range(len(dicjson['Ingredients'])):
                 if dicjson['Ingredients'][i] == dicjson['Ingredients'][j]:
                     dicjson['Ingredients'][i],dicjson['Ingredients'][j] = dicjson['Ingredients'][i] if (dicjson['Volume'][i] >= dicjson['Volume'][j]) else dicjson['Ingredients'][i]+'####', dicjson['Ingredients'][j] if (dicjson['Volume'][j] >= dicjson['Volume'][i]) else dicjson['Ingredients'][j]+'####'
-        
+
+        aux = {str(w):[x,y,z] for w,x,y,z in zip([str(x) for x in l],dicjson['Ingredients'], dicjson['Volume'], dicjson['Calibrate'])}
+
         # Is there enough?
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             if i in dicjson['Ingredients']:
@@ -83,9 +87,7 @@ class Data:
             else:
                 return 'There is not enough '+ str(i), False
 
-        dicjson['Calibrate'] = [0.035 for _ in list(range(1,11))]
-        
-        dicjson = {str(w):[x,y,z] for w,x,y,z in zip(range(1,11),dicjson['Ingredients'], dicjson['Volume'], dicjson['Calibrate'])}
+        dicjson = {str(w):[x,y,z] for w,x,y,z in zip([str(x) for x in l],dicjson['Ingredients'], dicjson['Volume'], dicjson['Calibrate'])}
         
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
@@ -93,18 +95,20 @@ class Data:
         return "Preparing "+self.df.Name[num]+"...", True
 
     def autocalibration(self, id):
+        l = list(range(1,10))
+        l.insert(1,10)
         num = list(self.df.ID).index(id)
         diccsv = { 'Ingredients': str(self.df.Ingredients[num]).split(','),
                     'Volume': str(self.df.Volume[num]).split(','),}
         dicjson = { 'Ingredients': [x[0] for x in list(self.bottles.values())],
                     'Volume': [x[1] for x in list(self.bottles.values())]}
-
+        dicjson['Calibrate'] = [0.035 for _ in list(range(1,11))]
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             dicjson['Volume'][dicjson['Ingredients'].index(i)] = str(int(dicjson['Volume'][dicjson['Ingredients'].index(i)]) - int(j))
 
         dicjson['Ingredients'] = [x.replace('####','') for x in dicjson['Ingredients']]
         
-        dicjson = dict(enumerate(zip(dicjson['Ingredients'],[int(x) for x in dicjson['Volume']], [x[2] for x in self.bottles.values()]),1))
+        dicjson = {str(w):[x,y,z] for w,x,y,z in zip([str(x) for x in l],dicjson['Ingredients'], dicjson['Volume'], dicjson['Calibrate'])}
         
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))

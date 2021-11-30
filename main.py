@@ -639,6 +639,7 @@ class Ui_Form(object):
         boxes = boxes if len(boxes) > 0 else " "
         mix = ((False, True)[self.crt_horizontalSlider_11.value()])
 
+        # Validators
         if sum((self.crt_horizontalSlider.value(), self.crt_horizontalSlider_2.value(), self.crt_horizontalSlider_3.value(), self.crt_horizontalSlider_4.value(), self.crt_horizontalSlider_5.value(), self.crt_horizontalSlider_6.value(), self.crt_horizontalSlider_7.value(), self.crt_horizontalSlider_8.value(), self.crt_horizontalSlider_9.value(), self.crt_horizontalSlider_10.value())) > 500:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
@@ -1305,7 +1306,7 @@ class Ui_Form(object):
         "font-size: 18px;\n"
         "line-height: 28px;\n"
         "\n"
-        "color: #FFFFFF;")
+        "color: #FFFFFF;") 
         self.sel_pushButton_9.setObjectName("pushButton_9")
         self.sel_pushButton_9.clicked.connect(lambda: sys.exit(0))
         self.sel_pushButton = QtWidgets.QPushButton(self.form)
@@ -1827,7 +1828,7 @@ class Ui_Form(object):
             ret = msg.exec_()
             if (ret == QMessageBox.Yes):
                 message, verification = self.dat.verify(j)
-                input()
+                
                 self.dat.__init__()
                 if(verification):
                     msg = QMessageBox()
@@ -1840,7 +1841,7 @@ class Ui_Form(object):
                     time.sleep(2)
                     self.prepare_drink(j-1)
                     msg.close()
-
+                    
                     self.dat.autocalibration(j)
                     self.dat.__init__()
                     
@@ -1880,8 +1881,8 @@ class Ui_Form(object):
             seconds = int(self.dat.df.Volume[id])
         calibration = [0.035 for _ in selected]
         # self.ctr.pump_control(selected, seconds, calibration)
-        print(bool(self.dat.df.Boxes[id]))
-        if bool(self.dat.df.Boxes[id]):
+        # print(bool(self.dat.df.Boxes[id]))
+        if self.dat.df.Boxes[id] != " ":
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             if ',' in str(self.dat.df.Boxes[id]):
