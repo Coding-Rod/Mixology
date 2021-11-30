@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from apis.data import Data
-# from apis.control import Control
+from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -15,7 +15,7 @@ class Ui_Form(object):
         self.state = 0 #0: home_screen, 1: create, 2: calibrate, 3: select
         self.dat = Data()
         self.dat.clean_queue()
-        # self.ctr = Control()
+        self.ctr = Control()
         self.trash = False
         self.init= [0,0,0,0] #All screen aren't called
         self.state_machine(0)
