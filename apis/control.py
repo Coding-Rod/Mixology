@@ -11,21 +11,13 @@ class Control:
         [GPIO.output(x, GPIO.HIGH) for x in self.pumps]
             
     def pump_control(self, selected, seconds, calibration): #bottles
-        print(selected)
-        print(seconds)
-        print(calibration)
         try:
             for i,j,k in zip(selected, seconds, calibration):
                 GPIO.output(self.pumps[9-i], GPIO.LOW)
                 time.sleep(float(j)*float(k))
                 GPIO.output(self.pumps[9-i], GPIO.HIGH)
         except TypeError:
-            print(selected[0])
-            print(seconds)
-            print(calibration[0])
-            print(self.pumps[selected[0]])
             GPIO.output(self.pumps[selected[0]], GPIO.LOW)
             time.sleep(float(seconds)*float(calibration[0]))
             GPIO.output(self.pumps[selected[0]], GPIO.HIGH)
         except IndexError:
-            print("Index: "+str(seconds))
