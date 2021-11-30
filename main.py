@@ -1176,16 +1176,16 @@ class Ui_Form(object):
         self.cal_label_23.setText(str(self.dat.bottles["8"][1])+" ml")
         self.cal_label_25.setText(str(self.dat.bottles["9"][1])+" ml")
         self.cal_label_27.setText(str(self.dat.bottles["10"][1])+" ml")
-        self.cal_horizontalSlider.setValue(self.dat.bottles["1"][1])
-        self.cal_horizontalSlider_2.setValue(self.dat.bottles["2"][1])
-        self.cal_horizontalSlider_3.setValue(self.dat.bottles["3"][1])
-        self.cal_horizontalSlider_4.setValue(self.dat.bottles["4"][1])
-        self.cal_horizontalSlider_5.setValue(self.dat.bottles["5"][1])
-        self.cal_horizontalSlider_6.setValue(self.dat.bottles["6"][1])
-        self.cal_horizontalSlider_7.setValue(self.dat.bottles["7"][1])
-        self.cal_horizontalSlider_8.setValue(self.dat.bottles["8"][1])
-        self.cal_horizontalSlider_9.setValue(self.dat.bottles["9"][1])
-        self.cal_horizontalSlider_10.setValue(self.dat.bottles["10"][1])
+        self.cal_horizontalSlider.setValue(int(self.dat.bottles["1"][1]))
+        self.cal_horizontalSlider_2.setValue(int(self.dat.bottles["2"][1]))
+        self.cal_horizontalSlider_3.setValue(int(self.dat.bottles["3"][1]))
+        self.cal_horizontalSlider_4.setValue(int(self.dat.bottles["4"][1]))
+        self.cal_horizontalSlider_5.setValue(int(self.dat.bottles["5"][1]))
+        self.cal_horizontalSlider_6.setValue(int(self.dat.bottles["6"][1]))
+        self.cal_horizontalSlider_7.setValue(int(self.dat.bottles["7"][1]))
+        self.cal_horizontalSlider_8.setValue(int(self.dat.bottles["8"][1]))
+        self.cal_horizontalSlider_9.setValue(int(self.dat.bottles["9"][1]))
+        self.cal_horizontalSlider_10.setValue(int(self.dat.bottles["10"][1]))
         
     def cal_change_validator(self, num, name, value):
         if self.dat.bottles[str(num)][0] != name and value == 0:
@@ -1785,9 +1785,18 @@ class Ui_Form(object):
                 self.sel_toggleTrashcan()
         else:
             try:
-                self.dat.add_to_queue(id)
-                self.dat.__init__()
-                self.sel_show_queue()
+                message, verification = self.dat.verify(id)
+                if verification:
+                    self.dat.add_to_queue(id)
+                    self.dat.__init__()
+                    self.sel_show_queue()
+                else:
+                    msg = QMessageBox()
+                    msg.setIcon(QMessageBox.Critical)
+                    msg.setText(message)
+                    # msg.setInformativeText('More information')
+                    msg.setWindowTitle("Done")
+                    msg.exec_()
             except:
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Critical)
@@ -1828,7 +1837,7 @@ class Ui_Form(object):
             ret = msg.exec_()
             if (ret == QMessageBox.Yes):
                 message, verification = self.dat.verify(j)
-                
+                input()
                 self.dat.__init__()
                 if(verification):
                     msg = QMessageBox()
@@ -1841,7 +1850,7 @@ class Ui_Form(object):
                     time.sleep(2)
                     self.prepare_drink(j-1)
                     msg.close()
-                    
+
                     self.dat.autocalibration(j)
                     self.dat.__init__()
                     
@@ -1881,7 +1890,7 @@ class Ui_Form(object):
             seconds = int(self.dat.df.Volume[id])
         calibration = [0.035 for _ in selected]
         # self.ctr.pump_control(selected, seconds, calibration)
-        # print(bool(self.dat.df.Boxes[id]))
+        print(bool(self.dat.df.Boxes[id]))
         if self.dat.df.Boxes[id] != " ":
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
