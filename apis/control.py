@@ -16,9 +16,9 @@ class Control:
         print(calibration)
         try:
             for i,j,k in zip(selected, seconds, calibration):
-                GPIO.output(self.pumps[i], GPIO.LOW)
+                GPIO.output(self.pumps[9-i], GPIO.LOW)
                 time.sleep(float(j)*float(k))
-                GPIO.output(self.pumps[i], GPIO.HIGH)
+                GPIO.output(self.pumps[9-i], GPIO.HIGH)
         except TypeError:
             print(selected[0])
             print(seconds)
