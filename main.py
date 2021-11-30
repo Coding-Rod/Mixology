@@ -1256,7 +1256,6 @@ class Ui_Form(object):
                 # msg.setInformativeText('More information')
                 msg.setWindowTitle("Bottle changed")
                 msg.exec_()
-                print(bot)
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
                 self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
@@ -1827,7 +1826,6 @@ class Ui_Form(object):
 
     def sel_prepare(self):
         pause = False
-        print("prepare")
         for i,j in enumerate(self.dat.queue.values(),1):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
@@ -1838,10 +1836,8 @@ class Ui_Form(object):
             ret = msg.exec_()
             if (ret == QMessageBox.Yes):
                 message, verification = self.dat.verify(j)
-                input()
                 self.dat.__init__()
                 if(verification):
-                    print("enter if")
                     msg = QMessageBox()
                     msg.setIcon(QMessageBox.Information)
                     msg.setText(message)
@@ -1853,11 +1849,9 @@ class Ui_Form(object):
                     self.prepare_drink(j-1)
                     msg.close()
 
-                    print("show message")
                     self.dat.autocalibration(j)
                     self.dat.__init__()
                     
-                    print("autocalibrate")
                     msg = QMessageBox()
                     msg.setIcon(QMessageBox.Information)
                     msg.setText("Your "+self.dat.df.Name[j-1]+" is ready!!!")
@@ -1894,7 +1888,6 @@ class Ui_Form(object):
             seconds = int(self.dat.df.Volume[id])
         calibration = [0.035 for _ in selected]
         self.ctr.pump_control(selected, seconds, calibration)
-        # print(bool(self.dat.df.Boxes[id]))
         if self.dat.df.Boxes[id] != " ":
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
