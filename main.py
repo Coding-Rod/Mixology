@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from apis.data import Data
-from apis.control import Control
+# from apis.control import Control
 import time
 
 class Ui_Form(object):
@@ -12,10 +12,10 @@ class Ui_Form(object):
         self.form.setObjectName("form")
         self.form.resize(800, 380)
         self.form.setStyleSheet("background-color: rgb(236, 236, 236);\n")
-        self.state = 0
+        self.state = 0 #0: home_screen, 1: create, 2: calibrate, 3: select
         self.dat = Data()
         self.dat.clean_queue()
-        self.ctr = Control()
+        # self.ctr = Control()
         self.trash = False
         self.init= [0,0,0,0] #All screen aren't called
         self.state_machine(0)
@@ -439,7 +439,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider.setMaximum(500)
         self.crt_horizontalSlider.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider.setTickInterval(50)
         self.crt_horizontalSlider.setStyleSheet(self.slider_formatters())
 
@@ -447,7 +446,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_2.setMaximum(500)
         self.crt_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_2.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_2.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_2.setTickInterval(50)
         self.crt_horizontalSlider_2.setStyleSheet(self.slider_formatters())
 
@@ -455,7 +453,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_3.setMaximum(500)
         self.crt_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_3.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_3.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_3.setTickInterval(50)
         self.crt_horizontalSlider_3.setStyleSheet(self.slider_formatters())
 
@@ -463,7 +460,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_4.setMaximum(500)
         self.crt_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_4.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_4.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_4.setTickInterval(50)
         self.crt_horizontalSlider_4.setStyleSheet(self.slider_formatters())
 
@@ -471,7 +467,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_5.setMaximum(500)
         self.crt_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_5.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_5.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_5.setTickInterval(50)
         self.crt_horizontalSlider_5.setStyleSheet(self.slider_formatters())
 
@@ -479,7 +474,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_6.setMaximum(500)
         self.crt_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_6.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_6.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_6.setTickInterval(50)
         self.crt_horizontalSlider_6.setStyleSheet(self.slider_formatters())
 
@@ -487,7 +481,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_7.setMaximum(500)
         self.crt_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_7.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_7.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_7.setTickInterval(50)
         self.crt_horizontalSlider_7.setStyleSheet(self.slider_formatters())
 
@@ -495,7 +488,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_8.setMaximum(500)
         self.crt_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_8.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_8.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_8.setTickInterval(50)
         self.crt_horizontalSlider_8.setStyleSheet(self.slider_formatters())
 
@@ -503,7 +495,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_9.setMaximum(500)
         self.crt_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_9.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_9.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_9.setTickInterval(50)
         self.crt_horizontalSlider_9.setStyleSheet(self.slider_formatters())
 
@@ -511,7 +502,6 @@ class Ui_Form(object):
         self.crt_horizontalSlider_10.setMaximum(500)
         self.crt_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_10.valueChanged.connect(self.crt_update_val)
-        self.crt_horizontalSlider_10.setTickPosition(QSlider.TicksBelow)
         self.crt_horizontalSlider_10.setTickInterval(50)
         self.crt_horizontalSlider_10.setStyleSheet(self.slider_formatters())
         #endregion Slider formatter
@@ -1267,7 +1257,7 @@ class Ui_Form(object):
                 msg.exec_()
                 print(bot)
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
-                self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
+                # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
     #endregion calibrate
 
@@ -1837,6 +1827,7 @@ class Ui_Form(object):
             ret = msg.exec_()
             if (ret == QMessageBox.Yes):
                 message, verification = self.dat.verify(j)
+                input()
                 self.dat.__init__()
                 if(verification):
                     msg = QMessageBox()
@@ -1888,7 +1879,7 @@ class Ui_Form(object):
         except:
             seconds = int(self.dat.df.Volume[id])
         calibration = [0.035 for _ in selected]
-        self.ctr.pump_control(selected, seconds, calibration)
+        # self.ctr.pump_control(selected, seconds, calibration)
         print(bool(self.dat.df.Boxes[id]))
         if bool(self.dat.df.Boxes[id]):
             msg = QMessageBox()
