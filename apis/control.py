@@ -19,7 +19,7 @@ class Control:
                 GPIO.output(self.pumps[i], GPIO.LOW)
                 time.sleep(float(j)*float(k))
                 GPIO.output(self.pumps[i], GPIO.HIGH)
-        except:
+        except TypeError:
             print(selected[0])
             print(seconds)
             print(calibration[0])
@@ -27,3 +27,5 @@ class Control:
             GPIO.output(self.pumps[selected[0]], GPIO.LOW)
             time.sleep(float(seconds)*float(calibration[0]))
             GPIO.output(self.pumps[selected[0]], GPIO.HIGH)
+        except IndexError:
+            print("Index: "+str(seconds))
