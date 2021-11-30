@@ -1827,6 +1827,7 @@ class Ui_Form(object):
 
     def sel_prepare(self):
         pause = False
+        print("prepare")
         for i,j in enumerate(self.dat.queue.values(),1):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
@@ -1840,6 +1841,7 @@ class Ui_Form(object):
                 input()
                 self.dat.__init__()
                 if(verification):
+                    print("enter if")
                     msg = QMessageBox()
                     msg.setIcon(QMessageBox.Information)
                     msg.setText(message)
@@ -1851,9 +1853,11 @@ class Ui_Form(object):
                     self.prepare_drink(j-1)
                     msg.close()
 
+                    print("show message")
                     self.dat.autocalibration(j)
                     self.dat.__init__()
                     
+                    print("autocalibrate")
                     msg = QMessageBox()
                     msg.setIcon(QMessageBox.Information)
                     msg.setText("Your "+self.dat.df.Name[j-1]+" is ready!!!")
