@@ -1858,6 +1858,9 @@ class Ui_Form(object):
             ret = msg.exec_()
     #endregion select    
     
+    
+    
+    
     def state_machine(self,state):
         self.dat.__init__()
         self.state = state
