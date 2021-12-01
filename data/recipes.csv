@@ -3,7 +3,3 @@ ID,Name,Ingredients,Volume,Boxes,Mix
 2,Chocolike,"Chocolate,Milk","600,500", ,True
 3,cocalemon,"Coca cola,Lemon","500,100",Ice,True
 4,Apple,"Apple,B,Arandano","300,100,100","Coconut,Mint,Cherry,Grape,Lemon,Ice",False
-5,Coca Cola,Coca Cola,600,Ice,False
-6,Driae,"Arandano,Orange","200,150",Ice,False
-7,Barusu,B,150, ,False
-8,Raul,"Piña,Limón,Maracuyá","100,200,200","Limon,Hierba buena,Hielo,Manzana",False
