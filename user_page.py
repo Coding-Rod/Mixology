@@ -10,10 +10,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+from apis.data import Data
+from glob import glob
 
 class Ui_Form(object):
     def __init__(self,Form):
         self.form = Form
+        self.user_screen = 1
+        self.dat = Data()
         self.setupUi()
 
     def buttonStyle(self):
@@ -48,7 +52,7 @@ class Ui_Form(object):
         }
         QPushButton:pressed {
             color: #fff;
-            background-color: #E09825;
+            background-color: #333;
         }"""
     
     def ButtonImageStyle(self):
@@ -58,7 +62,7 @@ class Ui_Form(object):
             background-repeat: no-repeat;
         }
         QPushButton:hover {
-            opacity:0.3;
+            background-color: #aaa;
         }
         QPushButton:pressed {
             background-color: #E09825;
@@ -105,42 +109,52 @@ class Ui_Form(object):
         self.pushButton_6 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_6.setObjectName("pushButton_6")
         self.pushButton_6.setStyleSheet(self.buttonStyle())
+        self.pushButton_6.clicked.connect(lambda: self.change_recipe(1))
         self.horizontalLayout.addWidget(self.pushButton_6)
         self.pushButton_7 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_7.setObjectName("pushButton_7")
         self.pushButton_7.setStyleSheet(self.buttonStyle())
+        self.pushButton_7.clicked.connect(lambda: self.change_recipe(2))
         self.horizontalLayout.addWidget(self.pushButton_7)
         self.pushButton_8 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_8.setObjectName("pushButton_8")
         self.pushButton_8.setStyleSheet(self.buttonStyle())
+        self.pushButton_8.clicked.connect(lambda: self.change_recipe(3))
         self.horizontalLayout.addWidget(self.pushButton_8)
         self.pushButton_9 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_9.setObjectName("pushButton_9")
         self.pushButton_9.setStyleSheet(self.buttonStyle())
+        self.pushButton_9.clicked.connect(lambda: self.change_recipe(4))
         self.horizontalLayout.addWidget(self.pushButton_9)
         self.pushButton_10 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_10.setObjectName("pushButton_10")
         self.pushButton_10.setStyleSheet(self.buttonStyle())
+        self.pushButton_10.clicked.connect(lambda: self.change_recipe(5))
         self.horizontalLayout.addWidget(self.pushButton_10)
         self.pushButton_11 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_11.setObjectName("pushButton_11")
         self.pushButton_11.setStyleSheet(self.buttonStyle())
+        self.pushButton_11.clicked.connect(lambda: self.change_recipe(6))
         self.horizontalLayout.addWidget(self.pushButton_11)
         self.pushButton_12 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_12.setObjectName("pushButton_12")
         self.pushButton_12.setStyleSheet(self.buttonStyle())
+        self.pushButton_12.clicked.connect(lambda: self.change_recipe(7))
         self.horizontalLayout.addWidget(self.pushButton_12)
         self.pushButton_13 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_13.setObjectName("pushButton_13")
         self.pushButton_13.setStyleSheet(self.buttonStyle())
+        self.pushButton_13.clicked.connect(lambda: self.change_recipe(8))
         self.horizontalLayout.addWidget(self.pushButton_13)
         self.pushButton_14 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_14.setObjectName("pushButton_14")
         self.pushButton_14.setStyleSheet(self.buttonStyle())
+        self.pushButton_14.clicked.connect(lambda: self.change_recipe(9))
         self.horizontalLayout.addWidget(self.pushButton_14)
         self.pushButton_15 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.pushButton_15.setObjectName("pushButton_15")
         self.pushButton_15.setStyleSheet(self.buttonStyle())
+        self.pushButton_15.clicked.connect(lambda: self.change_recipe(10))
         self.horizontalLayout.addWidget(self.pushButton_15)
         #endregion button menu
         
@@ -188,11 +202,13 @@ class Ui_Form(object):
         self.pushButton_4.setGeometry(QtCore.QRect(165, 90, 30, 230))
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_4.setStyleSheet(self.buttonNavStyle())
+        self.pushButton_4.clicked.connect(lambda: self.change_recipe("-"))
         
         self.pushButton_5 = QtWidgets.QPushButton(self.form)
         self.pushButton_5.setGeometry(QtCore.QRect(605, 90, 30, 230))
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_5.setStyleSheet(self.buttonNavStyle())
+        self.pushButton_5.clicked.connect(lambda: self.change_recipe("+"))
         
         
         self.label_6 = QtWidgets.QLabel(self.form)
@@ -222,39 +238,54 @@ class Ui_Form(object):
         self.retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self.form)
 
+    def change_recipe(self, sign):
+        if sign == "+":
+            self.user_screen +=1
+        elif sign == "-":
+            self.user_screen -=1
+        else:
+            self.user_screen = sign
+        self.retranslateUi()
+            
+
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.label.setText(_translate("self.form", "    MIXOLOGY"))
         self.pushButton_6.setText(_translate("self.form", "1"))
+        self.pushButton_6.setVisible(len(self.dat.df.ID)>0)
         self.pushButton_7.setText(_translate("self.form", "2"))
+        self.pushButton_7.setVisible(len(self.dat.df.ID)>1)
         self.pushButton_8.setText(_translate("self.form", "3"))
+        self.pushButton_8.setVisible(len(self.dat.df.ID)>2)
         self.pushButton_9.setText(_translate("self.form", "4"))
+        self.pushButton_9.setVisible(len(self.dat.df.ID)>3)
         self.pushButton_10.setText(_translate("self.form", "5"))
+        self.pushButton_10.setVisible(len(self.dat.df.ID)>4)
         self.pushButton_11.setText(_translate("self.form", "6"))
+        self.pushButton_11.setVisible(len(self.dat.df.ID)>5)
         self.pushButton_12.setText(_translate("self.form", "7"))
+        self.pushButton_12.setVisible(len(self.dat.df.ID)>6)
         self.pushButton_13.setText(_translate("self.form", "8"))
+        self.pushButton_13.setVisible(len(self.dat.df.ID)>7)
         self.pushButton_14.setText(_translate("self.form", "9"))
+        self.pushButton_14.setVisible(len(self.dat.df.ID)>8)
         self.pushButton_15.setText(_translate("self.form", "10"))
+        self.pushButton_15.setVisible(len(self.dat.df.ID)>9)
         self.label_2.setText(_translate("self.form", "Líquidos"))
-        self.label_3.setText(_translate("self.form", "- item 1\n"
-        "- item 2\n"
-        "- item 3\n"
-        "- item 4\n"
-        "- item 5\n"
-        "- item 6"))
+        self.label_3.setText("-"+"\n-".join(self.dat.df.Ingredients[self.user_screen-1].split(',')))
         self.label_4.setText(_translate("self.form", "Sólidos"))
-        self.label_5.setText(_translate("self.form", "- item 1\n"
-        "- item 2\n"
-        "- item 3\n"
-        "- item 4\n"
-        "- item 5\n"
-        "- item 6"))
-        self.pushButton_4.setText(_translate("self.form", "<"))
-        self.pushButton_5.setText(_translate("self.form", ">"))
-        self.label_6.setText(_translate("self.form", "Nombre"))
-        self.pushButton_16.setIcon(QIcon('images/mojito.jpg'))
-        self.pushButton_16.setIconSize(QtCore.QSize(410, 230))
+        self.label_5.setText("-"+"\n-".join(self.dat.df.Boxes[self.user_screen-1].split(',')))
+        self.pushButton_4.setText("<" if self.user_screen>1 else "")
+        self.pushButton_4.setEnabled(self.user_screen>1)
+        self.pushButton_5.setText(">" if self.user_screen<len(self.dat.df.ID) else "")
+        self.pushButton_5.setEnabled(self.user_screen<len(self.dat.df.ID))
+        self.label_6.setText(self.dat.df.Name[self.user_screen-1])
+        if self.dat.df.Name[self.user_screen-1]+'.jpg' in [x.replace("images/","") for x in glob("images/*")]:
+            self.pushButton_16.setIcon(QIcon('images/'+self.dat.df.Name[self.user_screen-1]+'.jpg'))
+        else:
+            self.pushButton_16.setIcon(QIcon('images/Logo.jpg'))
+        self.pushButton_16.setIconSize(QtCore.QSize(400, 220))
         self.pushButton_16.setStyleSheet(self.ButtonImageStyle())
 
 if __name__ == "__main__":

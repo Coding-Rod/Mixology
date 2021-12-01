@@ -5,6 +5,7 @@ from PyQt5.QtCore import *
 from apis.data import Data
 # from apis.control import Control
 import time
+from glob import glob
 
 class Ui_Form(object):
     def __init__(self, Form):
@@ -13,13 +14,13 @@ class Ui_Form(object):
         self.form.resize(800, 380)
         self.form.setStyleSheet("background-color: rgb(236, 236, 236);\n")
         self.state = 0 #0: home_screen, 1: create, 2: calibrate, 3: select
+        self.user_screen = 1
         self.dat = Data()
         self.dat.clean_queue()
         # self.ctr = Control()
-        self.trash = False
+        self.trash = True
         self.init= [0,0,0,0] #All screen aren't called
         self.state_machine(0)
-        self.user_screen = 1
     
     def slider_formatters(self):
         return """
@@ -655,7 +656,7 @@ class Ui_Form(object):
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Error")
             msg.exec_()
-        elif len(self.dat.df.ID) == 9:
+        elif len(self.dat.df.ID) == 10:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
             msg.setText("No more space for drinks")
@@ -1587,36 +1588,7 @@ class Ui_Form(object):
 
         self.sel_gridLayout.addWidget(self.sel_pushButton_13, 8, 0, 1, 1)
         self.sel_scrollArea.setWidget(self.sel_scrollAreaWidgetContents)
-        self.sel_pushButton_2 = QtWidgets.QPushButton(self.form)
-        self.sel_pushButton_2.setGeometry(QtCore.QRect(720, 300, 65, 65))
-        self.sel_pushButton_2.setStyleSheet("border-image: url(:/check/assets/check2.png);\n"
-        "\n"
-        "border-radius:30px")
-        self.sel_pushButton_2.setText("")
-        self.sel_pushButton_2.setIcon(QIcon('assets/play.png'))
-        self.sel_pushButton_2.setIconSize(QtCore.QSize(50, 50))
-        self.sel_pushButton_2.setStyleSheet("border-radius:30px\noverflow:hidden;")
-        self.sel_pushButton_2.setObjectName("pushButton_2")
-        self.sel_pushButton_2.clicked.connect(self.sel_prepare)
 
-        self.sel_pushButton_14 = QtWidgets.QPushButton(self.form)
-        self.sel_pushButton_14.setText("Clean queue")
-        self.sel_pushButton_14.clicked.connect(self.sel_clear_queue)
-        self.sel_pushButton_14.setGeometry(QtCore.QRect(300, 300, 100, 65))
-        self.sel_pushButton_14.setObjectName("pushButton_14")
-
-        self.sel_pushButton_15 = QtWidgets.QPushButton(self.form)
-        self.sel_pushButton_15.setGeometry(QtCore.QRect(650, 300, 65, 65))
-        self.sel_pushButton_15.setStyleSheet("border-image: url(:/check/assets/check2.png);\n"
-        "\n"
-        "border-radius:30px")
-        self.sel_pushButton_15.setText("")
-        self.sel_pushButton_15.setIcon(QIcon('assets/trash2.png'))
-        self.sel_pushButton_15.setIconSize(QtCore.QSize(50, 50))
-        self.sel_pushButton_15.setStyleSheet("border-radius:30px\noverflow:hidden;")
-        self.sel_pushButton_15.setObjectName("pushButton_15")
-        self.sel_pushButton_15.clicked.connect(self.sel_toggleTrashcan)
-        
         self.sel_pushButton_16 = QtWidgets.QPushButton(self.form)
         self.sel_pushButton_16.setText("Show queue")
         self.sel_pushButton_16.clicked.connect(self.sel_show_queue)
@@ -1625,40 +1597,6 @@ class Ui_Form(object):
         
         self.sel_retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self.form)
-
-    def sel_toggleTrashcan(self):
-        self.trash = not self.trash
-        self.sel_label_7.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-        self.sel_label_32.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-        self.sel_label_33.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-        self.sel_label_40.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-        self.sel_label_28.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-        self.sel_label_24.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-        self.sel_label_38.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-        self.sel_label_30.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-        self.sel_label_25.setStyleSheet("background-color: #D32F2F; color: #FFFFFF;" if self.trash else "background-color: rgb(186, 189, 182);\ncolor: #000000;")
-
-        self.sel_label_16.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-        self.sel_label_36.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-        self.sel_label_22.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-        self.sel_label_23.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-        self.sel_label_31.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-        self.sel_label_19.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-        self.sel_label_37.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-        self.sel_label_20.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-        self.sel_label_41.setStyleSheet("background-color: #E57373; color: #000000;" if self.trash else "background-color: rgb(136, 138, 133);\ncolor: #FFFFFF;")
-
-        self.sel_pushButton_3.setText("Remove" if self.trash else "Add queue")
-        self.sel_pushButton_4.setText("Remove" if self.trash else "Add queue")
-        self.sel_pushButton_5.setText("Remove" if self.trash else "Add queue")
-        self.sel_pushButton_6.setText("Remove" if self.trash else "Add queue")
-        self.sel_pushButton_7.setText("Remove" if self.trash else "Add queue")
-        self.sel_pushButton_10.setText("Remove" if self.trash else "Add queue")
-        self.sel_pushButton_11.setText("Remove" if self.trash else "Add queue")
-        self.sel_pushButton_12.setText("Remove" if self.trash else "Add queue")
-        self.sel_pushButton_13.setText("Remove" if self.trash else "Add queue")
-
-        self.sel_pushButton_15.setIcon(QIcon('assets/list.png' if self.trash else 'assets/trash2.png'))
 
     def sel_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -1673,7 +1611,7 @@ class Ui_Form(object):
             self.sel_label_7.setVisible(True)
             self.sel_label_7.setText(_translate("self.form", self.dat.df.Ingredients[0]+","+self.dat.df.Boxes[0] if len(self.dat.df.Boxes[0])>1 else self.dat.df.Ingredients[0]))
             self.sel_pushButton_3.setVisible(True)
-            self.sel_pushButton_3.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_3.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_36.setVisible(False)
             self.sel_label_7.setVisible(False)
@@ -1684,7 +1622,7 @@ class Ui_Form(object):
             self.sel_label_16.setVisible(True)
             self.sel_label_16.setText(_translate("self.form", self.dat.df.Ingredients[1]+","+self.dat.df.Boxes[1] if len(self.dat.df.Boxes[1])>1 else self.dat.df.Ingredients[1]))
             self.sel_pushButton_4.setVisible(True)
-            self.sel_pushButton_4.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_4.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_32.setVisible(False)
             self.sel_label_16.setVisible(False)
@@ -1695,7 +1633,7 @@ class Ui_Form(object):
             self.sel_label_33.setVisible(True)
             self.sel_label_33.setText(_translate("self.form", self.dat.df.Ingredients[2]+","+self.dat.df.Boxes[2] if len(self.dat.df.Boxes[2])>1 else self.dat.df.Ingredients[2]))
             self.sel_pushButton_5.setVisible(True)
-            self.sel_pushButton_5.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_5.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_22.setVisible(False)
             self.sel_label_33.setVisible(False)
@@ -1706,7 +1644,7 @@ class Ui_Form(object):
             self.sel_label_23.setVisible(True)
             self.sel_label_23.setText(_translate("self.form", self.dat.df.Ingredients[3]+","+self.dat.df.Boxes[3] if len(self.dat.df.Boxes[3])>1 else self.dat.df.Ingredients[3]))
             self.sel_pushButton_6.setVisible(True)
-            self.sel_pushButton_6.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_6.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_40.setVisible(False)
             self.sel_label_23.setVisible(False)
@@ -1717,7 +1655,7 @@ class Ui_Form(object):
             self.sel_label_28.setVisible(True)
             self.sel_label_28.setText(_translate("self.form", self.dat.df.Ingredients[4]+","+self.dat.df.Boxes[4] if len(self.dat.df.Boxes[4])>1 else self.dat.df.Ingredients[4]))
             self.sel_pushButton_7.setVisible(True)
-            self.sel_pushButton_7.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_7.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_31.setVisible(False)
             self.sel_label_28.setVisible(False)
@@ -1728,7 +1666,7 @@ class Ui_Form(object):
             self.sel_label_19.setVisible(True)
             self.sel_label_19.setText(_translate("self.form", self.dat.df.Ingredients[5]+","+self.dat.df.Boxes[5] if len(self.dat.df.Boxes[5])>1 else self.dat.df.Ingredients[5]))
             self.sel_pushButton_10.setVisible(True)
-            self.sel_pushButton_10.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_10.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_24.setVisible(False)
             self.sel_label_19.setVisible(False)
@@ -1739,7 +1677,7 @@ class Ui_Form(object):
             self.sel_label_38.setVisible(True)
             self.sel_label_38.setText(_translate("self.form", self.dat.df.Ingredients[6]+","+self.dat.df.Boxes[6] if len(self.dat.df.Boxes[6])>1 else self.dat.df.Ingredients[6]))
             self.sel_pushButton_11.setVisible(True)
-            self.sel_pushButton_11.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_11.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_20.setVisible(False)
             self.sel_label_38.setVisible(False)
@@ -1750,7 +1688,7 @@ class Ui_Form(object):
             self.sel_label_37.setVisible(True)
             self.sel_label_37.setText(_translate("self.form", self.dat.df.Ingredients[7]+","+self.dat.df.Boxes[7] if len(self.dat.df.Boxes[7])>1 else self.dat.df.Ingredients[7]))
             self.sel_pushButton_12.setVisible(True)
-            self.sel_pushButton_12.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_12.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_25.setVisible(False)
             self.sel_label_37.setVisible(False)
@@ -1761,7 +1699,7 @@ class Ui_Form(object):
             self.sel_label_30.setVisible(True)
             self.sel_label_30.setText(_translate("self.form", self.dat.df.Ingredients[8]+","+self.dat.df.Boxes[8] if len(self.dat.df.Boxes[8])>1 else self.dat.df.Ingredients[8]))
             self.sel_pushButton_13.setVisible(True)
-            self.sel_pushButton_13.setText(_translate("self.form", "add queue"))
+            self.sel_pushButton_13.setText(_translate("self.form", "remove"))
         except:
             self.sel_label_41.setVisible(False)
             self.sel_label_30.setVisible(False)
