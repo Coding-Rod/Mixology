@@ -19,7 +19,7 @@ class Ui_Form(object):
         self.dat.clean_queue()
         # self.ctr = Control()
         self.trash = True
-        self.init= [0,0,0,0] #All screen aren't called
+        self.init= [0,0,0,0,0] #All screen aren't called
         self.state_machine(0)
     
     def slider_formatters(self):
@@ -156,8 +156,22 @@ class Ui_Form(object):
         "color: #FFFFFF;\n"
         "background-color: #E09825;")
         self.label.setObjectName("label")
+        
+        self.pushButton_3 = QtWidgets.QPushButton(self.form)
+        self.pushButton_3.setGeometry(QtCore.QRect(10, 310, 65, 65))
+        self.pushButton_3.setStyleSheet("border-image: url(:/back/assets/back.png);\n"
+        "border-radius:30px\n"
+        "")
+        self.pushButton_3.setText("")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_3.setIcon(QIcon('assets/back.png'))
+        self.pushButton_3.setIconSize(QtCore.QSize(50, 50))
+        self.pushButton_3.setStyleSheet("border-radius:30px\noverflow:hidden;")
+        self.pushButton_3.clicked.connect(lambda: self.state_machine(4))
+        
         self.label.raise_()
         self.pushButton.raise_()
+        self.pushButton_3.raise_()
         self.pushButton_4.raise_()
         self.pushButton_5.raise_()
         self.pushButton_6.raise_()
@@ -1744,6 +1758,7 @@ class Ui_Form(object):
                 msg.exec_()
             
     def sel_show_queue(self):
+        # TODO: clear queue
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()])))
@@ -1857,11 +1872,14 @@ class Ui_Form(object):
             msg.setWindowTitle("Mix your beverage")
             ret = msg.exec_()
     #endregion select    
+        
+    #region user
     
-    
-    
+    #endregion user
     
     def state_machine(self,state):
+        # TODO: Call function
+        # TODO: Trash
         self.dat.__init__()
         self.state = state
         if self.state == 0 and self.init[0] == 0:

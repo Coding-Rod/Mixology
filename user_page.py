@@ -90,11 +90,14 @@ class Ui_Form(object):
         self.usr_pushButton.setObjectName("usr_pushButton")
         self.usr_pushButton.setIcon(QIcon('assets/settings.png'))
         self.usr_pushButton.setIconSize(QtCore.QSize(40, 40))
+        #TODO: Go main
+        #TODO: Password
         self.usr_pushButton_2 = QtWidgets.QPushButton(self.form)
         self.usr_pushButton_2.setGeometry(QtCore.QRect(10, 310, 65, 65))
         self.usr_pushButton_2.setObjectName("usr_pushButton_2")
         self.usr_pushButton_2.setIcon(QIcon('assets/queue.png'))
         self.usr_pushButton_2.setIconSize(QtCore.QSize(50, 50))
+        #TODO: Show queue
         
         self.usr_horizontalLayoutWidget = QtWidgets.QWidget(self.form)
         self.usr_horizontalLayoutWidget.setGeometry(QtCore.QRect(150, 340, 500, 30))
@@ -197,6 +200,7 @@ class Ui_Form(object):
         self.usr_pushButton_3.setIcon(QIcon('assets/check2.png'))
         self.usr_pushButton_3.setIconSize(QtCore.QSize(50, 50))
         self.usr_pushButton_3.setStyleSheet("border-radius:30px\noverflow:hidden;")
+        # TODO: Play button
         
         self.usr_pushButton_4 = QtWidgets.QPushButton(self.form)
         self.usr_pushButton_4.setGeometry(QtCore.QRect(165, 90, 30, 230))
