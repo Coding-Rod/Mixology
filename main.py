@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from apis.data import Data
-from apis.control import Control
+# from apis.control import Control
 import time
 from glob import glob
 
@@ -17,7 +17,7 @@ class Ui_Form(object):
         self.user_screen = 1
         self.dat = Data()
         self.dat.clean_queue()
-        self.ctr = Control()
+        # self.ctr = Control()
         self.trash = True
         self.init= [0,0,0,0,0] #All screen aren't called
         self.state_machine(4)
@@ -102,8 +102,8 @@ class Ui_Form(object):
     def buttonNavStyle(self):
         return """
         QPushButton{
-        background-color: #241a16;
-        color: #fff;
+            background-color: #241a16;
+            color: #fff;
         }
         QPushButton:hover {
             color: #fff;
@@ -1309,6 +1309,7 @@ class Ui_Form(object):
             msg.exec_()
             
             if changes:
+                print(bot)
                 self.dat.__init__()
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Information)
@@ -1317,7 +1318,7 @@ class Ui_Form(object):
                 msg.setWindowTitle("Cambio de botella")
                 msg.exec_()
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
-                self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
+                # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
     #endregion calibrate
 
@@ -1897,7 +1898,7 @@ class Ui_Form(object):
             
         
         calibration = [0.035 for _ in selected]
-        self.ctr.pump_control(selected, seconds, calibration)
+        # self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id] != " ":
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)

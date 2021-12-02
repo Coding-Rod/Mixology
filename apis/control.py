@@ -4,10 +4,9 @@ import time
 class Control:
     def __init__(self):
         self.pumps = [2,3,4,17,27,22,10,9,11,0] # Bottles
-        self.leds = [14,15,18,23,24,25] # Boxes and mixer
 
         GPIO.setmode(GPIO.BCM)
-        [GPIO.setup(i,GPIO.OUT) for i in (self.leds+self.pumps)]
+        [GPIO.setup(i,GPIO.OUT) for i in self.pumps]
         [GPIO.output(x, GPIO.HIGH) for x in self.pumps]
             
     def pump_control(self, selected, seconds, calibration): #bottles
