@@ -145,7 +145,7 @@ class Ui_Form(object):
         "\n"
         "color: #FFFFFF;\n"
         "border-image: url(assets/img2.png)")
-        self.pushButton.setText("Create")
+        self.pushButton.setText("Crear")
         self.pushButton.clicked.connect(lambda: self.state_machine(1))
         self.pushButton.setObjectName("pushButton")
         self.pushButton_4 = QtWidgets.QPushButton(self.form)
@@ -176,7 +176,7 @@ class Ui_Form(object):
         "\n"
         "color: #FFFFFF;\n"
         "border-image: url(assets/img1.png)")
-        self.pushButton_5.setText("Calibrate")
+        self.pushButton_5.setText("Calibrar")
         self.pushButton_5.clicked.connect(lambda: self.state_machine(2))
         self.pushButton_5.setObjectName("pushButton_5")
         self.pushButton_6 = QtWidgets.QPushButton(self.form)
@@ -193,7 +193,7 @@ class Ui_Form(object):
         "\n"
         "color: #FFFFFF;\n"
         "border-image: url(assets/img0.png)")
-        self.pushButton_6.setText("Select")
+        self.pushButton_6.setText("Seleccionar")
         self.pushButton_6.clicked.connect(lambda: self.state_machine(3))
         self.pushButton_6.setObjectName("pushButton_6")
         self.label = QtWidgets.QLabel(self.form)
@@ -620,7 +620,7 @@ class Ui_Form(object):
     def crt_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle(_translate("self.form", "Mixology"))
-        self.crt_label_2.setText(_translate("self.form", "    CREATE"))
+        self.crt_label_2.setText(_translate("self.form", "    CREAR"))
         self.crt_pushButton_7.setText(_translate("self.form", "X"))
         self.crt_label_12.setText(_translate("self.form", "MIX"))
         self.crt_textEdit.setHtml(_translate("self.form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -710,28 +710,21 @@ class Ui_Form(object):
         if sum((self.crt_horizontalSlider.value(), self.crt_horizontalSlider_2.value(), self.crt_horizontalSlider_3.value(), self.crt_horizontalSlider_4.value(), self.crt_horizontalSlider_5.value(), self.crt_horizontalSlider_6.value(), self.crt_horizontalSlider_7.value(), self.crt_horizontalSlider_8.value(), self.crt_horizontalSlider_9.value(), self.crt_horizontalSlider_10.value())) > 500:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
-            msg.setText("Serve a glass, not a jar!\nMaximum: 500 ml")
+            msg.setText("Máximo: 500 ml")
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Error")
             msg.exec_()
         elif (not len(name)):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
-            msg.setText("Name your drink")
+            msg.setText("Falta nombre en la bebida")
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Error")
             msg.exec_()
         elif len(self.dat.df.ID) == 10:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
-            msg.setText("No more space for drinks")
-            # msg.setInformativeText('More information')
-            msg.setWindowTitle("Error")
-            msg.exec_()
-        elif not len(ingredients):
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Critical)
-            msg.setText("Will you serve an empty glass?")
+            msg.setText("No hay más espacio para bebidas")
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Error")
             msg.exec_()
@@ -740,9 +733,9 @@ class Ui_Form(object):
             self.dat.__init__()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
-            msg.setText("Your recipe is saved")
+            msg.setText("Tu receta fue guardada")
             # msg.setInformativeText('More information')
-            msg.setWindowTitle("Saved")
+            msg.setWindowTitle("Guardado")
             msg.exec_()
             self.crt_label.setText(self.dat.bottles['1'][0]+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+"0 ml")
             self.crt_label_3.setText(self.dat.bottles['2'][0]+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+"0 ml")
@@ -1226,13 +1219,13 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.cal_pushButton_7.setText(_translate("self.form", "X"))
-        self.cal_label_2.setText(_translate("self.form", "    CALIBRATE"))
-        self.cal_label_12.setText(_translate("self.form", "Box 1"))
-        self.cal_label_13.setText(_translate("self.form", "Box 2"))
-        self.cal_label_14.setText(_translate("self.form", "Box 3"))
-        self.cal_label_15.setText(_translate("self.form", "Box 4"))
-        self.cal_label_16.setText(_translate("self.form", "Box 5"))
-        self.cal_label_17.setText(_translate("self.form", "Box 6"))
+        self.cal_label_2.setText(_translate("self.form", "    CALIBRAR"))
+        self.cal_label_12.setText(_translate("self.form", "Cajón 1"))
+        self.cal_label_13.setText(_translate("self.form", "Cajón 2"))
+        self.cal_label_14.setText(_translate("self.form", "Cajón 3"))
+        self.cal_label_15.setText(_translate("self.form", "Cajón 4"))
+        self.cal_label_16.setText(_translate("self.form", "Cajón 5"))
+        self.cal_label_17.setText(_translate("self.form", "Cajón 6"))
         self.cal_label_22.setText(str(self.dat.bottles["1"][1])+" ml")
         self.cal_label_26.setText(str(self.dat.bottles["2"][1])+" ml")
         self.cal_label_18.setText(str(self.dat.bottles["3"][1])+" ml")
@@ -1258,7 +1251,7 @@ class Ui_Form(object):
         if self.dat.bottles[str(num)][0] != name and value == 0:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
-            msg.setText("Why would you put an empty bottle?\nSet the content of the "+name)
+            msg.setText("Por qué estás colocando una botella vacía?\nIngresa el contenido de "+name)
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Error")
             msg.exec_()
@@ -1310,18 +1303,18 @@ class Ui_Form(object):
             self.dat.change_box(6,self.cal_lineEdit_6.text().title())
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
-            msg.setText("Information Updated")
+            msg.setText("Información actualizada")
             # msg.setInformativeText('More information')
-            msg.setWindowTitle("Done")
+            msg.setWindowTitle("Completado")
             msg.exec_()
             
             if changes:
                 self.dat.__init__()
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Information)
-                msg.setText("Part of the new bottle(s) will be served\nPlease place a recipient on the vase position to calibrate it")
+                msg.setText("Para calibrar las bombas se servirá un poco del contenido de las botellas,\npor favor, coloca un recipiente")
                 # msg.setInformativeText('More information')
-                msg.setWindowTitle("Bottle changed")
+                msg.setWindowTitle("Cambio de botella")
                 msg.exec_()
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
                 # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
@@ -1667,7 +1660,7 @@ class Ui_Form(object):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.sel_pushButton_8.setText(_translate("self.form", "X"))
-        self.sel_label_18.setText(_translate("self.form", "    SELECT"))
+        self.sel_label_18.setText(_translate("self.form", "    SELECCIONAR"))
         self.sel_pushButton_9.setText(_translate("self.form", "X"))
         
         try:
@@ -1676,7 +1669,7 @@ class Ui_Form(object):
             self.sel_label_7.setVisible(True)
             self.sel_label_7.setText(_translate("self.form", self.dat.df.Ingredients[0]+","+self.dat.df.Boxes[0] if len(self.dat.df.Boxes[0])>1 else self.dat.df.Ingredients[0]))
             self.sel_pushButton_3.setVisible(True)
-            self.sel_pushButton_3.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_3.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_36.setVisible(False)
             self.sel_label_7.setVisible(False)
@@ -1687,7 +1680,7 @@ class Ui_Form(object):
             self.sel_label_16.setVisible(True)
             self.sel_label_16.setText(_translate("self.form", self.dat.df.Ingredients[1]+","+self.dat.df.Boxes[1] if len(self.dat.df.Boxes[1])>1 else self.dat.df.Ingredients[1]))
             self.sel_pushButton_4.setVisible(True)
-            self.sel_pushButton_4.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_4.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_32.setVisible(False)
             self.sel_label_16.setVisible(False)
@@ -1698,7 +1691,7 @@ class Ui_Form(object):
             self.sel_label_33.setVisible(True)
             self.sel_label_33.setText(_translate("self.form", self.dat.df.Ingredients[2]+","+self.dat.df.Boxes[2] if len(self.dat.df.Boxes[2])>1 else self.dat.df.Ingredients[2]))
             self.sel_pushButton_5.setVisible(True)
-            self.sel_pushButton_5.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_5.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_22.setVisible(False)
             self.sel_label_33.setVisible(False)
@@ -1709,7 +1702,7 @@ class Ui_Form(object):
             self.sel_label_23.setVisible(True)
             self.sel_label_23.setText(_translate("self.form", self.dat.df.Ingredients[3]+","+self.dat.df.Boxes[3] if len(self.dat.df.Boxes[3])>1 else self.dat.df.Ingredients[3]))
             self.sel_pushButton_6.setVisible(True)
-            self.sel_pushButton_6.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_6.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_40.setVisible(False)
             self.sel_label_23.setVisible(False)
@@ -1720,7 +1713,7 @@ class Ui_Form(object):
             self.sel_label_28.setVisible(True)
             self.sel_label_28.setText(_translate("self.form", self.dat.df.Ingredients[4]+","+self.dat.df.Boxes[4] if len(self.dat.df.Boxes[4])>1 else self.dat.df.Ingredients[4]))
             self.sel_pushButton_7.setVisible(True)
-            self.sel_pushButton_7.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_7.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_31.setVisible(False)
             self.sel_label_28.setVisible(False)
@@ -1731,7 +1724,7 @@ class Ui_Form(object):
             self.sel_label_19.setVisible(True)
             self.sel_label_19.setText(_translate("self.form", self.dat.df.Ingredients[5]+","+self.dat.df.Boxes[5] if len(self.dat.df.Boxes[5])>1 else self.dat.df.Ingredients[5]))
             self.sel_pushButton_10.setVisible(True)
-            self.sel_pushButton_10.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_10.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_24.setVisible(False)
             self.sel_label_19.setVisible(False)
@@ -1742,7 +1735,7 @@ class Ui_Form(object):
             self.sel_label_38.setVisible(True)
             self.sel_label_38.setText(_translate("self.form", self.dat.df.Ingredients[6]+","+self.dat.df.Boxes[6] if len(self.dat.df.Boxes[6])>1 else self.dat.df.Ingredients[6]))
             self.sel_pushButton_11.setVisible(True)
-            self.sel_pushButton_11.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_11.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_20.setVisible(False)
             self.sel_label_38.setVisible(False)
@@ -1753,7 +1746,7 @@ class Ui_Form(object):
             self.sel_label_37.setVisible(True)
             self.sel_label_37.setText(_translate("self.form", self.dat.df.Ingredients[7]+","+self.dat.df.Boxes[7] if len(self.dat.df.Boxes[7])>1 else self.dat.df.Ingredients[7]))
             self.sel_pushButton_12.setVisible(True)
-            self.sel_pushButton_12.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_12.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_25.setVisible(False)
             self.sel_label_37.setVisible(False)
@@ -1764,7 +1757,7 @@ class Ui_Form(object):
             self.sel_label_30.setVisible(True)
             self.sel_label_30.setText(_translate("self.form", self.dat.df.Ingredients[8]+","+self.dat.df.Boxes[8] if len(self.dat.df.Boxes[8])>1 else self.dat.df.Ingredients[8]))
             self.sel_pushButton_13.setVisible(True)
-            self.sel_pushButton_13.setText(_translate("self.form", "remove"))
+            self.sel_pushButton_13.setText(_translate("self.form", "Eliminar"))
         except:
             self.sel_label_41.setVisible(False)
             self.sel_label_30.setVisible(False)
@@ -1801,14 +1794,14 @@ class Ui_Form(object):
                 msg.setIcon(QMessageBox.Critical)
                 msg.setText(message)
                 # msg.setInformativeText('More information')
-                msg.setWindowTitle("Done")
+                msg.setWindowTitle("Completado")
                 msg.exec_()
             
     def sel_show_queue(self):
         if bool(self.dat.queue):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
-            msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()]))+"\n¿Quieres eliminar la cola?")
+            msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()]))+"\n\n\n\n¿Quieres eliminar la cola?")
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Cola Actual")
             msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
@@ -1827,9 +1820,9 @@ class Ui_Form(object):
     def sel_clear_queue(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Question)
-        msg.setText("Are you sure you want to clean queue?")
+        msg.setText("¿Seguro que quieres borrar la cola?")
         # msg.setInformativeText('More information')
-        msg.setWindowTitle("Confirm dialog")
+        msg.setWindowTitle("Panel de confirmación")
         msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         ret = msg.exec_()
         if (ret == QMessageBox.Yes):
@@ -1843,9 +1836,9 @@ class Ui_Form(object):
         for i,j in enumerate(self.dat.queue.values(),1):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
-            msg.setText("Are you sure there is\na glass on the vase?")
+            msg.setText("¿Colocaste un vaso para servir?")
             # msg.setInformativeText('More information')
-            msg.setWindowTitle("Getting ready")
+            msg.setWindowTitle("Ya casi comenzamos...")
             msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             ret = msg.exec_()
             if (ret == QMessageBox.Yes):
@@ -1857,7 +1850,7 @@ class Ui_Form(object):
                     msg.setText(message)
                     msg.setStyleSheet("background-color: #FFFFFF;")
                     # msg.setInformativeText('More information')
-                    msg.setWindowTitle("In progres...")
+                    msg.setWindowTitle("En proceso...")
                     msg.show()
                     time.sleep(2)
                     self.prepare_drink(j-1)
@@ -1868,16 +1861,16 @@ class Ui_Form(object):
                     
                     msg = QMessageBox()
                     msg.setIcon(QMessageBox.Information)
-                    msg.setText("Your "+self.dat.df.Name[j-1]+" is ready!!!")
+                    msg.setText("¡Tu bebida "+self.dat.df.Name[j-1]+" está lista!")
                     # msg.setInformativeText('More information')
-                    msg.setWindowTitle("Done")
+                    msg.setWindowTitle("Completado")
                     msg.exec_()
                 else:
                     msg = QMessageBox()
                     msg.setIcon(QMessageBox.Critical)
                     msg.setText(message)
                     # msg.setInformativeText('More information')
-                    msg.setWindowTitle("Done")
+                    msg.setWindowTitle("Error")
                     msg.exec_()
                     pause = True
                     self.dat.pause_queue(i)
@@ -2158,7 +2151,7 @@ class Ui_Form(object):
         msg.setWindowTitle("Panel de confirmación")
         msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         ret = msg.exec_()
-        if ret:
+        if ret == QMessageBox.Yes:
             s = ""
             text, ok = QInputDialog.getText(None, "Admin", "Contraseña", QLineEdit.Password)
             if ok and text:

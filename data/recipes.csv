@@ -1,5 +1,8 @@
 ID,Name,Ingredients,Volume,Boxes,Mix
-1,Dani,"Chocolate,Manzana,Leche,Naranja","600,600,600,600","Coconut,Mint,Cherry",True
+1,Dani,"Chocolate,Apple,Milk,Orange","600,600,600,600", ,True
 2,Chocolike,"Chocolate,Milk","600,500", ,True
 3,cocalemon,"Coca cola,Lemon","500,100",Ice,True
-4,Apple,"Apple,B,Arandano","300,100,100","Coconut,Mint,Cherry,Grape,Lemon,Ice",False
+4,Apple,"Apple,B,Arandano","300,100,100", ,False
+5,Coca Cola,Coca Cola,600,Ice,False
+6,Driae,"Arandano,Orange","200,150",Ice,False
+7,Barusu,B,150, ,False

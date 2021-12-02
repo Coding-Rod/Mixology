@@ -83,16 +83,16 @@ class Data:
         for i,j in zip(diccsv['Ingredients'],diccsv['Volume']):
             if i in dicjson['Ingredients']:
                 if int(j)+50 > int(dicjson['Volume'][dicjson['Ingredients'].index(i)]):
-                    return 'There is not enough '+ str(i), False
+                    return 'No hay suficiente '+ str(i), False
             else:
-                return 'There is not enough '+ str(i), False
+                return 'No hay suficiente '+ str(i), False
 
         dicjson = {str(w):[x,y,z] for w,x,y,z in zip([str(x) for x in l],dicjson['Ingredients'], dicjson['Volume'], dicjson['Calibrate'])}
         
         jsonFile = open("data/bottles.json", "w")
         jsonFile.write(json.dumps(dicjson, indent=4, sort_keys=True))
         
-        return "Preparing "+self.df.Name[num]+"...", True
+        return "Preparando... "+self.df.Name[num]+"...", True
 
     def autocalibration(self, id):
         l = list(range(1,10))
