@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from apis.data import Data
-# from apis.control import Control
+from apis.control import Control
 import time
 from glob import glob
 
@@ -17,7 +17,7 @@ class Ui_Form(object):
         self.user_screen = 1
         self.dat = Data()
         self.dat.clean_queue()
-        # self.ctr = Control()
+        self.ctr = Control()
         self.trash = True
         self.init= [0,0,0,0,0] #All screen aren't called
         self.state_machine(4)
@@ -1267,16 +1267,16 @@ class Ui_Form(object):
         if validator:
             changes = not((self.cal_lineEdit_12.text() == self.dat.bottles["1"][0])and(self.cal_lineEdit_15.text() == self.dat.bottles["2"][0])and(self.cal_lineEdit_10.text() == self.dat.bottles["3"][0])and(self.cal_lineEdit_13.text() == self.dat.bottles["4"][0])and(self.cal_lineEdit_11.text() == self.dat.bottles["5"][0])and(self.cal_lineEdit_14.text() == self.dat.bottles["6"][0])and(self.cal_lineEdit_9.text() == self.dat.bottles["7"][0])and(self.cal_lineEdit_7.text() == self.dat.bottles["8"][0])and(self.cal_lineEdit_8.text() == self.dat.bottles["9"][0])and(self.cal_lineEdit_16.text() == self.dat.bottles["10"][0]))
             bot = []
-            bot.append(0 if self.cal_lineEdit_12.text() != self.dat.bottles["1"][0] else "NONE")
-            bot.append(1 if self.cal_lineEdit_15.text() != self.dat.bottles["2"][0] else "NONE")
-            bot.append(2 if self.cal_lineEdit_10.text() != self.dat.bottles["3"][0] else "NONE")
-            bot.append(3 if self.cal_lineEdit_13.text() != self.dat.bottles["4"][0] else "NONE")
-            bot.append(4 if self.cal_lineEdit_11.text() != self.dat.bottles["5"][0] else "NONE")
-            bot.append(5 if self.cal_lineEdit_14.text() != self.dat.bottles["6"][0] else "NONE")
-            bot.append(6 if self.cal_lineEdit_9.text() != self.dat.bottles["7"][0] else "NONE")
-            bot.append(7 if self.cal_lineEdit_7.text() != self.dat.bottles["8"][0] else "NONE")
-            bot.append(8 if self.cal_lineEdit_8.text() != self.dat.bottles["9"][0] else "NONE")
-            bot.append(9 if self.cal_lineEdit_16.text() != self.dat.bottles["10"][0] else "NONE")
+            bot.append(1 if self.cal_lineEdit_12.text() != self.dat.bottles["1"][0] else "NONE")
+            bot.append(2 if self.cal_lineEdit_15.text() != self.dat.bottles["2"][0] else "NONE")
+            bot.append(3 if self.cal_lineEdit_10.text() != self.dat.bottles["3"][0] else "NONE")
+            bot.append(4 if self.cal_lineEdit_13.text() != self.dat.bottles["4"][0] else "NONE")
+            bot.append(5 if self.cal_lineEdit_11.text() != self.dat.bottles["5"][0] else "NONE")
+            bot.append(6 if self.cal_lineEdit_14.text() != self.dat.bottles["6"][0] else "NONE")
+            bot.append(7 if self.cal_lineEdit_9.text() != self.dat.bottles["7"][0] else "NONE")
+            bot.append(8 if self.cal_lineEdit_7.text() != self.dat.bottles["8"][0] else "NONE")
+            bot.append(9 if self.cal_lineEdit_8.text() != self.dat.bottles["9"][0] else "NONE")
+            bot.append(10 if self.cal_lineEdit_16.text() != self.dat.bottles["10"][0] else "NONE")
             
             try:
                 while True:
@@ -1309,7 +1309,6 @@ class Ui_Form(object):
             msg.exec_()
             
             if changes:
-                print(bot)
                 self.dat.__init__()
                 msg = QMessageBox()
                 msg.setIcon(QMessageBox.Information)
@@ -1318,7 +1317,7 @@ class Ui_Form(object):
                 msg.setWindowTitle("Cambio de botella")
                 msg.exec_()
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
-                # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
+                self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
     #endregion calibrate
 
@@ -1898,7 +1897,7 @@ class Ui_Form(object):
             
         
         calibration = [0.035 for _ in selected]
-        # self.ctr.pump_control(selected, seconds, calibration)
+        self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id] != " ":
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
