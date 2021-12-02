@@ -1318,7 +1318,7 @@ class Ui_Form(object):
                 msg.setWindowTitle("Cambio de botella")
                 msg.exec_()
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
-                self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
+                # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
     #endregion calibrate
 
@@ -1898,7 +1898,7 @@ class Ui_Form(object):
             
         
         calibration = [0.035 for _ in selected]
-        self.ctr.pump_control(selected, seconds, calibration)
+        # self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id] != " ":
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -1946,9 +1946,10 @@ class Ui_Form(object):
         self.usr_pushButton_2 = QtWidgets.QPushButton(self.form)
         self.usr_pushButton_2.setGeometry(QtCore.QRect(10, 310-20, 65, 65))
         self.usr_pushButton_2.setObjectName("usr_pushButton_2")
-        self.usr_pushButton_2.setIcon(QIcon('assets/queue.png'))
+        self.usr_pushButton_2.setIcon(QIcon('assets/add.png'))
         self.usr_pushButton_2.setIconSize(QtCore.QSize(50, 50))
-        self.usr_pushButton_2.clicked.connect(lambda: self.sel_show_queue())
+        self.usr_pushButton_2.clicked.connect(lambda: self.sel_add_to_queue(self.user_screen,[self.usr_pushButton_16,self.usr_pushButton_16]))
+
         
         self.usr_horizontalLayoutWidget = QtWidgets.QWidget(self.form)
         self.usr_horizontalLayoutWidget.setGeometry(QtCore.QRect(150, 340-15, 500, 50))
@@ -2053,6 +2054,19 @@ class Ui_Form(object):
         self.usr_pushButton_3.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.usr_pushButton_3.clicked.connect(self.sel_prepare)
         
+        self.usr_pushButton_17 = QtWidgets.QPushButton(self.form)
+        self.usr_pushButton_17.setGeometry(QtCore.QRect(650, 310-20, 65, 65))
+        self.usr_pushButton_17.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+        "border-image: url(:/check/assets/check2.png);\n"
+        "border-radius:30px\n"
+        "")
+        self.usr_pushButton_17.setText("")
+        self.usr_pushButton_17.setObjectName("crt_pushButton_2")
+        self.usr_pushButton_17.setIcon(QIcon('assets/checklist.png'))
+        self.usr_pushButton_17.setIconSize(QtCore.QSize(50, 50))
+        self.usr_pushButton_17.setStyleSheet("border-radius:30px\noverflow:hidden;")
+        self.usr_pushButton_17.clicked.connect(self.sel_show_queue)
+        
         self.usr_pushButton_4 = QtWidgets.QPushButton(self.form)
         self.usr_pushButton_4.setGeometry(QtCore.QRect(165, 90-10, 30, 230))
         self.usr_pushButton_4.setObjectName("usr_pushButton_4")
@@ -2081,14 +2095,14 @@ class Ui_Form(object):
                                    "padding-left: 15px;"
                                    "font-size: 14px;")
         self.usr_label_7.setObjectName("usr_label_7")
-        self.usr_label_7.setText("Para añadir la bebida a la cola presione en la imagen")
+        self.usr_label_7.setText("Para añadir la bebida a la cola presione el signo de \"+\"")
         
         
         
         self.usr_pushButton_16 = QtWidgets.QPushButton(self.form)
         self.usr_pushButton_16.setGeometry(QtCore.QRect(195, 90-10, 410, 230))
         self.usr_pushButton_16.setObjectName("usr_pushButton_16")
-        self.usr_pushButton_16.clicked.connect(lambda: self.sel_add_to_queue(self.user_screen,[self.usr_pushButton_16,self.usr_pushButton_16]))
+        self.usr_pushButton_16.setEnabled(False)
         self.usr_pushButton_16.raise_()
         self.usr_label.raise_()
         self.usr_pushButton.raise_()
