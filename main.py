@@ -118,15 +118,18 @@ class Ui_Form(object):
     def ButtonImageStyle(self):
         return """
         QPushButton{
-            border-image: url(:/images/mojito.jpg);
-            background-repeat: no-repeat;
+            background-color: rgb(236, 236, 236);
         }
         QPushButton:hover {
-            background-color: #aaa;
+            background-color: rgb(236, 236, 236);
         }
         QPushButton:pressed {
-            background-color: #E09825;
-        }"""
+            background-color: rgb(236, 236, 236);
+        }
+        QPushButton:released {
+            background-color: rgb(236, 236, 236);
+        }
+        """
 
     #endregion stylesheets
     
@@ -1318,7 +1321,7 @@ class Ui_Form(object):
                 msg.setWindowTitle("Cambio de botella")
                 msg.exec_()
                 [self.dat.change_bottle(x,y,z) for x,y,z in zip([w+1 for w in bot],[self.dat.bottles[str(w+1)][0] for w in bot],[self.dat.bottles[str(w+1)][1]-100 for w in bot])]
-                # self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
+                self.ctr.pump_control(bot, [100 for _ in bot], [0.035 for _ in bot])
                 
     #endregion calibrate
 
@@ -1586,7 +1589,6 @@ class Ui_Form(object):
         self.sel_label_25.setObjectName("label_25")
         self.sel_gridLayout.addWidget(self.sel_label_25, 7, 1, 1, 1)
         self.sel_label_41 = QtWidgets.QLabel(self.sel_scrollAreaWidgetContents)
-        self.sel_label_41.setEnabled(True)
         self.sel_label_41.setMinimumSize(QtCore.QSize(0, 40))
         self.sel_label_41.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.sel_label_41.setBaseSize(QtCore.QSize(20, 20))
@@ -1898,7 +1900,7 @@ class Ui_Form(object):
             
         
         calibration = [0.035 for _ in selected]
-        # self.ctr.pump_control(selected, seconds, calibration)
+        self.ctr.pump_control(selected, seconds, calibration)
         if self.dat.df.Boxes[id] != " ":
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
@@ -1949,7 +1951,6 @@ class Ui_Form(object):
         self.usr_pushButton_2.setIcon(QIcon('assets/add.png'))
         self.usr_pushButton_2.setIconSize(QtCore.QSize(50, 50))
         self.usr_pushButton_2.clicked.connect(lambda: self.sel_add_to_queue(self.user_screen,[self.usr_pushButton_16,self.usr_pushButton_16]))
-
         
         self.usr_horizontalLayoutWidget = QtWidgets.QWidget(self.form)
         self.usr_horizontalLayoutWidget.setGeometry(QtCore.QRect(150, 340-15, 500, 50))
@@ -2102,7 +2103,6 @@ class Ui_Form(object):
         self.usr_pushButton_16 = QtWidgets.QPushButton(self.form)
         self.usr_pushButton_16.setGeometry(QtCore.QRect(195, 90-10, 410, 230))
         self.usr_pushButton_16.setObjectName("usr_pushButton_16")
-        self.usr_pushButton_16.setEnabled(False)
         self.usr_pushButton_16.raise_()
         self.usr_label.raise_()
         self.usr_pushButton.raise_()
@@ -2157,7 +2157,7 @@ class Ui_Form(object):
             self.usr_pushButton_16.setIcon(QIcon('images/'+self.dat.df.Name[self.user_screen-1]+'.jpg'))
         else:
             self.usr_pushButton_16.setIcon(QIcon('images/Logo.jpg'))
-        self.usr_pushButton_16.setIconSize(QtCore.QSize(400, 220))
+        self.usr_pushButton_16.setIconSize(QtCore.QSize(410, 230))
         self.usr_pushButton_16.setStyleSheet(self.ButtonImageStyle())
 
     def usr_change_recipe(self, sign):
