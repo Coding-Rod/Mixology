@@ -1836,55 +1836,64 @@ class Ui_Form(object):
 
     def sel_prepare(self):
         pause = False
-        for i,j in enumerate(self.dat.queue.values(),1):
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Question)
-            msg.setText("¿Colocaste un vaso para servir?")
-            # msg.setInformativeText('More information')
-            msg.setWindowTitle("Ya casi comenzamos...")
-            msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-            ret = msg.exec_()
-            if (ret == QMessageBox.Yes):
-                message, verification = self.dat.verify(j)
-                self.dat.__init__()
-                if(verification):
-                    msg = QMessageBox()
-                    msg.setIcon(QMessageBox.Information)
-                    msg.setText(message)
-                    msg.setStyleSheet("background-color: #FFFFFF;")
-                    # msg.setInformativeText('More information')
-                    msg.setWindowTitle("En proceso...")
-                    msg.show()
-                    time.sleep(2)
-                    self.prepare_drink(j-1)
-                    msg.close()
-
-                    self.dat.autocalibration(j)
+        if bool(self.dat.queue):
+            
+            for i,j in enumerate(self.dat.queue.values(),1):
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Question)
+                msg.setText("¿Colocaste un vaso para servir?")
+                # msg.setInformativeText('More information')
+                msg.setWindowTitle("Ya casi comenzamos...")
+                msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+                ret = msg.exec_()
+                if (ret == QMessageBox.Yes):
+                    message, verification = self.dat.verify(j)
                     self.dat.__init__()
-                    
-                    msg = QMessageBox()
-                    msg.setIcon(QMessageBox.Information)
-                    msg.setText("¡Tu bebida "+self.dat.df.Name[j-1]+" está lista!")
-                    # msg.setInformativeText('More information')
-                    msg.setWindowTitle("Completado")
-                    msg.exec_()
+                    if(verification):
+                        msg = QMessageBox()
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setText(message)
+                        msg.setStyleSheet("background-color: #FFFFFF;")
+                        # msg.setInformativeText('More information')
+                        msg.setWindowTitle("En proceso...")
+                        msg.show()
+                        time.sleep(2)
+                        self.prepare_drink(j-1)
+                        msg.close()
+
+                        self.dat.autocalibration(j)
+                        self.dat.__init__()
+                        
+                        msg = QMessageBox()
+                        msg.setIcon(QMessageBox.Information)
+                        msg.setText("¡Tu bebida "+self.dat.df.Name[j-1]+" está lista!")
+                        # msg.setInformativeText('More information')
+                        msg.setWindowTitle("Completado")
+                        msg.exec_()
+                    else:
+                        msg = QMessageBox()
+                        msg.setIcon(QMessageBox.Critical)
+                        msg.setText(message)
+                        # msg.setInformativeText('More information')
+                        msg.setWindowTitle("Error")
+                        msg.exec_()
+                        pause = True
+                        self.dat.pause_queue(i)
+                        break
                 else:
-                    msg = QMessageBox()
-                    msg.setIcon(QMessageBox.Critical)
-                    msg.setText(message)
-                    # msg.setInformativeText('More information')
-                    msg.setWindowTitle("Error")
-                    msg.exec_()
                     pause = True
                     self.dat.pause_queue(i)
                     break
-            else:
-                pause = True
-                self.dat.pause_queue(i)
-                break
-        if not pause:
-            self.dat.clean_queue()
-        self.dat.__init__()
+            if not pause:
+                self.dat.clean_queue()
+            self.dat.__init__()
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setText("Debes añadir la bebida a la cola\ncon el signo de \"+\"")
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("No hay bebidas en cola")
+            ret = msg.exec_()
 
     def prepare_drink(self,id):
         indexes, ingredients = list(self.dat.bottles.keys()),[w[0] for w in self.dat.bottles.values()]
