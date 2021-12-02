@@ -1902,19 +1902,19 @@ class Ui_Form(object):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             if ',' in str(self.dat.df.Boxes[id]):
-                msg.setText("Add to your drink:\n-"+'-\n'.join(self.dat.df.Boxes[id].split(',')))
+                msg.setText("Añade a tu bebida:\n-"+'\n-'.join(self.dat.df.Boxes[id].split(',')))
             else:
-                msg.setText("Add to your drink:\n-"+str(self.dat.df.Boxes[id]))
+                msg.setText("Añade a tu bebida:\n-"+str(self.dat.df.Boxes[id]))
             # msg.setInformativeText('More information')
-            msg.setWindowTitle("Boxes suggested")
+            msg.setWindowTitle("Añadidos sugeridos")
             ret = msg.exec_()
         
         if self.dat.df.Mix[id]:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
-            msg.setText("Place your glass on the mixer")
+            msg.setText("Coloca tu vaso en la mezcladora")
             # msg.setInformativeText('More information')
-            msg.setWindowTitle("Mix your beverage")
+            msg.setWindowTitle("Mezcla tu bebida")
             ret = msg.exec_()
     #endregion select    
         
