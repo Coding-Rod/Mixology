@@ -102,6 +102,7 @@ class Ui_Form(object):
     def buttonNavStyle(self):
         return """
         QPushButton{
+            height: 50px;
             background-color: #241a16;
             color: #fff;
         }
@@ -1943,14 +1944,14 @@ class Ui_Form(object):
         self.usr_pushButton.setIconSize(QtCore.QSize(40, 40))
         self.usr_pushButton.clicked.connect(lambda: self.getpassword())
         self.usr_pushButton_2 = QtWidgets.QPushButton(self.form)
-        self.usr_pushButton_2.setGeometry(QtCore.QRect(10, 310, 65, 65))
+        self.usr_pushButton_2.setGeometry(QtCore.QRect(10, 310-20, 65, 65))
         self.usr_pushButton_2.setObjectName("usr_pushButton_2")
         self.usr_pushButton_2.setIcon(QIcon('assets/queue.png'))
         self.usr_pushButton_2.setIconSize(QtCore.QSize(50, 50))
         self.usr_pushButton_2.clicked.connect(lambda: self.sel_show_queue())
         
         self.usr_horizontalLayoutWidget = QtWidgets.QWidget(self.form)
-        self.usr_horizontalLayoutWidget.setGeometry(QtCore.QRect(150, 340, 500, 30))
+        self.usr_horizontalLayoutWidget.setGeometry(QtCore.QRect(150, 340-15, 500, 50))
         self.usr_horizontalLayoutWidget.setObjectName("usr_horizontalLayoutWidget")
         self.usr_horizontalLayout = QtWidgets.QHBoxLayout(self.usr_horizontalLayoutWidget)
         self.usr_horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
@@ -2012,35 +2013,35 @@ class Ui_Form(object):
         #endregion button menu
         
         self.usr_label_2 = QtWidgets.QLabel(self.form)
-        self.usr_label_2.setGeometry(QtCore.QRect(10, 110, 150, 30))
+        self.usr_label_2.setGeometry(QtCore.QRect(10, 110-10, 150, 30))
         self.usr_label_2.setObjectName("usr_label_2")
         self.usr_label_2.setStyleSheet("border-top-left-radius: 5px;"
                                    "border-top-right-radius: 20px;"
                                    "border: 1px solid black;")
 
         self.usr_label_3 = QtWidgets.QLabel(self.form)
-        self.usr_label_3.setGeometry(QtCore.QRect(10, 140, 150, 130))
+        self.usr_label_3.setGeometry(QtCore.QRect(10, 140-10, 150, 130))
         self.usr_label_3.setObjectName("usr_label_3")
         self.usr_label_3.setStyleSheet("border-bottom-left-radius: 20px;"
                                    "border-bottom-right-radius: 5px;"
                                    "border: 1px solid black;")
 
         self.usr_label_4 = QtWidgets.QLabel(self.form)
-        self.usr_label_4.setGeometry(QtCore.QRect(641, 110, 150, 30))
+        self.usr_label_4.setGeometry(QtCore.QRect(641, 110-10, 150, 30))
         self.usr_label_4.setObjectName("usr_label_4")
         self.usr_label_4.setStyleSheet("border-top-left-radius: 5px;"
                                    "border-top-right-radius: 20px;"
                                    "border: 1px solid black;")
 
         self.usr_label_5 = QtWidgets.QLabel(self.form)
-        self.usr_label_5.setGeometry(QtCore.QRect(641, 140, 150, 130))
+        self.usr_label_5.setGeometry(QtCore.QRect(641, 140-10, 150, 130))
         self.usr_label_5.setObjectName("usr_label_5")
         self.usr_label_5.setStyleSheet("border-bottom-left-radius: 20px;"
                                    "border-bottom-right-radius: 5px;"
                                    "border: 1px solid black;")
 
         self.usr_pushButton_3 = QtWidgets.QPushButton(self.form)
-        self.usr_pushButton_3.setGeometry(QtCore.QRect(720, 310, 65, 65))
+        self.usr_pushButton_3.setGeometry(QtCore.QRect(720, 310-20, 65, 65))
         self.usr_pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);\n"
         "border-image: url(:/check/assets/check2.png);\n"
         "border-radius:30px\n"
@@ -2053,27 +2054,39 @@ class Ui_Form(object):
         self.usr_pushButton_3.clicked.connect(self.sel_prepare)
         
         self.usr_pushButton_4 = QtWidgets.QPushButton(self.form)
-        self.usr_pushButton_4.setGeometry(QtCore.QRect(165, 90, 30, 230))
+        self.usr_pushButton_4.setGeometry(QtCore.QRect(165, 90-10, 30, 230))
         self.usr_pushButton_4.setObjectName("usr_pushButton_4")
         self.usr_pushButton_4.setStyleSheet(self.buttonNavStyle())
         self.usr_pushButton_4.clicked.connect(lambda: self.usr_change_recipe("-"))
         
         self.usr_pushButton_5 = QtWidgets.QPushButton(self.form)
-        self.usr_pushButton_5.setGeometry(QtCore.QRect(605, 90, 30, 230))
+        self.usr_pushButton_5.setGeometry(QtCore.QRect(605, 90-10, 30, 230))
         self.usr_pushButton_5.setObjectName("usr_pushButton_5")
         self.usr_pushButton_5.setStyleSheet(self.buttonNavStyle())
         self.usr_pushButton_5.clicked.connect(lambda: self.usr_change_recipe("+"))
         
         
         self.usr_label_6 = QtWidgets.QLabel(self.form)
-        self.usr_label_6.setGeometry(QtCore.QRect(195, 290, 205, 30))
+        self.usr_label_6.setGeometry(QtCore.QRect(195, 290-15, 205, 30))
         self.usr_label_6.setStyleSheet("background-color: rgba(0,0,0,0.5);"
                                    "color: #fff;"
                                    "padding-left: 15px;"
                                    "border-top-right-radius: 20px;")
         self.usr_label_6.setObjectName("usr_label_6")
+        
+        self.usr_label_7 = QtWidgets.QLabel(self.form)
+        self.usr_label_7.setGeometry(QtCore.QRect(0, 360, 800, 20))
+        self.usr_label_7.setStyleSheet("background-color: black;"
+                                   "color: #fff;"
+                                   "padding-left: 15px;"
+                                   "font-size: 14px;")
+        self.usr_label_7.setObjectName("usr_label_7")
+        self.usr_label_7.setText("Para añadir la bebida a la cola presione en la imagen")
+        
+        
+        
         self.usr_pushButton_16 = QtWidgets.QPushButton(self.form)
-        self.usr_pushButton_16.setGeometry(QtCore.QRect(195, 90, 410, 230))
+        self.usr_pushButton_16.setGeometry(QtCore.QRect(195, 90-10, 410, 230))
         self.usr_pushButton_16.setObjectName("usr_pushButton_16")
         self.usr_pushButton_16.clicked.connect(lambda: self.sel_add_to_queue(self.user_screen,[self.usr_pushButton_16,self.usr_pushButton_16]))
         self.usr_pushButton_16.raise_()
