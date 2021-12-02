@@ -721,7 +721,7 @@ class Ui_Form(object):
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Error")
             msg.exec_()
-        elif len(self.dat.df.ID) == 10:
+        elif len(self.dat.df.ID) == 9:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Critical)
             msg.setText("No hay más espacio para bebidas")
@@ -1657,108 +1657,108 @@ class Ui_Form(object):
         QtCore.QMetaObject.connectSlotsByName(self.form)
 
     def sel_retranslateUi(self):
+        self.dat.__init__()
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.sel_pushButton_8.setText(_translate("self.form", "X"))
         self.sel_label_18.setText(_translate("self.form", "    SELECCIONAR"))
         self.sel_pushButton_9.setText(_translate("self.form", "X"))
-        
         try:
-            self.sel_label_36.setVisible(True)
             self.sel_label_36.setText(_translate("self.form", self.dat.df.Name[0]))
-            self.sel_label_7.setVisible(True)
+            self.sel_label_36.setVisible(True)
             self.sel_label_7.setText(_translate("self.form", self.dat.df.Ingredients[0]+","+self.dat.df.Boxes[0] if len(self.dat.df.Boxes[0])>1 else self.dat.df.Ingredients[0]))
-            self.sel_pushButton_3.setVisible(True)
+            self.sel_label_7.setVisible(True)
             self.sel_pushButton_3.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_3.setVisible(True)
+        except Exception as e:
             self.sel_label_36.setVisible(False)
             self.sel_label_7.setVisible(False)
             self.sel_pushButton_3.setVisible(False)
         try:
-            self.sel_label_32.setVisible(True)
             self.sel_label_32.setText(_translate("self.form", self.dat.df.Name[1]))
-            self.sel_label_16.setVisible(True)
+            self.sel_label_32.setVisible(True)
             self.sel_label_16.setText(_translate("self.form", self.dat.df.Ingredients[1]+","+self.dat.df.Boxes[1] if len(self.dat.df.Boxes[1])>1 else self.dat.df.Ingredients[1]))
-            self.sel_pushButton_4.setVisible(True)
+            self.sel_label_16.setVisible(True)
             self.sel_pushButton_4.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_4.setVisible(True)
+        except Exception as e:
             self.sel_label_32.setVisible(False)
             self.sel_label_16.setVisible(False)
             self.sel_pushButton_4.setVisible(False)
         try:
-            self.sel_label_22.setVisible(True)
             self.sel_label_22.setText(_translate("self.form", self.dat.df.Name[2]))
-            self.sel_label_33.setVisible(True)
+            self.sel_label_22.setVisible(True)
             self.sel_label_33.setText(_translate("self.form", self.dat.df.Ingredients[2]+","+self.dat.df.Boxes[2] if len(self.dat.df.Boxes[2])>1 else self.dat.df.Ingredients[2]))
-            self.sel_pushButton_5.setVisible(True)
+            self.sel_label_33.setVisible(True)
             self.sel_pushButton_5.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_5.setVisible(True)
+        except Exception as e:
             self.sel_label_22.setVisible(False)
             self.sel_label_33.setVisible(False)
             self.sel_pushButton_5.setVisible(False)
         try:
-            self.sel_label_40.setVisible(True)
             self.sel_label_40.setText(_translate("self.form", self.dat.df.Name[3]))
-            self.sel_label_23.setVisible(True)
+            self.sel_label_40.setVisible(True)
             self.sel_label_23.setText(_translate("self.form", self.dat.df.Ingredients[3]+","+self.dat.df.Boxes[3] if len(self.dat.df.Boxes[3])>1 else self.dat.df.Ingredients[3]))
-            self.sel_pushButton_6.setVisible(True)
+            self.sel_label_23.setVisible(True)
             self.sel_pushButton_6.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_6.setVisible(True)
+        except Exception as e:
             self.sel_label_40.setVisible(False)
             self.sel_label_23.setVisible(False)
             self.sel_pushButton_6.setVisible(False)
         try:
-            self.sel_label_31.setVisible(True)
             self.sel_label_31.setText(_translate("self.form", self.dat.df.Name[4]))
-            self.sel_label_28.setVisible(True)
+            self.sel_label_31.setVisible(True)
             self.sel_label_28.setText(_translate("self.form", self.dat.df.Ingredients[4]+","+self.dat.df.Boxes[4] if len(self.dat.df.Boxes[4])>1 else self.dat.df.Ingredients[4]))
-            self.sel_pushButton_7.setVisible(True)
+            self.sel_label_28.setVisible(True)
             self.sel_pushButton_7.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_7.setVisible(True)
+        except Exception as e:
             self.sel_label_31.setVisible(False)
             self.sel_label_28.setVisible(False)
             self.sel_pushButton_7.setVisible(False)
         try:
-            self.sel_label_24.setVisible(True)
             self.sel_label_24.setText(_translate("self.form", self.dat.df.Name[5]))
-            self.sel_label_19.setVisible(True)
+            self.sel_label_24.setVisible(True)
             self.sel_label_19.setText(_translate("self.form", self.dat.df.Ingredients[5]+","+self.dat.df.Boxes[5] if len(self.dat.df.Boxes[5])>1 else self.dat.df.Ingredients[5]))
-            self.sel_pushButton_10.setVisible(True)
+            self.sel_label_19.setVisible(True)
             self.sel_pushButton_10.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_10.setVisible(True)
+        except Exception as e:
             self.sel_label_24.setVisible(False)
             self.sel_label_19.setVisible(False)
             self.sel_pushButton_10.setVisible(False)
         try:
-            self.sel_label_20.setVisible(True)
             self.sel_label_20.setText(_translate("self.form", self.dat.df.Name[6]))
-            self.sel_label_38.setVisible(True)
+            self.sel_label_20.setVisible(True)
             self.sel_label_38.setText(_translate("self.form", self.dat.df.Ingredients[6]+","+self.dat.df.Boxes[6] if len(self.dat.df.Boxes[6])>1 else self.dat.df.Ingredients[6]))
-            self.sel_pushButton_11.setVisible(True)
+            self.sel_label_38.setVisible(True)
             self.sel_pushButton_11.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_11.setVisible(True)
+        except Exception as e:
             self.sel_label_20.setVisible(False)
             self.sel_label_38.setVisible(False)
             self.sel_pushButton_11.setVisible(False)
         try:
-            self.sel_label_25.setVisible(True)
             self.sel_label_25.setText(_translate("self.form", self.dat.df.Name[7]))
-            self.sel_label_37.setVisible(True)
+            self.sel_label_25.setVisible(True)
             self.sel_label_37.setText(_translate("self.form", self.dat.df.Ingredients[7]+","+self.dat.df.Boxes[7] if len(self.dat.df.Boxes[7])>1 else self.dat.df.Ingredients[7]))
-            self.sel_pushButton_12.setVisible(True)
+            self.sel_label_37.setVisible(True)
             self.sel_pushButton_12.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_12.setVisible(True)
+        except Exception as e:
             self.sel_label_25.setVisible(False)
             self.sel_label_37.setVisible(False)
             self.sel_pushButton_12.setVisible(False)
         try:
-            self.sel_label_41.setVisible(True)
             self.sel_label_41.setText(_translate("self.form", self.dat.df.Name[8]))
-            self.sel_label_30.setVisible(True)
+            self.sel_label_41.setVisible(True)
             self.sel_label_30.setText(_translate("self.form", self.dat.df.Ingredients[8]+","+self.dat.df.Boxes[8] if len(self.dat.df.Boxes[8])>1 else self.dat.df.Ingredients[8]))
-            self.sel_pushButton_13.setVisible(True)
+            self.sel_label_30.setVisible(True)
             self.sel_pushButton_13.setText(_translate("self.form", "Eliminar"))
-        except:
+            self.sel_pushButton_13.setVisible(True)
+        except Exception as e:
             self.sel_label_41.setVisible(False)
             self.sel_label_30.setVisible(False)
             self.sel_pushButton_13.setVisible(False)
@@ -1767,9 +1767,9 @@ class Ui_Form(object):
         if self.trash:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
-            msg.setText("Are you sure you want to delete this recipe?\nQueue will be cleaned")
+            msg.setText("¿Estás seguro que quieres eliminar esta receta?")
             # msg.setInformativeText('More information')
-            msg.setWindowTitle("Confirm dialog")
+            msg.setWindowTitle("Panel de confirmación")
             msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             ret = msg.exec_()
             if (ret == QMessageBox.Yes):
@@ -1801,8 +1801,8 @@ class Ui_Form(object):
         if bool(self.dat.queue):
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
-            msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()]))+"\n\n\n\n¿Quieres eliminar la cola?")
-            # msg.setInformativeText('More information')
+            msg.setText("- "+str(("\n- ").join([self.dat.df.Name[list(self.dat.df.ID).index(x)] for x in self.dat.queue.values()])))
+            msg.setInformativeText('\n\n\n¿Quieres eliminar la cola?')
             msg.setWindowTitle("Cola Actual")
             msg.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
             ret = msg.exec_()
@@ -2321,33 +2321,43 @@ class Ui_Form(object):
             self.sel_pushButton.setVisible(self.state == 3)
             self.sel_scrollArea.setVisible(self.state == 3)
             self.sel_scrollAreaWidgetContents.setVisible(self.state == 3)
-            self.sel_label_7.setVisible(self.state == 3)
-            self.sel_label_16.setVisible(self.state == 3)
-            self.sel_label_36.setVisible(self.state == 3)
-            self.sel_label_32.setVisible(self.state == 3)
-            self.sel_label_33.setVisible(self.state == 3)
-            self.sel_label_22.setVisible(self.state == 3)
-            self.sel_label_23.setVisible(self.state == 3)
-            self.sel_label_40.setVisible(self.state == 3)
-            self.sel_label_31.setVisible(self.state == 3)
-            self.sel_label_28.setVisible(self.state == 3)
-            self.sel_label_24.setVisible(self.state == 3)
-            self.sel_label_19.setVisible(self.state == 3)
-            self.sel_label_38.setVisible(self.state == 3)
-            self.sel_label_37.setVisible(self.state == 3)
-            self.sel_label_20.setVisible(self.state == 3)
-            self.sel_label_30.setVisible(self.state == 3)
-            self.sel_label_25.setVisible(self.state == 3)
-            self.sel_label_41.setVisible(self.state == 3)
-            self.sel_pushButton_3.setVisible(self.state == 3)
-            self.sel_pushButton_4.setVisible(self.state == 3)
-            self.sel_pushButton_5.setVisible(self.state == 3)
-            self.sel_pushButton_6.setVisible(self.state == 3)
-            self.sel_pushButton_7.setVisible(self.state == 3)
-            self.sel_pushButton_10.setVisible(self.state == 3)
-            self.sel_pushButton_11.setVisible(self.state == 3)
-            self.sel_pushButton_12.setVisible(self.state == 3)
-            self.sel_pushButton_13.setVisible(self.state == 3)
+            
+            self.sel_label_36.setVisible(self.state == 3 and len(self.dat.df.ID)>0)
+            self.sel_label_7.setVisible(self.state == 3) and len(self.dat.df.ID)>0
+            self.sel_pushButton_3.setVisible(self.state == 3 and len(self.dat.df.ID)>0)
+            
+            self.sel_label_32.setVisible(self.state == 3 and len(self.dat.df.ID)>1)
+            self.sel_label_16.setVisible(self.state == 3 and len(self.dat.df.ID)>1)
+            self.sel_pushButton_4.setVisible(self.state == 3 and len(self.dat.df.ID)>1)
+            
+            self.sel_label_33.setVisible(self.state == 3 and len(self.dat.df.ID)>2)
+            self.sel_label_22.setVisible(self.state == 3 and len(self.dat.df.ID)>2)
+            self.sel_pushButton_5.setVisible(self.state == 3 and len(self.dat.df.ID)>2)
+            
+            self.sel_label_23.setVisible(self.state == 3 and len(self.dat.df.ID)>3)
+            self.sel_label_40.setVisible(self.state == 3 and len(self.dat.df.ID)>3)
+            self.sel_pushButton_6.setVisible(self.state == 3 and len(self.dat.df.ID)>3)
+            
+            self.sel_label_31.setVisible(self.state == 3 and len(self.dat.df.ID)>4)
+            self.sel_label_28.setVisible(self.state == 3 and len(self.dat.df.ID)>4)
+            self.sel_pushButton_7.setVisible(self.state == 3 and len(self.dat.df.ID)>4)
+            
+            self.sel_label_24.setVisible(self.state == 3 and len(self.dat.df.ID)>5)
+            self.sel_label_19.setVisible(self.state == 3 and len(self.dat.df.ID)>5)
+            self.sel_pushButton_10.setVisible(self.state == 3 and len(self.dat.df.ID)>5)
+            
+            self.sel_label_38.setVisible(self.state == 3 and len(self.dat.df.ID)>6)
+            self.sel_label_37.setVisible(self.state == 3 and len(self.dat.df.ID)>6)
+            self.sel_pushButton_11.setVisible(self.state == 3 and len(self.dat.df.ID)>6)
+            
+            self.sel_label_20.setVisible(self.state == 3 and len(self.dat.df.ID)>7)
+            self.sel_label_30.setVisible(self.state == 3 and len(self.dat.df.ID)>7)
+            self.sel_pushButton_12.setVisible(self.state == 3 and len(self.dat.df.ID)>7)
+            
+            self.sel_label_25.setVisible(self.state == 3 and len(self.dat.df.ID)>8)
+            self.sel_label_41.setVisible(self.state == 3 and len(self.dat.df.ID)>8)
+            self.sel_pushButton_13.setVisible(self.state == 3 and len(self.dat.df.ID)>8)
+            
             self.sel_pushButton_2.setVisible(self.state == 3)
             self.sel_pushButton_14.setVisible(self.state == 3)
             self.sel_pushButton_15.setVisible(self.state == 3)
