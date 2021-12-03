@@ -80,25 +80,46 @@ class Ui_Form(object):
         border-radius: 4px;
         }"""
     
-    def buttonStyle(self):
-        return """
-        QPushButton {
-            color: black;
-            border: 1px solid rgb(236, 236, 236);
-            border-radius: 3px;
-            width: 30px;
-            height: 20px;
-            background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(236, 236, 236), stop: 1 rgb(236, 236, 236));
-        }
-        QPushButton:hover {
-            color: #fff;
-            background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(179, 176, 176), stop: 1 rgb(179, 176, 176));
-        }
-        QPushButton:pressed {
-            color: #fff;
-            background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E09825, stop: 1 #E09825);
-        }
-        """
+    def buttonStyle(self, selected):
+        if selected:
+            return """
+            QPushButton {
+                color: #aa0000;
+                font-weight: bold;
+                border: 1px solid rgb(236, 236, 236);
+                border-radius: 3px;
+                width: 30px;
+                height: 30px;
+                background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(236, 236, 236), stop: 1 rgb(236, 236, 236));
+            }
+            QPushButton:hover {
+                color: #fff;
+                background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(179, 176, 176), stop: 1 rgb(179, 176, 176));
+            }
+            QPushButton:pressed {
+                color: #fff;
+                background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E09825, stop: 1 #E09825);
+            }
+            """
+        else:
+            return """
+            QPushButton {
+                color: black;
+                border: 1px solid rgb(236, 236, 236);
+                border-radius: 3px;
+                width: 30px;
+                height: 30px;
+                background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(236, 236, 236), stop: 1 rgb(236, 236, 236));
+            }
+            QPushButton:hover {
+                color: #fff;
+                background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(179, 176, 176), stop: 1 rgb(179, 176, 176));
+            }
+            QPushButton:pressed {
+                color: #fff;
+                background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E09825, stop: 1 #E09825);
+            }
+            """
     
     def buttonNavStyle(self):
         return """
@@ -753,6 +774,7 @@ class Ui_Form(object):
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Guardado")
             msg.exec_()
+            self.crt_lineEdit.setText("")
             self.crt_label.setText(self.dat.bottles['1'][0]+("\t\t"if len(self.dat.bottles['1'][0])<8 else "\t")+"\n"+"0 ml")
             self.crt_label_3.setText(self.dat.bottles['2'][0]+("\t\t"if len(self.dat.bottles['2'][0])<8 else "\t")+"\n"+"0 ml")
             self.crt_label_4.setText(self.dat.bottles['3'][0]+("\t\t"if len(self.dat.bottles['3'][0])<8 else "\t")+"\n"+"0 ml")
@@ -1982,7 +2004,7 @@ class Ui_Form(object):
         self.usr_pushButton_18.clicked.connect(lambda: self.usr_undo())
         
         self.usr_horizontalLayoutWidget = QtWidgets.QWidget(self.form)
-        self.usr_horizontalLayoutWidget.setGeometry(QtCore.QRect(150, 340-15, 500, 50))
+        self.usr_horizontalLayoutWidget.setGeometry(QtCore.QRect(150, 340-20, 500, 50))
         self.usr_horizontalLayoutWidget.setObjectName("usr_horizontalLayoutWidget")
         self.usr_horizontalLayout = QtWidgets.QHBoxLayout(self.usr_horizontalLayoutWidget)
         self.usr_horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
@@ -1993,52 +2015,42 @@ class Ui_Form(object):
         #region button menu
         self.usr_pushButton_6 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_6.setObjectName("usr_pushButton_6")
-        self.usr_pushButton_6.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_6.clicked.connect(lambda: self.usr_change_recipe(1))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_6)
         self.usr_pushButton_7 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_7.setObjectName("usr_pushButton_7")
-        self.usr_pushButton_7.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_7.clicked.connect(lambda: self.usr_change_recipe(2))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_7)
         self.usr_pushButton_8 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_8.setObjectName("usr_pushButton_8")
-        self.usr_pushButton_8.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_8.clicked.connect(lambda: self.usr_change_recipe(3))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_8)
         self.usr_pushButton_9 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_9.setObjectName("usr_pushButton_9")
-        self.usr_pushButton_9.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_9.clicked.connect(lambda: self.usr_change_recipe(4))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_9)
         self.usr_pushButton_10 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_10.setObjectName("usr_pushButton_10")
-        self.usr_pushButton_10.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_10.clicked.connect(lambda: self.usr_change_recipe(5))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_10)
         self.usr_pushButton_11 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_11.setObjectName("usr_pushButton_11")
-        self.usr_pushButton_11.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_11.clicked.connect(lambda: self.usr_change_recipe(6))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_11)
         self.usr_pushButton_12 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_12.setObjectName("usr_pushButton_12")
-        self.usr_pushButton_12.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_12.clicked.connect(lambda: self.usr_change_recipe(7))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_12)
         self.usr_pushButton_13 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_13.setObjectName("usr_pushButton_13")
-        self.usr_pushButton_13.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_13.clicked.connect(lambda: self.usr_change_recipe(8))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_13)
         self.usr_pushButton_14 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_14.setObjectName("usr_pushButton_14")
-        self.usr_pushButton_14.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_14.clicked.connect(lambda: self.usr_change_recipe(9))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_14)
         self.usr_pushButton_15 = QtWidgets.QPushButton(self.usr_horizontalLayoutWidget)
         self.usr_pushButton_15.setObjectName("usr_pushButton_15")
-        self.usr_pushButton_15.setStyleSheet(self.buttonStyle())
         self.usr_pushButton_15.clicked.connect(lambda: self.usr_change_recipe(10))
         self.usr_horizontalLayout.addWidget(self.usr_pushButton_15)
         #endregion button menu
@@ -2194,6 +2206,19 @@ class Ui_Form(object):
         self.usr_pushButton_5.setText(">" if self.user_screen<len(self.dat.df.ID) else "")
         self.usr_pushButton_5.setEnabled(self.user_screen<len(self.dat.df.ID))
         self.usr_label_6.setText(self.dat.df.Name[self.user_screen-1])
+        
+        self.usr_pushButton_6.setStyleSheet(self.buttonStyle(self.user_screen == 1))
+        self.usr_pushButton_7.setStyleSheet(self.buttonStyle(self.user_screen == 2))
+        self.usr_pushButton_8.setStyleSheet(self.buttonStyle(self.user_screen == 3))
+        self.usr_pushButton_9.setStyleSheet(self.buttonStyle(self.user_screen == 4))
+        self.usr_pushButton_10.setStyleSheet(self.buttonStyle(self.user_screen == 5))
+        self.usr_pushButton_11.setStyleSheet(self.buttonStyle(self.user_screen == 6))
+        self.usr_pushButton_12.setStyleSheet(self.buttonStyle(self.user_screen == 7))
+        self.usr_pushButton_13.setStyleSheet(self.buttonStyle(self.user_screen == 8))
+        self.usr_pushButton_14.setStyleSheet(self.buttonStyle(self.user_screen == 9))
+        self.usr_pushButton_15.setStyleSheet(self.buttonStyle(self.user_screen == 10))
+
+        
         if self.dat.df.Name[self.user_screen-1]+'.jpg' in [x.replace("images/","") for x in glob("images/*")]:
             self.usr_pushButton_16.setIcon(QIcon('images/'+self.dat.df.Name[self.user_screen-1]+'.jpg'))
         else:
@@ -2310,6 +2335,7 @@ class Ui_Form(object):
             self.crt_label_9.setVisible(self.state == 1)
             self.crt_horizontalSlider_7.setVisible(self.state == 1)
             self.crt_label_11.setVisible(self.state == 1)
+            self.crt_label_13.setVisible(self.state == 1)
             self.crt_horizontalSlider_8.setVisible(self.state == 1)
             self.crt_label_10.setVisible(self.state == 1)
             self.crt_label_5.setVisible(self.state == 1)
