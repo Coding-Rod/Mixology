@@ -1,7 +1,7 @@
 ID,Name,Ingredients,Volume,Boxes,Mix
-1,Tanzana,"Tamarindo,Manzana","250,250",Hielo,True
-2,Piñanzana,"Piña,Manzana","250,250","Hielo,Hierba buena",True
-3,Acido,"Piña,Naranja,Tamarindo","200,200,100","Hielo,Hierba buena,Limon",True
-4,Naranja,"Naranja","500", ,False
-5,Tetrafruta,"Piña,Naranja,Cherry,Tamarindo",600,Ice,False
-6,Narry,"Naranja,Cherry","300,200","Hielo,Limón,Hierba buena",True
+1,Citrico,"Naranja,Pina,","300,200","Hielo, Limon",True
+2,Manzara,"Pera,Manzana","300,200","Hielo,Gengibre",False
+3,Tapima,"Tamarindo,Pina,Manzana","300,100,100","Hielo,Frutilla",True
+4,Durazno,Durazno,500,"Hielo, Limon,Gengibre",False
+5,Multifruta,"Naranja,Pina,Tamarindo,Manzana,Durazno","100,100,100,100,100","Hielo,Naranja",True
+6,Completo,"Pina,Tamarindo,Naranja,Durazno,Cherry,Pera,Manzana","70,70,70,70,70,70,70,80","Hielo,Limon,Naranja",False

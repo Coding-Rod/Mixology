@@ -2121,7 +2121,7 @@ class Ui_Form(object):
         
         
         self.usr_label_6 = QtWidgets.QLabel(self.form)
-        self.usr_label_6.setGeometry(QtCore.QRect(195, 290-15, 205, 30))
+        self.usr_label_6.setGeometry(QtCore.QRect(195, 290-10, 205, 30))
         self.usr_label_6.setStyleSheet("background-color: rgba(0,0,0,0.5);"
                                    "color: #fff;"
                                    "padding-left: 15px;"
