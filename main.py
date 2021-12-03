@@ -5,6 +5,7 @@ from PyQt5.QtCore import *
 from apis.data import Data
 from apis.control import Control
 import time
+import json
 from glob import glob
 
 class Ui_Form(object):
@@ -284,6 +285,13 @@ class Ui_Form(object):
         self.crt_label_12.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.crt_label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.crt_label_12.setObjectName("crt_label_12")
+        
+        self.crt_label_13 = QtWidgets.QLabel(self.form)
+        self.crt_label_13.setGeometry(QtCore.QRect(290, 33, 67, 18))
+        self.crt_label_13.setStyleSheet("color: #fff;background-color: #E09825;font-size: 16px;")
+        self.crt_label_13.setAlignment(QtCore.Qt.AlignCenter)
+        self.crt_label_13.setObjectName("crt_label_13")
+        
         self.crt_pushButton = QtWidgets.QPushButton(self.form)
         self.crt_pushButton.setGeometry(QtCore.QRect(10, 310, 65, 65))
         self.crt_pushButton.setStyleSheet("border-image: url(:/back/assets/back.png);\n"
@@ -461,6 +469,8 @@ class Ui_Form(object):
         self.crt_label_11.setFont(font)
         self.crt_label_11.setStyleSheet("background-color: rgb(136, 138, 133);")
         self.crt_label_11.setObjectName("crt_label_11")
+        
+        
         self.crt_formLayout.setWidget(9, QtWidgets.QFormLayout.LabelRole, self.crt_label_11)
         self.crt_horizontalSlider_8 = QtWidgets.QSlider(self.crt_scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.MinimumExpanding)
@@ -617,6 +627,7 @@ class Ui_Form(object):
         self.crt_textEdit.raise_()
         self.crt_lineEdit.raise_()
         self.crt_horizontalSlider_11.raise_()
+        self.crt_label_13.raise_()
 
         self.crt_retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self.form)
@@ -626,22 +637,23 @@ class Ui_Form(object):
         self.form.setWindowTitle(_translate("self.form", "Mixology"))
         self.crt_label_2.setText(_translate("self.form", "    CREAR"))
         self.crt_pushButton_7.setText(_translate("self.form", "X"))
-        self.crt_label_12.setText(_translate("self.form", "MIX"))
+        self.crt_label_13.setText(_translate("self.form", "Nombre"))
+        self.crt_label_12.setText(_translate("self.form", "Mezclar"))
         self.crt_textEdit.setHtml(_translate("self.form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
         "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
         "p, li { white-space: pre-wrap; }\n"
-        "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">Name</span></p></body></html>"))
-        self.crt_label.setText(_translate("self.form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider.value())+" ml")
-        self.crt_label_3.setText(_translate("self.form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_2.value())+" ml")
-        self.crt_label_4.setText(_translate("self.form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_3.value())+" ml")
-        self.crt_label_5.setText(_translate("self.form", self.dat.bottles['4'][0])+("\t\t"if len(self.dat.bottles['4'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_4.value())+" ml")
-        self.crt_label_6.setText(_translate("self.form", self.dat.bottles['5'][0])+("\t\t"if len(self.dat.bottles['5'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_5.value())+" ml")
-        self.crt_label_7.setText(_translate("self.form", self.dat.bottles['6'][0])+("\t\t"if len(self.dat.bottles['6'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_6.value())+" ml")
-        self.crt_label_8.setText(_translate("self.form", self.dat.bottles['7'][0])+("\t\t"if len(self.dat.bottles['7'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_7.value())+" ml")
-        self.crt_label_9.setText(_translate("self.form", self.dat.bottles['8'][0])+("\t\t"if len(self.dat.bottles['8'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_8.value())+" ml")
-        self.crt_label_10.setText(_translate("self.form", self.dat.bottles['9'][0])+("\t\t"if len(self.dat.bottles['9'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_9.value())+" ml")
-        self.crt_label_11.setText(_translate("self.form", self.dat.bottles['10'][0])+("\t\t"if len(self.dat.bottles['10'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_10.value())+" ml")
+        "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"))
+        self.crt_label.setText(_translate("self.form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider.value())+" ml")
+        self.crt_label_3.setText(_translate("self.form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_2.value())+" ml")
+        self.crt_label_4.setText(_translate("self.form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_3.value())+" ml")
+        self.crt_label_5.setText(_translate("self.form", self.dat.bottles['4'][0])+("\t\t"if len(self.dat.bottles['4'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_4.value())+" ml")
+        self.crt_label_6.setText(_translate("self.form", self.dat.bottles['5'][0])+("\t\t"if len(self.dat.bottles['5'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_5.value())+" ml")
+        self.crt_label_7.setText(_translate("self.form", self.dat.bottles['6'][0])+("\t\t"if len(self.dat.bottles['6'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_6.value())+" ml")
+        self.crt_label_8.setText(_translate("self.form", self.dat.bottles['7'][0])+("\t\t"if len(self.dat.bottles['7'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_7.value())+" ml")
+        self.crt_label_9.setText(_translate("self.form", self.dat.bottles['8'][0])+("\t\t"if len(self.dat.bottles['8'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_8.value())+" ml")
+        self.crt_label_10.setText(_translate("self.form", self.dat.bottles['9'][0])+("\t\t"if len(self.dat.bottles['9'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_9.value())+" ml")
+        self.crt_label_11.setText(_translate("self.form", self.dat.bottles['10'][0])+("\t\t"if len(self.dat.bottles['10'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_10.value())+" ml")
+        
         self.checkBox.setText(_translate("self.form", self.dat.boxes["1"]))
         self.checkBox_2.setText(_translate("self.form", self.dat.boxes["2"]))
         self.checkBox_3.setText(_translate("self.form", self.dat.boxes["3"]))
@@ -662,16 +674,16 @@ class Ui_Form(object):
         self.crt_horizontalSlider_8.setValue(int(self.crt_horizontalSlider_8.value()/50)*50)
         self.crt_horizontalSlider_9.setValue(int(self.crt_horizontalSlider_9.value()/50)*50)
         self.crt_horizontalSlider_10.setValue(int(self.crt_horizontalSlider_10.value()/50)*50)
-        self.crt_label.setText(_translate("self.form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider.value())+" ml")
-        self.crt_label_3.setText(_translate("self.form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_2.value())+" ml")
-        self.crt_label_4.setText(_translate("self.form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_3.value())+" ml")
-        self.crt_label_5.setText(_translate("self.form", self.dat.bottles['4'][0])+("\t\t"if len(self.dat.bottles['4'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_4.value())+" ml")
-        self.crt_label_6.setText(_translate("self.form", self.dat.bottles['5'][0])+("\t\t"if len(self.dat.bottles['5'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_5.value())+" ml")
-        self.crt_label_7.setText(_translate("self.form", self.dat.bottles['6'][0])+("\t\t"if len(self.dat.bottles['6'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_6.value())+" ml")
-        self.crt_label_8.setText(_translate("self.form", self.dat.bottles['7'][0])+("\t\t"if len(self.dat.bottles['7'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_7.value())+" ml")
-        self.crt_label_9.setText(_translate("self.form", self.dat.bottles['8'][0])+("\t\t"if len(self.dat.bottles['8'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_8.value())+" ml")
-        self.crt_label_10.setText(_translate("self.form", self.dat.bottles['9'][0])+("\t\t"if len(self.dat.bottles['9'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_9.value())+" ml")
-        self.crt_label_11.setText(_translate("self.form", self.dat.bottles['10'][0])+("\t\t"if len(self.dat.bottles['10'][0])<7 else "\t")+"\n"+str(self.crt_horizontalSlider_10.value())+" ml")
+        self.crt_label.setText(_translate("self.form", self.dat.bottles['1'][0])+("\t\t"if len(self.dat.bottles['1'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider.value())+" ml")
+        self.crt_label_3.setText(_translate("self.form", self.dat.bottles['2'][0])+("\t\t"if len(self.dat.bottles['2'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_2.value())+" ml")
+        self.crt_label_4.setText(_translate("self.form", self.dat.bottles['3'][0])+("\t\t"if len(self.dat.bottles['3'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_3.value())+" ml")
+        self.crt_label_5.setText(_translate("self.form", self.dat.bottles['4'][0])+("\t\t"if len(self.dat.bottles['4'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_4.value())+" ml")
+        self.crt_label_6.setText(_translate("self.form", self.dat.bottles['5'][0])+("\t\t"if len(self.dat.bottles['5'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_5.value())+" ml")
+        self.crt_label_7.setText(_translate("self.form", self.dat.bottles['6'][0])+("\t\t"if len(self.dat.bottles['6'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_6.value())+" ml")
+        self.crt_label_8.setText(_translate("self.form", self.dat.bottles['7'][0])+("\t\t"if len(self.dat.bottles['7'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_7.value())+" ml")
+        self.crt_label_9.setText(_translate("self.form", self.dat.bottles['8'][0])+("\t\t"if len(self.dat.bottles['8'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_8.value())+" ml")
+        self.crt_label_10.setText(_translate("self.form", self.dat.bottles['9'][0])+("\t\t"if len(self.dat.bottles['9'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_9.value())+" ml")
+        self.crt_label_11.setText(_translate("self.form", self.dat.bottles['10'][0])+("\t\t"if len(self.dat.bottles['10'][0])<8 else "\t")+"\n"+str(self.crt_horizontalSlider_10.value())+" ml")
 
     def crt_save(self):
         name = (self.crt_lineEdit.text().title())
@@ -741,16 +753,16 @@ class Ui_Form(object):
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Guardado")
             msg.exec_()
-            self.crt_label.setText(self.dat.bottles['1'][0]+("\t\t"if len(self.dat.bottles['1'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_3.setText(self.dat.bottles['2'][0]+("\t\t"if len(self.dat.bottles['2'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_4.setText(self.dat.bottles['3'][0]+("\t\t"if len(self.dat.bottles['3'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_5.setText(self.dat.bottles['10'][0]+("\t\t"if len(self.dat.bottles['4'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_6.setText(self.dat.bottles['4'][0]+("\t\t"if len(self.dat.bottles['5'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_7.setText(self.dat.bottles['5'][0]+("\t\t"if len(self.dat.bottles['6'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_8.setText(self.dat.bottles['6'][0]+("\t\t"if len(self.dat.bottles['7'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_9.setText(self.dat.bottles['7'][0]+("\t\t"if len(self.dat.bottles['8'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_11.setText(self.dat.bottles['8'][0]+("\t\t"if len(self.dat.bottles['9'][0])<7 else "\t")+"\n"+"0 ml")
-            self.crt_label_10.setText(self.dat.bottles['9'][0]+("\t\t"if len(self.dat.bottles['10'][0])<7 else "\t")+"\n"+"0 ml")
+            self.crt_label.setText(self.dat.bottles['1'][0]+("\t\t"if len(self.dat.bottles['1'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_3.setText(self.dat.bottles['2'][0]+("\t\t"if len(self.dat.bottles['2'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_4.setText(self.dat.bottles['3'][0]+("\t\t"if len(self.dat.bottles['3'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_5.setText(self.dat.bottles['10'][0]+("\t\t"if len(self.dat.bottles['4'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_6.setText(self.dat.bottles['4'][0]+("\t\t"if len(self.dat.bottles['5'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_7.setText(self.dat.bottles['5'][0]+("\t\t"if len(self.dat.bottles['6'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_8.setText(self.dat.bottles['6'][0]+("\t\t"if len(self.dat.bottles['7'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_9.setText(self.dat.bottles['7'][0]+("\t\t"if len(self.dat.bottles['8'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_11.setText(self.dat.bottles['8'][0]+("\t\t"if len(self.dat.bottles['9'][0])<8 else "\t")+"\n"+"0 ml")
+            self.crt_label_10.setText(self.dat.bottles['9'][0]+("\t\t"if len(self.dat.bottles['10'][0])<8 else "\t")+"\n"+"0 ml")
             self.crt_horizontalSlider.setValue(0)
             self.crt_horizontalSlider_2.setValue(0)
             self.crt_horizontalSlider_3.setValue(0)
@@ -801,7 +813,7 @@ class Ui_Form(object):
         "background-color: #E09825;")
         self.cal_label_2.setObjectName("cal_label_2")
         self.cal_pushButton_10 = QtWidgets.QPushButton(self.form)
-        self.cal_pushButton_10.setGeometry(QtCore.QRect(10, 300, 65, 65))
+        self.cal_pushButton_10.setGeometry(QtCore.QRect(10, 310, 65, 65))
         self.cal_pushButton_10.setStyleSheet("\n"
         "border-image: url(:/back/assets/back.png);\n"
         "border-radius:30px")
@@ -812,7 +824,7 @@ class Ui_Form(object):
         self.cal_pushButton_10.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.cal_pushButton_10.clicked.connect(lambda: self.state_machine(0))
         self.cal_pushButton_11 = QtWidgets.QPushButton(self.form)
-        self.cal_pushButton_11.setGeometry(QtCore.QRect(720, 300, 65, 65))
+        self.cal_pushButton_11.setGeometry(QtCore.QRect(720, 310, 65, 65))
         self.cal_pushButton_11.setStyleSheet("\n"
         "border-image: url(:/check/assets/check2.png);\n"
         "border-radius:30px\n"
@@ -1373,7 +1385,7 @@ class Ui_Form(object):
         self.sel_pushButton_9.setObjectName("pushButton_9")
         self.sel_pushButton_9.clicked.connect(lambda: sys.exit(0))
         self.sel_pushButton = QtWidgets.QPushButton(self.form)
-        self.sel_pushButton.setGeometry(QtCore.QRect(30, 300, 65, 65))
+        self.sel_pushButton.setGeometry(QtCore.QRect(10, 310, 65, 65))
         self.sel_pushButton.setStyleSheet("border-image: url(:/back/assets/back.png);\n"
         "\n"
         "border-radius:30px")
@@ -1799,6 +1811,7 @@ class Ui_Form(object):
                 # msg.setInformativeText('More information')
                 msg.setWindowTitle("Completado")
                 msg.exec_()
+        self.usr_retranslateUi()
             
     def sel_show_queue(self):
         if bool(self.dat.queue):
@@ -1818,7 +1831,6 @@ class Ui_Form(object):
             # msg.setInformativeText('More information')
             msg.setWindowTitle("Cola Actual")
             msg.exec_()
-            
 
     def sel_clear_queue(self):
         msg = QMessageBox()
@@ -1931,6 +1943,7 @@ class Ui_Form(object):
     #endregion select    
         
     #region user
+    
     def user_form(self):
         self.form.setObjectName("self.form")
         self.form.resize(800, 380)
@@ -1955,11 +1968,18 @@ class Ui_Form(object):
         self.usr_pushButton.setIconSize(QtCore.QSize(40, 40))
         self.usr_pushButton.clicked.connect(lambda: self.getpassword())
         self.usr_pushButton_2 = QtWidgets.QPushButton(self.form)
-        self.usr_pushButton_2.setGeometry(QtCore.QRect(10, 310-20, 65, 65))
+        self.usr_pushButton_2.setGeometry(QtCore.QRect(650, 310-20, 65, 65))
         self.usr_pushButton_2.setObjectName("usr_pushButton_2")
         self.usr_pushButton_2.setIcon(QIcon('assets/add.png'))
         self.usr_pushButton_2.setIconSize(QtCore.QSize(50, 50))
         self.usr_pushButton_2.clicked.connect(lambda: self.sel_add_to_queue(self.user_screen,[self.usr_pushButton_16,self.usr_pushButton_16]))
+        
+        self.usr_pushButton_18 = QtWidgets.QPushButton(self.form)
+        self.usr_pushButton_18.setGeometry(QtCore.QRect(80, 310-20, 65, 65))
+        self.usr_pushButton_18.setObjectName("usr_pushButton_2")
+        self.usr_pushButton_18.setIcon(QIcon('assets/undo.png'))
+        self.usr_pushButton_18.setIconSize(QtCore.QSize(50, 50))
+        self.usr_pushButton_18.clicked.connect(lambda: self.usr_undo())
         
         self.usr_horizontalLayoutWidget = QtWidgets.QWidget(self.form)
         self.usr_horizontalLayoutWidget.setGeometry(QtCore.QRect(150, 340-15, 500, 50))
@@ -2054,20 +2074,18 @@ class Ui_Form(object):
         self.usr_pushButton_3 = QtWidgets.QPushButton(self.form)
         self.usr_pushButton_3.setGeometry(QtCore.QRect(720, 310-20, 65, 65))
         self.usr_pushButton_3.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-        "border-image: url(:/check/assets/check2.png);\n"
         "border-radius:30px\n"
         "")
         self.usr_pushButton_3.setText("")
         self.usr_pushButton_3.setObjectName("crt_pushButton_2")
-        self.usr_pushButton_3.setIcon(QIcon('assets/check2.png'))
+        self.usr_pushButton_3.setIcon(QIcon('assets/play.png'))
         self.usr_pushButton_3.setIconSize(QtCore.QSize(50, 50))
         self.usr_pushButton_3.setStyleSheet("border-radius:30px\noverflow:hidden;")
         self.usr_pushButton_3.clicked.connect(self.sel_prepare)
         
         self.usr_pushButton_17 = QtWidgets.QPushButton(self.form)
-        self.usr_pushButton_17.setGeometry(QtCore.QRect(650, 310-20, 65, 65))
+        self.usr_pushButton_17.setGeometry(QtCore.QRect(10, 310-20, 65, 65))
         self.usr_pushButton_17.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-        "border-image: url(:/check/assets/check2.png);\n"
         "border-radius:30px\n"
         "")
         self.usr_pushButton_17.setText("")
@@ -2129,6 +2147,20 @@ class Ui_Form(object):
         self.usr_retranslateUi()
         QtCore.QMetaObject.connectSlotsByName(self.form)
 
+
+    def usr_undo(self):
+        self.dat.queue.popitem()
+        jsonFile = open("data/queue.json", "w")
+        jsonFile.write(json.dumps(self.dat.queue, indent=4, sort_keys=True))
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Se ha removido el último elemento de la cola")
+        # msg.setInformativeText('More information')
+        msg.setWindowTitle("Cola actualizada")
+        msg.exec_()
+        self.usr_retranslateUi()
+
+    
     def usr_retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.form.setWindowTitle(_translate("self.form", "Mixology"))
@@ -2168,6 +2200,8 @@ class Ui_Form(object):
             self.usr_pushButton_16.setIcon(QIcon('images/Logo.jpg'))
         self.usr_pushButton_16.setIconSize(QtCore.QSize(410, 230))
         self.usr_pushButton_16.setStyleSheet(self.ButtonImageStyle())
+        self.usr_pushButton_18.setVisible(bool(self.dat.queue))
+        
 
     def usr_change_recipe(self, sign):
         if sign == "+":
@@ -2426,6 +2460,9 @@ class Ui_Form(object):
             self.usr_pushButton_5.setVisible(self.state == 4)
             self.usr_label_6.setVisible(self.state == 4)
             self.usr_pushButton_16.setVisible(self.state == 4)
+            self.usr_pushButton_17.setVisible(self.state == 4)
+            self.usr_label_7.setVisible(self.state == 4)
+            self.usr_pushButton_18.setVisible(self.state == 4 and bool(self.dat.queue))
         except:
             pass
         #endregion user
