@@ -1,4 +1,4 @@
-from apis.data import Data
+from logic.data import Data
 
 dat = Data()
 

@@ -8,7 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from apis.data import Data
+from logic.data import Data
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QSlider
 from PyQt5.QtWidgets import QMessageBox

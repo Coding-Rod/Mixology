@@ -11,7 +11,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QSlider
 from PyQt5.QtWidgets import QMessageBox
 
-from apis.data import Data
+from logic.data import Data
 
 class Main(object):
     def setupUi(self, Form):

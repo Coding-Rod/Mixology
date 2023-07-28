@@ -8,8 +8,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from apis.data import Data
-# from apis.control import Control
+from logic.data import Data
+# from logic.control import Control
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 

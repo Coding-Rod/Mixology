@@ -10,7 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-from apis.data import Data
+from logic.data import Data
 from glob import glob
 
 class Ui_Form(object):
